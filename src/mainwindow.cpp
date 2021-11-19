@@ -1,6 +1,6 @@
 #include "./lib/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "./ui/stylesheet.h"
+#include "./lib/stylesheet.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -21,17 +21,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_upgradeAButton_clicked()
 {
-    if (upgradeA.upgradeValue < 10)
+    if (upgradeA.upgradeValue < 101)
         ui->upgradeAProgress->setValue(upgradeA.upgradeValue++);
     else
-        ui->status->setText(
-            h1(Comando Indisponivel)
-        );
+        ui->status->setText(h1("Upgrade completo!"));
 }
 
 
 void MainWindow::on_Monster_clicked()
 {
-    ui->status->setText(QString::fromStdString("<h1>" + std::to_string(monsterHealth--) + "</h1>"));
+    ui->status->setText(h1(QString::fromStdString((std::to_string(monsterHealth--)))));
 }
 
