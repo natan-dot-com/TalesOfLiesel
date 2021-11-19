@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPropertyAnimation>
+#include <./lib/upgrade.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,8 +20,11 @@ public:
 private slots:
     void on_upgradeAButton_clicked();
 
+    void on_Monster_clicked();
+
 private:
     Ui::MainWindow *ui;
-    int upgradeAValue = 0;
+    Upgrade upgradeA;
+    int monsterHealth = 100;
 };
 #endif // MAINWINDOW_H

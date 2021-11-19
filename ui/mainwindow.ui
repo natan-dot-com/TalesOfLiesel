@@ -18,16 +18,44 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
-      <width>193</width>
-      <height>201</height>
+      <y>20</y>
+      <width>269</width>
+      <height>391</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="5" column="1">
+      <widget class="QPushButton" name="upgradeEButton">
+       <property name="text">
+        <string>E</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QProgressBar" name="upgradeCProgress">
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QProgressBar" name="upgradeDProgress">
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="0">
       <widget class="QProgressBar" name="upgradeBProgress">
        <property name="value">
         <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="upgradeBButton">
+       <property name="text">
+        <string>B</string>
        </property>
       </widget>
      </item>
@@ -56,13 +84,6 @@ color: black;</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QPushButton" name="upgradeBButton">
-       <property name="text">
-        <string>B</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QProgressBar" name="upgradeAProgress">
        <property name="value">
@@ -70,8 +91,8 @@ color: black;</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
-      <widget class="QProgressBar" name="upgradeDProgress">
+     <item row="5" column="0">
+      <widget class="QProgressBar" name="upgradeEProgress">
        <property name="value">
         <number>24</number>
        </property>
@@ -90,28 +111,36 @@ color: black;</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QProgressBar" name="upgradeCProgress">
-       <property name="value">
-        <number>24</number>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QProgressBar" name="upgradeEProgress">
-       <property name="value">
-        <number>24</number>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QPushButton" name="upgradeEButton">
-       <property name="text">
-        <string>E</string>
-       </property>
-      </widget>
-     </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="status">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>20</y>
+      <width>301</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;h1&gt;Status:&lt;/h1&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Monster">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>60</y>
+      <width>421</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;</string>
+    </property>
+    <property name="text">
+     <string>Monster</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

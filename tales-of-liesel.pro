@@ -14,7 +14,8 @@ SOURCES += \
 
 HEADERS += \
     ./lib/mainwindow.h \
-    ./lib/upgrade.h
+    ./lib/upgrade.h \
+    ui/stylesheet.h
 
 FORMS += \
     ./ui/mainwindow.ui
