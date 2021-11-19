@@ -15,4 +15,8 @@ QString h3(QString str) {
     return "<h3>" + str + "</h3>";
 }
 
+QString b(QString str) {
+    return "<b>" + str + "</b>";
+}
+
 #endif // STYLESHEET_H

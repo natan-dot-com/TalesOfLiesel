@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPropertyAnimation>
+#include <iostream>
 #include <./lib/upgrade.h>
 
 QT_BEGIN_NAMESPACE
@@ -19,12 +20,12 @@ public:
 
 private slots:
     void on_upgradeAButton_clicked();
-
     void on_Monster_clicked();
 
 private:
     Ui::MainWindow *ui;
     Upgrade upgradeA;
-    int monsterHealth = 100;
+    int monsterHealth = 2000;
 };
+
 #endif // MAINWINDOW_H

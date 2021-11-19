@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->upgradeCProgress->setValue(0);
     ui->upgradeDProgress->setValue(0);
     ui->upgradeEProgress->setValue(0);
+    ui->MonsterHealth->setValue(100);
+    ui->MonsterHealth->setTextVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -23,13 +25,16 @@ void MainWindow::on_upgradeAButton_clicked()
 {
     if (upgradeA.upgradeValue < 101)
         ui->upgradeAProgress->setValue(upgradeA.upgradeValue++);
-    else
-        ui->status->setText(h1("Upgrade completo!"));
 }
 
 
 void MainWindow::on_Monster_clicked()
 {
-    ui->status->setText(h1(QString::fromStdString((std::to_string(monsterHealth--)))));
+    if (monsterHealth) {
+        monsterHealth -= 500;
+        // Set value relies on percentage.
+        ui->MonsterHealth->setValue((100 * monsterHealth)/2000);
+    }
+
 }
 
