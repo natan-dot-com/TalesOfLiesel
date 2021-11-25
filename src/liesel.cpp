@@ -10,9 +10,12 @@
 #define BASE_CLICK_DMG 8
 #define BASE_FIREBALL_DMG 15
 
+<<<<<<< HEAD
 #define RNG_MEAN 0
 #define RNG_SD 1.5
 
+=======
+>>>>>>> 98f1fd70495e6bf73f02dbe474eb621f890e2c41
 // Liesel skills:
 //	- Fire ball: Heavy magic damage (active).
 //	- Chronomancy: Stop timer for a few sec (active)
