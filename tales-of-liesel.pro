@@ -10,12 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     ./src/main.cpp \
-    ./src/mainwindow.cpp
+    ./src/mainwindow.cpp \
+    ./src/liesel.cpp
 
 HEADERS += \
     ./lib/mainwindow.h \
     ./lib/upgrade.h \
-    lib/stylesheet.h
+    ./lib/stylesheet.h
 
 FORMS += \
     ./ui/mainwindow.ui
