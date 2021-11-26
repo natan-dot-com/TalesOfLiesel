@@ -1,4 +1,4 @@
-#include "skills.h"
+#include "./lib/skills.h"
 
 #define BASE_DOT_DMG 0.3
 #define BASE_FIREBALL_DMG 15

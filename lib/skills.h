@@ -1,7 +1,7 @@
 #ifndef _SKILLS_H_
 #define _SKILLS_H_
 
-#include "rng.h"
+#include "./lib/rng.h"
 #include <cmath>
 
 // Base class for an in-game skill
