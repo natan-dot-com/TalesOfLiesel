@@ -1,5 +1,8 @@
-#include <./lib/mainwindow.h>
+#include <./lib/frontend/mainwindow.h>
 #include <QApplication>
+#include <QGraphicsScene>
+#include <QGraphicsRectItem>
+#include <QGraphicsView>
 
 int main(int argc, char *argv[])
 {

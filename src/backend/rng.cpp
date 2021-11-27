@@ -1,4 +1,4 @@
-#include "./lib/rng.h"
+#include "./lib/backend/rng.h"
 
 Rng::Rng() {
 	generator.seed(std::chrono::system_clock::now().time_since_epoch().count());
