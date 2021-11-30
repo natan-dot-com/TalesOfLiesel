@@ -3,10 +3,16 @@
         <file>src/alagard.ttf</file>
     </qresource>
     <qresource prefix="/imgs">
-        <file>src/assets/upgradeCyan.png</file>
-        <file>src/assets/upgradeGreen.png</file>
-        <file>src/assets/upgradeYellow.png</file>
-        <file>src/assets/cursor.png</file>
-        <file>src/assets/soulCoin.png</file>
+        <file>src/assets/background.png</file>
+        <file>src/assets/enemies/enemies_full/Character1_face3.png</file>
+        <file>src/assets/ui-components/LieselInfo.png</file>
+        <file>src/assets/ui-components/cursor.png</file>
+        <file>src/assets/ui-components/SkillsPanel.png</file>
+        <file>src/assets/ui-components/upgradeCyan.png</file>
+        <file>src/assets/ui-components/upgradeGreen.png</file>
+        <file>src/assets/ui-components/upgradeYellow.png</file>
+        <file>src/assets/ui-components/progress-bar/Background Bar.png</file>
+        <file>src/assets/ui-components/progress-bar/Background Static.png</file>
+        <file>src/assets/ui-components/progress-bar/Foreground.png</file>
     </qresource>
 </RCC>

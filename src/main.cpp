@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont(":/fonts/src/alagard.ttf");
     QFont f = QFont("Alagard");
     QApplication::setFont(f);
-    QPixmap p = QPixmap(":/imgs/src/assets/cursor.png");
+    QPixmap p = QPixmap(":/imgs/src/assets/ui-components/cursor.png");
     QCursor c = QCursor(p, 0, 0);
     QApplication::setOverrideCursor(c);
 
