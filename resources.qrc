@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/fonts">
+        <file>src/alagard.ttf</file>
+    </qresource>
+    <qresource prefix="/imgs">
+        <file>src/assets/upgradeCyan.png</file>
+        <file>src/assets/upgradeGreen.png</file>
+        <file>src/assets/upgradeYellow.png</file>
+        <file>src/assets/cursor.png</file>
+        <file>src/assets/soulCoin.png</file>
+    </qresource>
+</RCC>

@@ -1,6 +1,6 @@
-#include "./lib/mainwindow.h"
+#include "./lib/frontend/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "./lib/stylesheet.h"
+#include "./lib/frontend/stylesheet.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

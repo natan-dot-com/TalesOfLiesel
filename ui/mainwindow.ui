@@ -13,15 +13,21 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #483434;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QWidget" name="LieselInfo" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>200</y>
-      <width>241</width>
-      <height>154</height>
+      <x>20</x>
+      <y>10</y>
+      <width>261</width>
+      <height>131</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFF3E4;</string>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
@@ -37,7 +43,10 @@
       <number>16</number>
      </property>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="Liesel">
+       <property name="styleSheet">
+        <string notr="true">color: #EED6C4;</string>
+       </property>
        <property name="text">
         <string>&lt;h1&gt;Liesel&lt;/h1&gt;</string>
        </property>
@@ -187,44 +196,118 @@
    <widget class="QPushButton" name="giveLevelButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>130</y>
-      <width>80</width>
-      <height>21</height>
+      <x>30</x>
+      <y>150</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFF3E4;
+background-color: transparent;
+outline: 0;
+width: 100%;
+border: 0;
+padding: 15px;</string>
+    </property>
     <property name="text">
-     <string>Give Level</string>
+     <string>LEVEL</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/imgs/src/assets/upgradeGreen.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="giveXP">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>130</y>
-      <width>80</width>
-      <height>21</height>
+      <x>170</x>
+      <y>150</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFF3E4;
+background-color: transparent;
+outline: 0;
+width: 100%;
+border: 0;
+padding: 15px;</string>
+    </property>
     <property name="text">
-     <string>Give XP</string>
+     <string>GIVE XP</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/imgs/src/assets/upgradeCyan.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="giveSoulCoins">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>130</y>
-      <width>80</width>
-      <height>21</height>
+      <x>320</x>
+      <y>150</y>
+      <width>181</width>
+      <height>51</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFF3E4;
+background-color: transparent;
+outline: 0;
+width: 100%;
+border: 0;
+padding: 15px;</string>
+    </property>
     <property name="text">
-     <string>Give Soul Coins</string>
+     <string>GIVE SOUL COINS</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/imgs/src/assets/upgradeYellow.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
     </property>
    </widget>
   </widget>
+  <action name="actionGiveLevel">
+   <property name="icon">
+    <iconset resource="../resources.qrc">
+     <normaloff>:/imgs/src/assets/upgradeGreen.png</normaloff>:/imgs/src/assets/upgradeGreen.png</iconset>
+   </property>
+   <property name="text">
+    <string>GiveLevel</string>
+   </property>
+   <property name="toolTip">
+    <string>GiveLevel</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
