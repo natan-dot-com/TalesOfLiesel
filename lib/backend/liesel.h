@@ -1,8 +1,8 @@
 #ifndef _LIESEL_H_
 #define _LIESEL_H_
 
-#include "./lib/rng.h"
-#include "./lib/skills.h"
+#include "./lib/backend/rng.h"
+#include "./lib/backend/skills.h"
 
 class Liesel : private Rng { 
 private:

@@ -1,7 +1,7 @@
 #ifndef _ENEMY_H_
 #define _ENEMY_H_
 
-#include "./lib/rng.h"
+#include "./lib/backend/rng.h"
 #include <string>
 
 #define BASE_ENEMY_HP 100

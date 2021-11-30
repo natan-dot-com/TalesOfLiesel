@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "./lib/enemy.h"
-#include "./lib/liesel.h"
-#include "./lib/rng.h"
-#include "./lib/skills.h"
+#include "./lib/backend/enemy.h"
+#include "./lib/backend/liesel.h"
+#include "./lib/backend/rng.h"
+#include "./lib/backend/skills.h"
 
 using namespace std;
 

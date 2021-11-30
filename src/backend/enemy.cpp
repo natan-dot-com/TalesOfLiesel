@@ -1,4 +1,4 @@
-#include "./lib/enemy.h"
+#include "./lib/backend/enemy.h"
 
 int Enemy::generateNewEnemy(int currFloor) {
 	return BASE_ENEMY_HP * (1 + 0.25 * currFloor) + (15 * this->generateRandom(3.0));

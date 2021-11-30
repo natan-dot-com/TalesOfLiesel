@@ -10,18 +10,19 @@ CONFIG += c++11
 
 SOURCES += \
     ./src/main.cpp \
-    ./src/mainwindow.cpp \
-    ./src/liesel.cpp \
-	./src/skills.cpp \
-	./src/rng.cpp
+    ./src/frontend/mainwindow.cpp \
+    ./src/backend/liesel.cpp \
+    ./src/backend/skills.cpp \
+    ./src/backend/rng.cpp
 
 HEADERS += \
-    ./lib/mainwindow.h \
-    ./lib/upgrade.h \
-    ./lib/stylesheet.h \
-	./lib/liesel.h \
-	./lib/skills.h \
-	./lib/rng.h
+    ./lib/frontend/mainwindow.h \
+    ./lib/frontend/stylesheet.h \
+    ./lib/frontend/game_button.h \
+    ./lib/backend/liesel.h \
+    ./lib/backend/skills.h \
+    ./lib/backend/rng.h
+
 
 
 FORMS += \
