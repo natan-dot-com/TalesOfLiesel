@@ -6,40 +6,37 @@
 
 // Base class for an in-game skill
 class Skill : public Rng {
-	protected:
-		int skillLevel;
-		int skillExp;
+private:
+	int skillLevel;
+	int skillExp;
 
-	public:
-		Skill();
-		int getLevel();
-		int getExp();
-		int getLevelUp();
-		bool updateExp(int gainedExp);
-		virtual double skillEffect() = 0;
-		
+public:
+	Skill();
+	int getLevel();
+	int getExp();
+	int getLevelUp();
+	bool updateExp(int gainedExp);
+	virtual double skillEffect() = 0;
 };
 
 class Fireball : public Skill {
-	public:
-		double skillEffect();
+public:
+	double skillEffect();
 };
 
 class Chronomancy : public Skill {
-	public:
-		double skillEffect();
+public:
+	double skillEffect();
 };
 
 class DestructionAura : public Skill {
-	private:
-		double skillEffect();
-
-	protected:
-		double currDoT;
+private:
+	double skillEffect();
+	double currDoT;
 	
-	public:
-		void updateExp(int gainedExp);
-		double getCurrDoT();
+public:
+	void updateExp(int gainedExp);
+	double getCurrDoT();
 };
 
 #endif

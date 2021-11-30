@@ -7,14 +7,16 @@
 
 // Generates a default normal distribution based pseudorandom number generator
 class Rng {
-	private:
-		std::default_random_engine generator;
-		std::normal_distribution<double> rng;
+private:
+	std::default_random_engine generator;
+	std::normal_distribution<double> rng_normal;
+	std::uniform_int_distribution<int> rng_uniform;
 
-	public:
-		Rng();
-		double generateRandom();
-		double generateRandom(double maxSD);
+public:
+	Rng(int start = 0, int end = 10);
+	double generateRandom();
+	double generateRandom(double maxSD);
+	int generateUniformRandom();
 };
 
 #endif
