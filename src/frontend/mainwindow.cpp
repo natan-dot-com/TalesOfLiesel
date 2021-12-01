@@ -21,3 +21,10 @@ void MainWindow::on_giveLevelButton_clicked()
     ui->levelValue->setText(QString::number(liesel->getExp()));
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    enemy->inflictDamage(5);
+    float currentHP = (float)enemy->getCurrHP()/(float)enemy->getMaxHP();
+    ui->Bar->setFixedWidth((int)(currentHP * ui->Bar->width()));
+}

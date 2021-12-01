@@ -309,28 +309,6 @@ padding: 15px;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="enemy">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>300</y>
-      <width>171</width>
-      <height>381</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: transparent;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="../resources.qrc">:/imgs/src/assets/enemies/enemies_full/Character1_face3.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QWidget" name="HealthBar" native="true">
     <property name="enabled">
      <bool>true</bool>
@@ -399,29 +377,73 @@ padding: 15px;</string>
        <height>31</height>
       </rect>
      </property>
+     <property name="maximumSize">
+      <size>
+       <width>272</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: transparent;</string>
+      <string notr="true">background-color:  green;
+border-radius: 3px;</string>
      </property>
      <property name="text">
       <string/>
      </property>
-     <property name="pixmap">
-      <pixmap resource="../resources.qrc">:/imgs/src/assets/ui-components/progress-bar/Background Bar.png</pixmap>
-     </property>
      <property name="scaledContents">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
     <zorder>Background</zorder>
     <zorder>Foreground</zorder>
     <zorder>Bar</zorder>
    </widget>
+   <widget class="QWidget" name="enemy_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>240</y>
+      <width>281</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;</string>
+    </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>40</y>
+       <width>271</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/imgs/src/assets/enemies/enemies_full/Character1_face3.png</normalon>
+      </iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>500</width>
+       <height>500</height>
+      </size>
+     </property>
+    </widget>
+   </widget>
    <zorder>skillsSection</zorder>
    <zorder>lieselSection</zorder>
    <zorder>LieselInfo</zorder>
    <zorder>verticalFrame</zorder>
-   <zorder>enemy</zorder>
    <zorder>HealthBar</zorder>
+   <zorder>enemy_2</zorder>
   </widget>
  </widget>
  <resources>

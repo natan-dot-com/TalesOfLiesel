@@ -13,7 +13,8 @@ SOURCES += \
     ./src/frontend/mainwindow.cpp \
     ./src/backend/liesel.cpp \
     ./src/backend/skills.cpp \
-    ./src/backend/rng.cpp
+    ./src/backend/rng.cpp \
+    ./src/backend/enemy.cpp
 
 HEADERS += \
     ./lib/frontend/mainwindow.h \
@@ -21,7 +22,8 @@ HEADERS += \
     ./lib/frontend/game_button.h \
     ./lib/backend/liesel.h \
     ./lib/backend/skills.h \
-    ./lib/backend/rng.h
+    ./lib/backend/rng.h \
+    ./lib/backend/enemy.h
 
 
 
