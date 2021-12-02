@@ -20,8 +20,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-background-color: #483434;</string>
+   <string notr="true">background-color: #483434;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="LieselInfo" native="true">
@@ -420,7 +419,9 @@ border-radius: 3px;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: transparent;</string>
+      <string notr="true">background-color: transparent;
+background-repeat: no-repeat;
+border: none;</string>
      </property>
      <property name="text">
       <string/>

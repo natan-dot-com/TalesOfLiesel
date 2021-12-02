@@ -21,13 +21,13 @@ public:
 
 private slots:
     void on_giveLevelButton_clicked();
-
     void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     Liesel *liesel = new Liesel();
     Enemy *enemy = new Enemy();
+
 };
 
 #endif // MAINWINDOW_H
