@@ -11,7 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     barWidth = ui->Bar->width();
+    ui->enemyName->setText(enemy->getMobName());
 }
+
+// <!-- You will not be able to see this text. -->
 
 MainWindow::~MainWindow()
 {

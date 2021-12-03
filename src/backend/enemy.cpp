@@ -4,11 +4,11 @@ int Enemy::generateNewEnemy(int currFloor) {
 	return BASE_ENEMY_HP * (1 + 0.25 * currFloor) + (15 * this->generateRandom(3.0));
 }
 
-std::string Enemy::getRandomAdjective() {
+QString Enemy::getRandomAdjective() {
 	return adjectiveList[this->generateUniformRandom()];
 }
 
-std::string Enemy::getRandomSpecimen() {
+QString Enemy::getRandomSpecimen() {
 	return specimenList[this->generateUniformRandom()];
 }
 
@@ -41,6 +41,6 @@ int Enemy::getMaxHP() {
 	return maxHP;
 }
 
-std::string Enemy::getMobName() {
+QString Enemy::getMobName() {
 	return enemyAdjective + " " + enemySpecimen;
 }

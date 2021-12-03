@@ -439,12 +439,33 @@ border: none;</string>
      </property>
     </widget>
    </widget>
+   <widget class="QLabel" name="enemyName">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>140</y>
+      <width>281</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+color: #FFF3E4;</string>
+    </property>
+    <property name="text">
+     <string>&lt;h1&gt;Name&lt;/h1&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
    <zorder>skillsSection</zorder>
    <zorder>lieselSection</zorder>
    <zorder>LieselInfo</zorder>
    <zorder>verticalFrame</zorder>
    <zorder>HealthBar</zorder>
    <zorder>enemy_2</zorder>
+   <zorder>enemyName</zorder>
   </widget>
  </widget>
  <resources>

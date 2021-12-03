@@ -3,10 +3,11 @@
 
 #include "./lib/backend/rng.h"
 #include <string>
+#include <QString>
 
 #define BASE_ENEMY_HP 100
 
-const std::string adjectiveList[] = {
+const QString adjectiveList[] = {
 	"Mighty",
 	"Fearsome",
 	"Angry",
@@ -14,7 +15,7 @@ const std::string adjectiveList[] = {
 	"Indomitable",
 };
 
-const std::string specimenList[] = {
+const QString specimenList[] = {
 	"Skeleton",
 	"Wolf",
 	"Hyena",
@@ -25,13 +26,13 @@ const std::string specimenList[] = {
 class Enemy : private Rng {
 private:
 	int enemyFloor;
-	std::string enemyAdjective;
-	std::string enemySpecimen;
+    QString enemyAdjective;
+    QString enemySpecimen;
 	int currHP;
 	int maxHP;
 
-	std::string getRandomAdjective();
-	std::string getRandomSpecimen();
+    QString getRandomAdjective();
+    QString getRandomSpecimen();
 	int generateNewEnemy(int currFloor);
 
 public:
@@ -39,7 +40,7 @@ public:
 
 	bool inflictDamage(int damageTaken);
 	int getEnemyFloor();
-	std::string getMobName();
+    QString getMobName();
 	int getCurrHP();
 	int getMaxHP();
 };
