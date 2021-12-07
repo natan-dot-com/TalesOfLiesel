@@ -28,7 +28,7 @@ int Skill::getLevelUp() {
 bool Skill::updateExp(int gainedExp) {
 	skillExp += gainedExp;
 	if (skillExp >= this->getLevelUp()) {
-		skillExp %= this->getLevelUp();
+		skillExp -= this->getLevelUp();
 		skillLevel++;
 		return true;
 	}
@@ -54,10 +54,12 @@ double DestructionAura::skillEffect() {
 	return BASE_DOT_DMG * pow(this->getLevel(), 1.25);
 } 	
 
-void DestructionAura::updateExp(int gainedExp) {
+bool DestructionAura::updateExp(int gainedExp) {
 	if (Skill::updateExp(gainedExp)) {
 		currDoT = this->skillEffect();
+		return true;
 	}
+	return false;
 }
 
 double DestructionAura::getCurrDoT() {

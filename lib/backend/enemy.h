@@ -6,6 +6,8 @@
 #include <QString>
 
 #define BASE_ENEMY_HP 100
+#define BASE_COIN_DROP 15
+#define BASE_EXP_DROP 30
 
 const QString adjectiveList[] = {
 	"Mighty",
@@ -43,6 +45,8 @@ public:
     QString getMobName();
 	int getCurrHP();
 	int getMaxHP();
+	int dropCoinsOnDeath();
+	int dropExpOnDeath();
 };
 
 #endif

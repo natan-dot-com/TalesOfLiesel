@@ -8,7 +8,7 @@
 using namespace std;
 
 void EnemyTest() {
-	Enemy newEnemy;
+	Enemy newEnemy = Enemy(20);
 	cout << newEnemy.getMobName() << endl;
 	cout << "HP: " << newEnemy.getCurrHP() << "/" << newEnemy.getMaxHP() << endl;
 	cout << "Mob floor level: " << newEnemy.getEnemyFloor() << endl;

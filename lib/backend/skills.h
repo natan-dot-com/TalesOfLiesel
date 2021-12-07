@@ -35,7 +35,7 @@ private:
 	double currDoT;
 	
 public:
-	void updateExp(int gainedExp);
+	bool updateExp(int gainedExp);
 	double getCurrDoT();
 };
 

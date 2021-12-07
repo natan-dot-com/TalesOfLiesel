@@ -44,3 +44,11 @@ int Enemy::getMaxHP() {
 QString Enemy::getMobName() {
 	return enemyAdjective + " " + enemySpecimen;
 }
+
+int Enemy::dropCoinsOnDeath() {
+	return BASE_COIN_DROP * (1 + 0.4 * enemyFloor);
+}
+
+int Enemy::dropExpOnDeath() {
+	return BASE_EXP_DROP * (1 + 0.25 * pow(enemyFloor, 2)) + 1.5 * this->generateRandom(4.0);
+}
