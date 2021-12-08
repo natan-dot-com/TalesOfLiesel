@@ -2,19 +2,15 @@
 #include "ui_mainwindow.h"
 #include "./lib/frontend/stylesheet.h"
 
-// Stores
-int barWidth;
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    barWidth = ui->Bar->width();
+    h.defaultStyle = ui->Bar->styleSheet();
+    h.barWidth = ui->Bar->width();
     ui->enemyName->setText(enemy->getMobName());
 }
-
-// <!-- You will not be able to see this text. -->
 
 MainWindow::~MainWindow()
 {
@@ -32,8 +28,11 @@ void MainWindow::on_giveLevelButton_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     enemy->inflictDamage(5);
-    qDebug() << ui->Bar->width() << " " << barWidth;
-    float currentHP = (float)enemy->getCurrHP()/(float)enemy->getMaxHP();
-    ui->Bar->setFixedWidth((int)(currentHP * barWidth));
+    ui->Bar->setFixedWidth(h.getDamagedRatio(enemy->getCurrHP(), enemy->getMaxHP()) * h.barWidth);
 
+    if (enemy->getCurrHP() == 0) {
+        qDebug() << "RESET!" << "\n";
+        h.resetBar(ui->Bar);
+        // Now that the bar has been reseted, we need to spawn a new enemy.
+    }
 }

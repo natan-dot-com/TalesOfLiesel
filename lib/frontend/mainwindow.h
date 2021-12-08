@@ -6,6 +6,7 @@
 #include <iostream>
 #include <./lib/backend/liesel.h>
 #include <./lib/backend/enemy.h>
+#include <./lib/frontend/components.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,7 +28,7 @@ private:
     Ui::MainWindow *ui;
     Liesel *liesel = new Liesel();
     Enemy *enemy = new Enemy();
-
+    Healthbar h;
 };
 
 #endif // MAINWINDOW_H

@@ -19,7 +19,7 @@ SOURCES += \
 HEADERS += \
     ./lib/frontend/mainwindow.h \
     ./lib/frontend/stylesheet.h \
-    ./lib/frontend/game_button.h \
+    ./lib/frontend/components.h \
     ./lib/backend/liesel.h \
     ./lib/backend/skills.h \
     ./lib/backend/rng.h \
