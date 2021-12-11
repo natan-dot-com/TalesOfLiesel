@@ -7,6 +7,7 @@
 struct Healthbar {
     int barWidth;
     QString defaultStyle;
+    QLabel *Bar;
 
     Healthbar() {
 
@@ -21,9 +22,9 @@ struct Healthbar {
         return current/max;
     }
 
-    void resetBar(QLabel *Bar) {
-        Bar->setStyleSheet(defaultStyle);
-        Bar->setFixedWidth(barWidth);
+    void resetBar(QLabel *_Bar) {
+        _Bar->setStyleSheet(defaultStyle);
+        _Bar->setFixedWidth(barWidth);
     }
 };
 

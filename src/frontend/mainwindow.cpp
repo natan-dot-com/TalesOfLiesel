@@ -34,5 +34,8 @@ void MainWindow::on_pushButton_clicked()
         qDebug() << "RESET!" << "\n";
         h.resetBar(ui->Bar);
         // Now that the bar has been reseted, we need to spawn a new enemy.
+        delete enemy;
+        enemy = new Enemy();
+        ui->enemyName->setText(enemy->getMobName());
     }
 }
