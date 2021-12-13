@@ -4,7 +4,6 @@
     </qresource>
     <qresource prefix="/imgs">
         <file>src/assets/background.png</file>
-        <file>src/assets/enemies/enemies_full/Character1_face3.png</file>
         <file>src/assets/ui-components/LieselInfo.png</file>
         <file>src/assets/ui-components/cursor.png</file>
         <file>src/assets/ui-components/SkillsPanel.png</file>
@@ -14,5 +13,22 @@
         <file>src/assets/ui-components/progress-bar/Background Bar.png</file>
         <file>src/assets/ui-components/progress-bar/Background Static.png</file>
         <file>src/assets/ui-components/progress-bar/Foreground.png</file>
+        <file>src/assets/ui-components/Custom Button Active 2.png</file>
+        <file>src/assets/ui-components/Custom Button Disable 2.png</file>
+        <file>src/assets/ui-components/Custom Button Hover 2.png</file>
+        <file>src/assets/ui-components/Custom Button Normal 2.png</file>
+        <file>src/assets/ui-components/FireballCard.png</file>
+        <file>src/assets/enemies/enemies_full/elf-1.png</file>
+        <file>src/assets/enemies/enemies_full/elf-2.png</file>
+        <file>src/assets/enemies/enemies_full/elf-3.png</file>
+        <file>src/assets/enemies/enemies_full/elf-4.png</file>
+        <file>src/assets/enemies/enemies_full/mage-1.png</file>
+        <file>src/assets/enemies/enemies_full/mage-2.png</file>
+        <file>src/assets/enemies/enemies_full/mage-3.png</file>
+        <file>src/assets/enemies/enemies_full/mage-4.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-1.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-2.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-3.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-4.png</file>
     </qresource>
 </RCC>
