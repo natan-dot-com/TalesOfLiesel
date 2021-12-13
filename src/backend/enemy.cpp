@@ -21,6 +21,7 @@ Enemy::Enemy(int currFloor) : Rng(0, (int) sizeof(adjectiveList)/sizeof(adjectiv
 }
 
 bool Enemy::inflictDamage(int damageTaken) {
+	const std::lock_guard<std::mutex> lock(hpMutex);
 	if (damageTaken >= currHP) {
 		currHP = 0;
 		return true;

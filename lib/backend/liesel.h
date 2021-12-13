@@ -3,6 +3,7 @@
 
 #include "./lib/backend/rng.h"
 #include "./lib/backend/skills.h"
+#include <mutex>
 
 class Liesel : private Rng { 
 private:
@@ -10,6 +11,8 @@ private:
 	int currExp;
 	int currLevel;
 	int soulCoinsAmount;
+
+	std::mutex coinsMutex;
 
 public:
 	// Main character skills

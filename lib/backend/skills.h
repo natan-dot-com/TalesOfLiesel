@@ -3,6 +3,7 @@
 
 #include "./lib/backend/rng.h"
 #include <cmath>
+#include <thread>
 
 // Base class for an in-game skill
 class Skill : public Rng {

@@ -4,6 +4,7 @@
 #include "./lib/backend/rng.h"
 #include <string>
 #include <QString>
+#include <mutex>
 
 #define BASE_ENEMY_HP 100
 #define BASE_COIN_DROP 15
@@ -32,6 +33,8 @@ private:
     QString enemySpecimen;
 	int currHP;
 	int maxHP;
+
+	std::mutex hpMutex;
 
     QString getRandomAdjective();
     QString getRandomSpecimen();

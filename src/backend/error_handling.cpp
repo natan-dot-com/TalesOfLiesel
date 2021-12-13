@@ -1,4 +1,5 @@
 #include "./lib/backend/error_handling.h"
+#include <iostream>
 
 #define NEGATIVE_VALUE_MSG "..."
 #define INVALID_MOVE_MSG "..."
