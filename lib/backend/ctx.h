@@ -18,15 +18,15 @@ typedef std::pair<TurnResult, bool> pairResult;
 
 class Context {
 private:
-	Liesel playerInstance;
-	Enemy currEnemyInstance;
-	Error errHandler;
+	Liesel *playerInstance;
+	Enemy *currEnemyInstance;
+	Error *errHandler;
 
-	std::thread *fireballExec;
-	std::thread *chronoExec;
-	std::thread *destAuraExec;
+	std::thread fireballExec;
+	std::thread chronoExec;
+	std::thread destAuraExec;
 
-	pairResult damageFireball();
+	void damageFireball(TurnResult &currResult, bool &isError);
 
 public:
 	Context();
@@ -40,9 +40,9 @@ public:
 	pairResult evokeFireball();
 
 	// Skills management
-	bool upgradeFireball();
-	bool upgradeChronomancy();
-	bool upgradeDestructionAura();
-}
+	bool updateFireball();
+	bool updateChronomancy();
+	bool updateDestructionAura();
+};
 
 #endif

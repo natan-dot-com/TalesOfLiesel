@@ -1,23 +1,23 @@
 #include "./lib/backend/enemy.h"
 
-int Enemy::generateNewEnemy(int currFloor) {
-	return BASE_ENEMY_HP * (1 + 0.25 * currFloor) + (15 * this->generateRandom(3.0));
-}
-
-QString Enemy::getRandomAdjective() {
-	return adjectiveList[this->generateUniformRandom()];
-}
-
-QString Enemy::getRandomSpecimen() {
-	return specimenList[this->generateUniformRandom()];
-}
-
 Enemy::Enemy(int currFloor) : Rng(0, (int) sizeof(adjectiveList)/sizeof(adjectiveList[0])-1) {
 	enemyFloor = currFloor;
 	enemyAdjective = this->getRandomAdjective();
 	enemySpecimen = this->getRandomSpecimen();
 	maxHP = this->generateNewEnemy(currFloor);
 	currHP = maxHP;
+}
+
+int Enemy::generateNewEnemy(int currFloor) {
+	return BASE_ENEMY_HP * (1 + 0.25 * currFloor) + (15 * this->generateRandom(3.0));
+}
+
+std::string Enemy::getRandomAdjective() {
+	return adjectiveList[this->generateUniformRandom()];
+}
+
+std::string Enemy::getRandomSpecimen() {
+	return specimenList[this->generateUniformRandom()];
 }
 
 bool Enemy::inflictDamage(int damageTaken) {
@@ -42,7 +42,7 @@ int Enemy::getMaxHP() {
 	return maxHP;
 }
 
-QString Enemy::getMobName() {
+std::string Enemy::getMobName() {
 	return enemyAdjective + " " + enemySpecimen;
 }
 

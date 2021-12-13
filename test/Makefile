@@ -3,7 +3,7 @@ MAIN=./test.cpp
 BINARY=./prog
 VALGRIND=valgrind --leak-check=full
 
-SOURCE=../src/backend/*
+SOURCE=../src/backend/*.cpp
 INCLUDE=..
 
 all:

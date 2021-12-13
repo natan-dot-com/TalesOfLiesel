@@ -8,13 +8,13 @@
 using namespace std;
 
 void EnemyTest() {
-	Enemy newEnemy = Enemy(20);
-	cout << newEnemy.getMobName() << endl;
-	cout << "HP: " << newEnemy.getCurrHP() << "/" << newEnemy.getMaxHP() << endl;
-	cout << "Mob floor level: " << newEnemy.getEnemyFloor() << endl;
+	Enemy *newEnemy = new Enemy(20);
+	cout << newEnemy->getMobName() << endl;
+	cout << "HP: " << newEnemy->getCurrHP() << "/" << newEnemy->getMaxHP() << endl;
+	cout << "Mob floor level: " << newEnemy->getEnemyFloor() << endl;
 	cout << "Inflicted 5 damage!" << endl;
-	newEnemy.inflictDamage(5);
-	cout << "HP: " << newEnemy.getCurrHP() << "/" << newEnemy.getMaxHP() << endl;
+	newEnemy->inflictDamage(5);
+	cout << "HP: " << newEnemy->getCurrHP() << "/" << newEnemy->getMaxHP() << endl;
 }
 
 int main(int argc, char const *argv[]) {
