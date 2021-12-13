@@ -1,5 +1,7 @@
 #include "./lib/backend/ctx.h"
 
+#include <iostream>
+
 Context::Context() {
 	playerInstance =  new Liesel();
 	currEnemyInstance =  new Enemy();
@@ -32,7 +34,7 @@ pairResult Context::damageOnClick() {
 	}, true);
 }
 
-void Context::damageFireball(TurnResult &currResult, bool &isError) {
+void Context::damageFireball() {
 	int dealtDamage = playerInstance->fireSkill.skillEffect();
 	if (dealtDamage != 0) {
 		if (currEnemyInstance->inflictDamage(dealtDamage)) {
@@ -44,47 +46,22 @@ void Context::damageFireball(TurnResult &currResult, bool &isError) {
 			currEnemyInstance = newEnemy;
 
 			playerInstance->updateGainedCoins(gainedCoins);
-
-			currResult = TurnResult {
-				dealtDamage,
-				gainedExp,
-				gainedCoins,
-				playerInstance->updateExp(gainedExp),
-			};
-			isError = false;
-			std::this_thread::sleep_for(std::chrono::seconds(10));
 		}
-		else {
-			currResult = TurnResult {
-				dealtDamage,
-				0,
-				0,
-				false,
-			};
-			isError = false;
-			std::this_thread::sleep_for(std::chrono::seconds(10));
-		}
-	}
-	else {
-		currResult = TurnResult {
-			0,
-			0,
-			0,
-			false,
-		};
-		isError = true;
+		std::this_thread::sleep_for(std::chrono::seconds(10));
+		std::cout << "damageFireball" << std::endl;
 	}
 }
 
 pairResult Context::evokeFireball() {
-	if (this->fireballExec.joinable()) {
-		TurnResult currResult;
-		bool isError;
-
-		this->fireballExec = std::thread(this->damageFireball(currResult, isError), currResult, isError);
+	TurnResult currResult;
+	bool isError;
+	if (!this->fireballExec.joinable()) {
+		this->fireballExec = std::thread(&Context::damageFireball, this);
 		this->fireballExec.join();
-		return std::make_pair(currResult, isError);
+		std::cout << "evokeFireball" << std::endl;
+
 	}
+	return std::make_pair(currResult, isError);
 }
 
 bool Context::updateFireball() {

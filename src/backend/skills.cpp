@@ -6,7 +6,7 @@
 #define BASE_SKILL_EXP 100
 
 Skill::Skill() {
-	skillLevel = 0;
+	skillLevel = 1;
 	skillExp = 0;
 }
 

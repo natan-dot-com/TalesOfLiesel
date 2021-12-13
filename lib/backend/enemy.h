@@ -9,7 +9,7 @@
 #define BASE_COIN_DROP 15
 #define BASE_EXP_DROP 30
 
-std::string adjectiveList[] = {
+const std::string adjectiveList[] = {
 	"Mighty",
 	"Fearsome",
 	"Angry",
@@ -17,7 +17,7 @@ std::string adjectiveList[] = {
 	"Indomitable",
 };
 
-std::string specimenList[] = {
+const std::string specimenList[] = {
     "Mage",
 	"Wolf",
     "Sorcerer",

@@ -4,6 +4,7 @@
 #include "./lib/backend/liesel.h"
 #include "./lib/backend/rng.h"
 #include "./lib/backend/skills.h"
+#include "./lib/backend/ctx.h"
 
 using namespace std;
 
@@ -17,7 +18,24 @@ void EnemyTest() {
 	cout << "HP: " << newEnemy->getCurrHP() << "/" << newEnemy->getMaxHP() << endl;
 }
 
+void ThreadsTest() {
+	Context newContext = Context();
+	char ch;
+	while (true) {
+		cin >> ch;
+		if (ch == 't') {
+			newContext.evokeFireball();
+		}
+		else if (ch == 'p') {
+			cout << newContext.currEnemyInstance->getMaxHP() << "/" << newContext.currEnemyInstance->getCurrHP() << endl;
+		}
+		else if (ch == 'm') {
+			cout << "aaaaa" << endl;
+		}
+	}
+}
+
 int main(int argc, char const *argv[]) {
-	EnemyTest();
+	ThreadsTest();
 	return 0;
 }

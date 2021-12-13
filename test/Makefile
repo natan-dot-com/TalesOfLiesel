@@ -1,4 +1,4 @@
-CC=g++
+CC=g++ -pthread
 MAIN=./test.cpp
 BINARY=./prog
 VALGRIND=valgrind --leak-check=full

@@ -5,6 +5,7 @@
 #include "./lib/backend/enemy.h"
 #include "./lib/backend/error_handling.h"
 #include <thread>
+#include <future>
 #include <chrono>
 
 typedef struct _turnResult {
@@ -18,17 +19,17 @@ typedef std::pair<TurnResult, bool> pairResult;
 
 class Context {
 private:
-	Liesel *playerInstance;
-	Enemy *currEnemyInstance;
-	Error *errHandler;
-
 	std::thread fireballExec;
 	std::thread chronoExec;
 	std::thread destAuraExec;
 
-	void damageFireball(TurnResult &currResult, bool &isError);
+	void damageFireball();
 
 public:
+	Liesel *playerInstance;
+	Enemy *currEnemyInstance;
+	Error *errHandler;
+
 	Context();
 
 	// Read/write save file methods
