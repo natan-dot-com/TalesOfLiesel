@@ -3,7 +3,6 @@
         <file>src/alagard.ttf</file>
     </qresource>
     <qresource prefix="/imgs">
-        <file>src/assets/background.png</file>
         <file>src/assets/ui-components/LieselInfo.png</file>
         <file>src/assets/ui-components/cursor.png</file>
         <file>src/assets/ui-components/SkillsPanel.png</file>
@@ -30,5 +29,14 @@
         <file>src/assets/enemies/enemies_full/sorcerer-2.png</file>
         <file>src/assets/enemies/enemies_full/sorcerer-3.png</file>
         <file>src/assets/enemies/enemies_full/sorcerer-4.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-1.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-2.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-3.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-4.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-1.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-2.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-3.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-4.png</file>
+        <file>src/assets/background.png</file>
     </qresource>
 </RCC>

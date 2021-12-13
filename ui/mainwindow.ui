@@ -20,9 +20,15 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #483434;</string>
+   <string notr="true">QMainWindow {
+	background-color: #483434;
+	background-image: url(:/imgs/src/assets/background.png);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <widget class="QWidget" name="LieselInfo" native="true">
     <property name="geometry">
      <rect>
@@ -563,8 +569,8 @@ font-size: 16pt;</string>
    <widget class="QWidget" name="enemy_2" native="true">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>240</y>
+      <x>640</x>
+      <y>290</y>
       <width>281</width>
       <height>441</height>
      </rect>
@@ -576,7 +582,7 @@ font-size: 16pt;</string>
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>40</y>
+       <y>0</y>
        <width>271</width>
        <height>381</height>
       </rect>
@@ -602,104 +608,81 @@ border: none;</string>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QPushButton" name="giveXP">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>30</y>
-      <width>521</width>
-      <height>80</height>
+      <x>375</x>
+      <y>20</y>
+      <width>209</width>
+      <height>55</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="debugButtons">
-     <item>
-      <widget class="QPushButton" name="giveXP">
-       <property name="styleSheet">
-        <string notr="true">color: #FFF3E4;
+    <property name="styleSheet">
+     <string notr="true">color: #FFF3E4;
 background-color: transparent;
 outline: 0;
 width: 100%;
 border: 0;
 padding: 15px;</string>
-       </property>
-       <property name="text">
-        <string>GIVE XP</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normalon>:/imgs/src/assets/ui-components/upgradeYellow.png</normalon>
-        </iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>25</width>
-         <height>25</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="giveLevelButton">
-       <property name="styleSheet">
-        <string notr="true">color: #FFF3E4;
-background-color: transparent;
-outline: 0;
-width: 100%;
-border: 0;
-padding: 15px;</string>
-       </property>
-       <property name="text">
-        <string>LEVEL</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normalon>:/imgs/src/assets/ui-components/upgradeGreen.png</normalon>
-        </iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>25</width>
-         <height>25</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="giveSoulCoins">
-       <property name="styleSheet">
-        <string notr="true">color: #FFF3E4;
-background-color: transparent;
-outline: 0;
-width: 100%;
-border: 0;
-padding: 15px;</string>
-       </property>
-       <property name="text">
-        <string>GIVE SOUL COINS</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/imgs/src/assets/upgradeCyan.png</normaloff>
-         <normalon>:/imgs/src/assets/ui-components/upgradeCyan.png</normalon>:/imgs/src/assets/upgradeCyan.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>25</width>
-         <height>25</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </property>
+    <property name="text">
+     <string>GIVE XP</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/imgs/src/assets/ui-components/upgradeYellow.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QPushButton" name="giveSoulCoins">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>120</y>
-      <width>301</width>
-      <height>111</height>
+      <x>805</x>
+      <y>20</y>
+      <width>209</width>
+      <height>55</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFF3E4;
+background-color: transparent;
+outline: 0;
+width: 100%;
+border: 0;
+padding: 15px;</string>
+    </property>
+    <property name="text">
+     <string>GIVE SOUL COINS</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/imgs/src/assets/upgradeCyan.png</normaloff>
+      <normalon>:/imgs/src/assets/ui-components/upgradeCyan.png</normalon>:/imgs/src/assets/upgradeCyan.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QWidget" name="EnemyInfo" native="true">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>180</y>
+      <width>301</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;</string>
     </property>
     <widget class="QLabel" name="enemyName">
      <property name="geometry">
@@ -789,13 +772,47 @@ background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #9dd53a, 
      </widget>
     </widget>
    </widget>
+   <widget class="QPushButton" name="giveLevelButton">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>20</y>
+      <width>209</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFF3E4;
+background-color: transparent;
+outline: 0;
+width: 100%;
+border: 0;
+padding: 15px;</string>
+    </property>
+    <property name="text">
+     <string>LEVEL</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/imgs/src/assets/ui-components/upgradeGreen.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+   </widget>
    <zorder>skillsSection</zorder>
    <zorder>lieselSection</zorder>
    <zorder>LieselInfo</zorder>
    <zorder>verticalFrame</zorder>
    <zorder>enemy_2</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
-   <zorder>widget</zorder>
+   <zorder>giveXP</zorder>
+   <zorder>giveSoulCoins</zorder>
+   <zorder>giveLevelButton</zorder>
+   <zorder>EnemyInfo</zorder>
   </widget>
  </widget>
  <resources>

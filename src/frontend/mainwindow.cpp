@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     h.defaultStyle = ui->Bar->styleSheet();
     h.barWidth = ui->Bar->width();
-    ui->enemyName->setText(enemy->getMobName());
+    ui->enemyName->setText(QString::fromStdString(enemy->getMobName()));
     enemyButton.updateEnemyIcon(enemy, ui->enemyButton);
 }
 
@@ -43,7 +43,7 @@ void MainWindow::on_enemyButton_clicked()
         // Now that the bar has been reseted, we need to spawn a new enemy.
         delete enemy;
         enemy = new Enemy();
-        ui->enemyName->setText(enemy->getMobName());
+        ui->enemyName->setText(QString::fromStdString(enemy->getMobName()));
         enemyButton.updateEnemyIcon(enemy, ui->enemyButton);
     }
 }

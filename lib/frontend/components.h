@@ -32,8 +32,7 @@ struct Healthbar {
 };
 
 struct EnemyButton {
-    QPixmap *enemyImage = NULL;
-    QIcon *enemyIcon = NULL;
+    QIcon enemyIcon;
 
     EnemyButton() {
 
@@ -45,30 +44,40 @@ struct EnemyButton {
     // "Slayer",
     // "Elf",
     void updateEnemyIcon(Enemy *e, QPushButton *p) {
-        QString enemyName = e->getMobName();
-
-        if (enemyImage != NULL) {
-            delete enemyImage;
-        }
+        QString enemyName = QString::fromStdString(e->getMobName());
 
         if (enemyName.contains(QString("Mage"))) {
-//            enemyImage = new QPixmap(":/imgs/src/assets/enemies/enemies_full/mage-1.png");
-//            p->setIcon(QIcon(*enemyImage));
-            qDebug() << "Mage" << "\n";
+            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/mage-1.png"));
+            p->setIconSize(QSize(600, 600));
+            // qDebug() << "Mage" << "\n";
             return;
         }
 
         if (enemyName.contains(QString("Elf"))) {
-//            enemyImage = new QPixmap(":/imgs/src/assets/enemies/enemies_full/elf-1.png");
-//            p->setIcon(QIcon(*enemyImage));
-            qDebug() << "Elf" << "\n";
+            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/elf-1.png"));
+            p->setIconSize(QSize(600, 600));
+            // qDebug() << "Elf" << "\n";
             return;
         }
 
         if (enemyName.contains(QString("Sorcerer"))) {
-//            enemyImage = new QPixmap(":/imgs/src/assets/enemies/enemies_full/sorcerer-1.png");
-//            p->setIcon(QIcon(*enemyImage));
-            qDebug() << "Sorcerer" << "\n";
+            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/sorcerer-1.png"));
+            p->setIconSize(QSize(600, 600));
+            // qDebug() << "Sorcerer" << "\n";
+            return;
+        }
+
+        if (enemyName.contains(QString("Slayer"))) {
+            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/slayer-1.png"));
+            p->setIconSize(QSize(600, 600));
+            // qDebug() << "Sorcerer" << "\n";
+            return;
+        }
+
+        if (enemyName.contains(QString("Wolf"))) {
+            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/wolf-1.png"));
+            p->setIconSize(QSize(600, 600));
+            // qDebug() << "Sorcerer" << "\n";
             return;
         }
     }
