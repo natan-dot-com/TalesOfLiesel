@@ -37,6 +37,8 @@
         <file>src/assets/enemies/enemies_full/wolf-2.png</file>
         <file>src/assets/enemies/enemies_full/wolf-3.png</file>
         <file>src/assets/enemies/enemies_full/wolf-4.png</file>
+        <file>src/assets/EnemyFrame.png</file>
         <file>src/assets/background.png</file>
+        <file>src/assets/Platform.png</file>
     </qresource>
 </RCC>

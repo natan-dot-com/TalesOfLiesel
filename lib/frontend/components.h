@@ -25,6 +25,37 @@ struct Healthbar {
         return current/max;
     }
 
+    void updateBar(QLabel *_Bar, Enemy *e) {
+        switch(e->getCurrHP()) {
+            case 51 ... 75:
+                _Bar->setStyleSheet(
+                    "border-radius: \
+                        3px; \
+                     background-color: \
+                        QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #bee25b, stop: .5 #a1d54f, stop: .51 #729818, stop: 1 #7cbc0a);"
+                );
+            break;
+
+            case 26 ... 50:
+                _Bar->setStyleSheet(
+                    "border-radius: \
+                        3px; \
+                     background-color: \
+                        QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dea801, stop: .5 #ffcf3b, stop: .51 #957107, stop: 1 #715e28);"
+                );
+             break;
+
+            case 0 ... 25:
+                _Bar->setStyleSheet(
+                    "border-radius: \
+                        3px; \
+                     background-color: \
+                        QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #bb5107, stop: .5 #f5873b, stop: .51 #973b00, stop: 1 #553521);"
+                );
+             break;
+        }
+    }
+
     void resetBar(QLabel *_Bar) {
         _Bar->setStyleSheet(defaultStyle);
         _Bar->setFixedWidth(barWidth);
