@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     h.defaultStyle = ui->Bar->styleSheet();
     h.barWidth = ui->Bar->width();
     ui->enemyName->setText(enemy->getMobName());
+    enemyButton.updateEnemyIcon(enemy, ui->enemyButton);
 }
 
 MainWindow::~MainWindow()
@@ -24,8 +25,14 @@ void MainWindow::on_giveLevelButton_clicked()
     ui->levelValue->setText(QString::number(liesel->getExp()));
 }
 
+void MainWindow::on_giveSoulCoins_clicked()
+{
+    liesel->updateGainedCoins(100);
+    ui->soulCoinsValue->setText(QString::number(liesel->getSoulCoins()));
+}
 
-void MainWindow::on_pushButton_clicked()
+
+void MainWindow::on_enemyButton_clicked()
 {
     enemy->inflictDamage(5);
     ui->Bar->setFixedWidth(h.getDamagedRatio(enemy->getCurrHP(), enemy->getMaxHP()) * h.barWidth);
@@ -37,5 +44,7 @@ void MainWindow::on_pushButton_clicked()
         delete enemy;
         enemy = new Enemy();
         ui->enemyName->setText(enemy->getMobName());
+        enemyButton.updateEnemyIcon(enemy, ui->enemyButton);
     }
 }
+

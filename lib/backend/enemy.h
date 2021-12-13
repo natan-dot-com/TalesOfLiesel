@@ -18,10 +18,10 @@ const QString adjectiveList[] = {
 };
 
 const QString specimenList[] = {
-	"Skeleton",
+    "Mage",
 	"Wolf",
-	"Hyena",
-	"Orc",
+    "Sorcerer",
+    "Slayer",
 	"Elf",
 };
 

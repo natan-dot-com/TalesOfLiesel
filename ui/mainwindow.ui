@@ -182,7 +182,7 @@ background-color: transparent;</string>
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>411</width>
+      <width>361</width>
       <height>201</height>
      </rect>
     </property>
@@ -218,16 +218,426 @@ background-color: transparent;</string>
    <widget class="QFrame" name="verticalFrame">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>228</y>
-      <width>341</width>
-      <height>181</height>
+      <x>8</x>
+      <y>220</y>
+      <width>359</width>
+      <height>461</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: transparent;</string>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="2,2,2">
+     <item>
+      <widget class="QWidget" name="divSkillFireball" native="true">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+	background-color: #383838;
+	border-radius: 5px;
+	color: #FFF3E4;
+}</string>
+       </property>
+       <layout class="QGridLayout" name="skillCardFireball" rowstretch="0,0,0" columnstretch="25,0,0">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>16</number>
+        </property>
+        <property name="topMargin">
+         <number>8</number>
+        </property>
+        <property name="rightMargin">
+         <number>16</number>
+        </property>
+        <property name="bottomMargin">
+         <number>8</number>
+        </property>
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="skillNamePlusIcon_3">
+          <item>
+           <widget class="QLabel" name="skillName_3">
+            <property name="styleSheet">
+             <string notr="true">font-weight: bold;
+font-size: 16pt;</string>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string>Fireball</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="indent">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="upgradeButton_3">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	font-weight: bold;
+	background-color: #95DD7C;
+	color: #001500;
+	padding: 15px;	
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+}
+
+QPushButton::hover {
+	background-color: #027848;
+	color: #fff3e4;
+}</string>
+          </property>
+          <property name="text">
+           <string>UPGRADE</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="description_3">
+          <property name="text">
+           <string>100 SC</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="cost_3">
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Cast a fireball that deals considerably more damage to your enemy.</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="divSkillChronomancy" native="true">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+	background-color: #383838;
+	border-radius: 5px;
+	color: #FFF3E4;
+}</string>
+       </property>
+       <layout class="QGridLayout" name="skillCardFireball_2" rowstretch="0,10,0" columnstretch="25,0,0">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>16</number>
+        </property>
+        <property name="topMargin">
+         <number>8</number>
+        </property>
+        <property name="rightMargin">
+         <number>16</number>
+        </property>
+        <property name="bottomMargin">
+         <number>8</number>
+        </property>
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="upgradeButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	font-weight: bold;
+	background-color: #95DD7C;
+	color: #001500;
+	padding: 15px;	
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+}
+
+QPushButton::hover {
+	background-color: #027848;
+	color: #fff3e4;
+}</string>
+          </property>
+          <property name="text">
+           <string>UPGRADE</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="skillNamePlusIcon">
+          <item>
+           <widget class="QLabel" name="skillName">
+            <property name="styleSheet">
+             <string notr="true">font-weight: bold;
+font-size: 16pt;</string>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string>Chronomancy</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="indent">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="description">
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Description.</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="cost">
+          <property name="text">
+           <string>250 SC</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="divSkillDestructionAura" native="true">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+	background-color: #383838;
+	border-radius: 5px;
+	color: #FFF3E4;
+}</string>
+       </property>
+       <layout class="QGridLayout" name="skillCardFireball_3" rowstretch="0,10,0" columnstretch="25,0,0">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>16</number>
+        </property>
+        <property name="topMargin">
+         <number>8</number>
+        </property>
+        <property name="rightMargin">
+         <number>16</number>
+        </property>
+        <property name="bottomMargin">
+         <number>8</number>
+        </property>
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="upgradeButton_2">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	font-weight: bold;
+	background-color: #95DD7C;
+	color: #001500;
+	padding: 15px;	
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+}
+
+QPushButton::hover {
+	background-color: #027848;
+	color: #fff3e4;
+}</string>
+          </property>
+          <property name="text">
+           <string>UPGRADE</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="skillNamePlusIcon_2">
+          <item>
+           <widget class="QLabel" name="skillName_2">
+            <property name="styleSheet">
+             <string notr="true">font-weight: bold;
+font-size: 16pt;</string>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string>Destruction Aura</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="indent">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="cost_2">
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Description.</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="description_2">
+          <property name="text">
+           <string>400 SC</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="enemy_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>240</y>
+      <width>281</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;</string>
+    </property>
+    <widget class="QPushButton" name="enemyButton">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>40</y>
+       <width>271</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+background-repeat: no-repeat;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/imgs/src/assets/enemies/enemies_full/Character1_face3.png</normalon>
+      </iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>600</width>
+       <height>600</height>
+      </size>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>30</y>
+      <width>521</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="debugButtons">
+     <item>
+      <widget class="QPushButton" name="giveXP">
+       <property name="styleSheet">
+        <string notr="true">color: #FFF3E4;
+background-color: transparent;
+outline: 0;
+width: 100%;
+border: 0;
+padding: 15px;</string>
+       </property>
+       <property name="text">
+        <string>GIVE XP</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/imgs/src/assets/ui-components/upgradeYellow.png</normalon>
+        </iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>25</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QPushButton" name="giveLevelButton">
        <property name="styleSheet">
@@ -280,192 +690,112 @@ padding: 15px;</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="giveXP">
-       <property name="styleSheet">
-        <string notr="true">color: #FFF3E4;
-background-color: transparent;
-outline: 0;
-width: 100%;
-border: 0;
-padding: 15px;</string>
-       </property>
-       <property name="text">
-        <string>GIVE XP</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normalon>:/imgs/src/assets/ui-components/upgradeYellow.png</normalon>
-        </iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>25</width>
-         <height>25</height>
-        </size>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="HealthBar" native="true">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>180</y>
-      <width>361</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: transparent;</string>
-    </property>
-    <widget class="QLabel" name="Foreground">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>-10</y>
-       <width>361</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: transparent;</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../resources.qrc">:/imgs/src/assets/ui-components/progress-bar/Foreground.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="Background">
-     <property name="geometry">
-      <rect>
-       <x>38</x>
-       <y>-13</y>
-       <width>311</width>
-       <height>91</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: transparent;</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../resources.qrc">:/imgs/src/assets/ui-components/progress-bar/Background Static.png</pixmap>
-     </property>
-    </widget>
-    <widget class="QLabel" name="Bar">
-     <property name="geometry">
-      <rect>
-       <x>44</x>
-       <y>15</y>
-       <width>272</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>272</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color:  green;
-border-radius: 3px;</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <zorder>Background</zorder>
-    <zorder>Foreground</zorder>
-    <zorder>Bar</zorder>
-   </widget>
-   <widget class="QWidget" name="enemy_2" native="true">
+   <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>240</y>
-      <width>281</width>
-      <height>441</height>
+      <y>120</y>
+      <width>301</width>
+      <height>111</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: transparent;</string>
-    </property>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QLabel" name="enemyName">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>40</y>
-       <width>271</width>
-       <height>381</height>
+       <x>10</x>
+       <y>10</y>
+       <width>281</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: transparent;
-background-repeat: no-repeat;
-border: none;</string>
+color: #FFF3E4;</string>
      </property>
      <property name="text">
-      <string/>
+      <string>&lt;h1&gt;Name&lt;/h1&gt;</string>
      </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/imgs/src/assets/enemies/enemies_full/Character1_face3.png</normalon>
-      </iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>500</width>
-       <height>500</height>
-      </size>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="enemyName">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>140</y>
-      <width>281</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: transparent;
-color: #FFF3E4;</string>
-    </property>
-    <property name="text">
-     <string>&lt;h1&gt;Name&lt;/h1&gt;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
+    <widget class="QWidget" name="HealthBar" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>-80</x>
+       <y>50</y>
+       <width>471</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;</string>
+     </property>
+     <widget class="QLabel" name="Foreground">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>-10</y>
+        <width>361</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../resources.qrc">:/imgs/src/assets/ui-components/progress-bar/Foreground.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Bar">
+      <property name="geometry">
+       <rect>
+        <x>94</x>
+        <y>15</y>
+        <width>272</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>272</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 3px;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #9dd53a, stop: .5 #a1d54f, stop: .51 #80c217, stop: 1 #7cbc0a);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <zorder>skillsSection</zorder>
    <zorder>lieselSection</zorder>
    <zorder>LieselInfo</zorder>
    <zorder>verticalFrame</zorder>
-   <zorder>HealthBar</zorder>
    <zorder>enemy_2</zorder>
-   <zorder>enemyName</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
+   <zorder>widget</zorder>
   </widget>
  </widget>
  <resources>

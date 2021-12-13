@@ -22,13 +22,15 @@ public:
 
 private slots:
     void on_giveLevelButton_clicked();
-    void on_pushButton_clicked();
+    void on_giveSoulCoins_clicked();
+    void on_enemyButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     Liesel *liesel = new Liesel();
     Enemy *enemy = new Enemy();
     Healthbar h;
+    EnemyButton enemyButton;
 };
 
 #endif // MAINWINDOW_H
