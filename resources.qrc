@@ -40,5 +40,8 @@
         <file>src/assets/EnemyFrame.png</file>
         <file>src/assets/background.png</file>
         <file>src/assets/Platform.png</file>
+        <file>src/assets/game-items/soulCoin.png</file>
+        <file>src/assets/game-items/level.png</file>
+        <file>src/assets/game-items/floor.png</file>
     </qresource>
 </RCC>
