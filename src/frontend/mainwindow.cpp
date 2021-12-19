@@ -35,7 +35,9 @@ void MainWindow::on_giveSoulCoins_clicked()
 void MainWindow::on_enemyButton_clicked()
 {
     enemy->inflictDamage(5);
+    qDebug() << "DAMAGE!" << "\n";
     ui->Bar->setFixedWidth(h.getDamagedRatio(enemy->getCurrHP(), enemy->getMaxHP()) * h.barWidth);
+    h.updateBar(ui->Bar, enemy);
 
     if (enemy->getCurrHP() == 0) {
         qDebug() << "RESET!" << "\n";

@@ -44,7 +44,7 @@ background-color: transparent;</string>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
-      <number>0</number>
+      <number>8</number>
      </property>
      <property name="leftMargin">
       <number>16</number>
@@ -63,10 +63,36 @@ background-color: transparent;</string>
        <item>
         <widget class="QLabel" name="levelTitle">
          <property name="text">
-          <string>&lt;h2&gt;Level&lt;/h2&gt;</string>
+          <string>&lt;h2&gt;Floor&lt;/h2&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="levelIcon">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../resources.qrc">:/imgs/src/assets/game-items/floor.png</pixmap>
          </property>
         </widget>
        </item>
@@ -117,6 +143,32 @@ background-color: transparent;</string>
         </widget>
        </item>
        <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="xpIcon">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../resources.qrc">:/imgs/src/assets/game-items/level.png</pixmap>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -153,6 +205,32 @@ background-color: transparent;</string>
         <widget class="QLabel" name="soulCoinsTitle">
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:7pt; font-weight:600;&quot;&gt;Soul Coins&lt;/span&gt;&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="soulCoinsIcon">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../resources.qrc">:/imgs/src/assets/game-items/soulCoin.png</pixmap>
          </property>
         </widget>
        </item>
@@ -672,106 +750,6 @@ padding: 15px;</string>
      </size>
     </property>
    </widget>
-   <widget class="QWidget" name="EnemyInfo" native="true">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>180</y>
-      <width>301</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: transparent;</string>
-    </property>
-    <widget class="QLabel" name="enemyName">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>281</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: transparent;
-color: #FFF3E4;</string>
-     </property>
-     <property name="text">
-      <string>&lt;h1&gt;Name&lt;/h1&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-    <widget class="QWidget" name="HealthBar" native="true">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>-80</x>
-       <y>50</y>
-       <width>471</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: transparent;</string>
-     </property>
-     <widget class="QLabel" name="Foreground">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>-10</y>
-        <width>361</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="../resources.qrc">:/imgs/src/assets/ui-components/progress-bar/Foreground.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>false</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="Bar">
-      <property name="geometry">
-       <rect>
-        <x>94</x>
-        <y>15</y>
-        <width>272</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>272</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-radius: 3px;
-background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #9dd53a, stop: .5 #a1d54f, stop: .51 #80c217, stop: 1 #7cbc0a);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="scaledContents">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </widget>
-   </widget>
    <widget class="QPushButton" name="giveLevelButton">
     <property name="geometry">
      <rect>
@@ -804,15 +782,123 @@ padding: 15px;</string>
      </size>
     </property>
    </widget>
+   <widget class="QWidget" name="EnemyFrame" native="true">
+    <property name="geometry">
+     <rect>
+      <x>365</x>
+      <y>190</y>
+      <width>911</width>
+      <height>491</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+	
+	background-image: url(:/imgs/src/assets/EnemyFrame.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="EnemyInfo" native="true">
+    <property name="geometry">
+     <rect>
+      <x>403</x>
+      <y>198</y>
+      <width>291</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+background-image: none;
+image: none;</string>
+    </property>
+    <widget class="QLabel" name="enemyName">
+     <property name="geometry">
+      <rect>
+       <x>34</x>
+       <y>10</y>
+       <width>281</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+color: #FFF3E4;</string>
+     </property>
+     <property name="text">
+      <string>&lt;h1&gt;Name&lt;/h1&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="HealthBar" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>-80</x>
+       <y>50</y>
+       <width>471</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;</string>
+     </property>
+     <widget class="QLabel" name="Bar">
+      <property name="geometry">
+       <rect>
+        <x>109</x>
+        <y>0</y>
+        <width>245</width>
+        <height>14</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>272</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 3px;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #08c850, stop: .5 #a1d54f, stop: .51 #038735, stop: 1 #7cbc0a);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="platform" native="true">
+    <property name="geometry">
+     <rect>
+      <x>518</x>
+      <y>396</y>
+      <width>651</width>
+      <height>481</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/imgs/src/assets/Platform.png);</string>
+    </property>
+   </widget>
+   <zorder>platform</zorder>
    <zorder>skillsSection</zorder>
    <zorder>lieselSection</zorder>
    <zorder>LieselInfo</zorder>
    <zorder>verticalFrame</zorder>
-   <zorder>enemy_2</zorder>
    <zorder>giveXP</zorder>
    <zorder>giveSoulCoins</zorder>
    <zorder>giveLevelButton</zorder>
+   <zorder>EnemyFrame</zorder>
    <zorder>EnemyInfo</zorder>
+   <zorder>enemy_2</zorder>
   </widget>
  </widget>
  <resources>
