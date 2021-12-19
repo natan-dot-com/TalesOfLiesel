@@ -5,25 +5,25 @@
 #include "./lib/backend/enemy.h"
 #include "./lib/backend/error_handling.h"
 #include <thread>
-#include <future>
 #include <chrono>
+#include <atomic>
 
-typedef struct _turnResult {
-	int expGained;
-	int damageDealt;
-	int coinsGained;
-	bool isLevelUp;
-} TurnResult;
-
-typedef std::pair<TurnResult, bool> pairResult;
+typedef struct _threadInstance {
+	std::thread currThread;
+	std::atomic<bool> executionFlag;
+} ThreadInstance;
 
 class Context {
 private:
-	std::thread fireballExec;
-	std::thread chronoExec;
-	std::thread destAuraExec;
+	ThreadInstance *fireballExec;
+	ThreadInstance *clickExec;
+	ThreadInstance *destAuraExec;
+
+	int currFloor;
 
 	void damageFireball();
+	void damageDestructionAura();
+	void damageOnClick();
 
 public:
 	Liesel *playerInstance;
@@ -37,13 +37,19 @@ public:
 	bool saveGame(std::string targetFilename);
 
 	// Damage/skills related methods
-	pairResult damageOnClick();
-	pairResult evokeFireball();
+	void evokeDamageOnClick();
+	void evokeFireball();
+	void evokeDestructionAura();
 
 	// Skills management
 	bool updateFireball();
 	bool updateChronomancy();
 	bool updateDestructionAura();
+
+	// Floor management
+	void nextFloor();
+	void previousFloor();
+	int getCurrentFloor();
 };
 
 #endif
