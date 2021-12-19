@@ -24,13 +24,29 @@ void ThreadsTest() {
 	while (true) {
 		cin >> ch;
 		if (ch == 't') {
+			newContext.evokeDestructionAura();
+		}
+		else if (ch == 'k') {
 			newContext.evokeFireball();
+		}
+		else if (ch == 'm') {
+			newContext.evokeDamageOnClick();
+		}
+		else if (ch == 'z') {
+			newContext.previousFloor();
+		}
+		else if (ch == 'x') {
+			newContext.nextFloor();
+		} 
+		else if (ch == 'c') {
+			cout << newContext.getCurrentFloor() << endl;
+		}
+		else if (ch == 'l') {
+			newContext.playerInstance->destructionSkill.updateExp(10000);
+			cout << newContext.playerInstance->destructionSkill.getLevel() << endl;;
 		}
 		else if (ch == 'p') {
 			cout << newContext.currEnemyInstance->getMaxHP() << "/" << newContext.currEnemyInstance->getCurrHP() << endl;
-		}
-		else if (ch == 'm') {
-			cout << "aaaaa" << endl;
 		}
 	}
 }
