@@ -27,9 +27,14 @@ int Skill::getLevelUp() {
 // - Return value: true if the level grew up, false if not.
 bool Skill::updateExp(int gainedExp) {
 	skillExp += gainedExp;
-	if (skillExp >= this->getLevelUp()) {
-		skillExp -= this->getLevelUp();
+	int currLevel = this->getLevel();
+
+	while (skillExp >= this->getLevelUp()) {
 		skillLevel++;
+		skillExp -= this->getLevelUp();
+	}
+
+	if (this->getLevel() != currLevel) {
 		return true;
 	}
 	return false;
@@ -37,7 +42,7 @@ bool Skill::updateExp(int gainedExp) {
 
 // Fire Ball: Casts a fire ball, dealing heavy magic damage on contact.
 double Fireball::skillEffect() {
-	if (this->getLevel() != 0) {
+	if (this->getLevel() > 0) {
 		return std::round(BASE_FIREBALL_DMG * (0.8 * this->getLevel()) + 1.5 * this->generateRandom(3.0));
 	}
 	return 0;
