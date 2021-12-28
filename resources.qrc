@@ -47,5 +47,7 @@
         <file>src/assets/ui-components/ButtonEffectFire2.gif</file>
         <file>src/assets/ui-components/ButtonEffectChrono1.gif</file>
         <file>src/assets/ui-components/ButtonEffectDestructionAura.gif</file>
+        <file>src/assets/ui-components/ConfigureFloor.png</file>
+        <file>src/assets/ui-components/FireballIcon.png</file>
     </qresource>
 </RCC>

@@ -426,14 +426,15 @@ font-size: 16pt;</string>
          <widget class="QPushButton" name="fireballUpgradeButton">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>50</height>
+            <width>100</width>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	font-weight: bold;
 	background-color: #95DD7C;
+	font-size: 10px;
 	color: #001500;
 	padding: 15px;	
 	border-radius: 5px;
@@ -452,7 +453,7 @@ QPushButton::pressed {
 }</string>
           </property>
           <property name="text">
-           <string>UP</string>
+           <string>USE</string>
           </property>
           <property name="iconSize">
            <size>
@@ -510,14 +511,15 @@ QPushButton::pressed {
          <widget class="QPushButton" name="destructionAuraUpgradeButton">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>50</height>
+            <width>100</width>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	font-weight: bold;
 	background-color: #95DD7C;
+	font-size: 10px;
 	color: #001500;
 	padding: 15px;	
 	border-radius: 5px;
@@ -531,7 +533,7 @@ QPushButton::hover {
 }</string>
           </property>
           <property name="text">
-           <string>UP</string>
+           <string>USE</string>
           </property>
          </widget>
         </item>
@@ -639,14 +641,15 @@ font-size: 16pt;</string>
          <widget class="QPushButton" name="chronomancyUpgradeButton">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>50</height>
+            <width>100</width>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	font-weight: bold;
 	background-color: #95DD7C;
+	font-size: 10px;
 	color: #001500;
 	padding: 15px;	
 	border-radius: 5px;
@@ -660,7 +663,7 @@ QPushButton::hover {
 }</string>
           </property>
           <property name="text">
-           <string>UP</string>
+           <string>USE</string>
           </property>
          </widget>
         </item>
@@ -783,8 +786,8 @@ border: none;</string>
    <widget class="QPushButton" name="giveXP">
     <property name="geometry">
      <rect>
-      <x>375</x>
-      <y>20</y>
+      <x>880</x>
+      <y>130</y>
       <width>209</width>
       <height>55</height>
      </rect>
@@ -815,8 +818,8 @@ padding: 15px;</string>
    <widget class="QPushButton" name="giveSoulCoins">
     <property name="geometry">
      <rect>
-      <x>805</x>
-      <y>20</y>
+      <x>860</x>
+      <y>30</y>
       <width>209</width>
       <height>55</height>
      </rect>
@@ -847,8 +850,8 @@ padding: 15px;</string>
    <widget class="QPushButton" name="giveLevelButton">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>20</y>
+      <x>890</x>
+      <y>80</y>
       <width>209</width>
       <height>55</height>
      </rect>
@@ -1059,6 +1062,80 @@ color: #FFF3E4;</string>
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>376</x>
+      <y>14</y>
+      <width>371</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../resources.qrc">:/imgs/src/assets/ui-components/ConfigureFloor.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>129</y>
+      <width>311</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="lowerFloorButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	font-weight: bold;
+	background-color: #7cbedd;
+	color: #001500;
+	padding: 10px;	
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+}
+
+QPushButton::hover {
+	background-color: #2c76c1;
+	color: #fff3e4;
+}</string>
+       </property>
+       <property name="text">
+        <string>GO DOWN</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="higherFloorButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	font-weight: bold;
+	background-color: #ff9f6b;
+	color: #001500;
+	padding: 10px;	
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+}
+
+QPushButton::hover {
+	background-color: #c1612c;
+	color: #fff3e4;
+}</string>
+       </property>
+       <property name="text">
+        <string>GO UP (CAUTION)</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
    <zorder>platform</zorder>
    <zorder>skillsSection</zorder>
    <zorder>lieselSectionBackground</zorder>
@@ -1071,6 +1148,8 @@ color: #FFF3E4;</string>
    <zorder>EnemyInfo</zorder>
    <zorder>enemy_2</zorder>
    <zorder>enemyHPInfo</zorder>
+   <zorder>label</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
   </widget>
  </widget>
  <resources>

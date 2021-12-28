@@ -24,6 +24,10 @@ private slots:
 
     void on_fireballUpgradeButton_clicked();
 
+    void on_lowerFloorButton_clicked();
+
+    void on_higherFloorButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     ActiveComponents *a;

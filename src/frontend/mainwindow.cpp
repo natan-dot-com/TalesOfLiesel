@@ -71,3 +71,20 @@ void MainWindow::on_fireballUpgradeButton_clicked()
 
 }
 
+
+void MainWindow::on_lowerFloorButton_clicked()
+{
+    g->context->previousFloor();
+    g->updateLieselInfo();
+    g->updateEnemyInfo();
+    g->updateEnemyButton();
+}
+
+
+void MainWindow::on_higherFloorButton_clicked()
+{
+    g->context->nextFloor();
+    g->updateLieselInfo();
+    g->updateEnemyInfo();
+    g->updateEnemyButton();
+}

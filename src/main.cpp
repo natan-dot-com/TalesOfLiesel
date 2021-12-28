@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.setWindowTitle("Tales of Liesel");
+    w.setWindowIcon(QIcon(QPixmap(":/imgs/src/assets/ui-components/FireballIcon.png")));
     w.show();
     return a.exec();
 }
