@@ -43,5 +43,9 @@
         <file>src/assets/game-items/soulCoin.png</file>
         <file>src/assets/game-items/level.png</file>
         <file>src/assets/game-items/floor.png</file>
+        <file>src/assets/ui-components/ButtonEffectFire.gif</file>
+        <file>src/assets/ui-components/ButtonEffectFire2.gif</file>
+        <file>src/assets/ui-components/ButtonEffectChrono1.gif</file>
+        <file>src/assets/ui-components/ButtonEffectDestructionAura.gif</file>
     </qresource>
 </RCC>

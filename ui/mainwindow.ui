@@ -21,7 +21,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
-	background-color: #483434;
+	background-color: #25252a;
 	background-image: url(:/imgs/src/assets/background.png);
 }</string>
   </property>
@@ -297,10 +297,10 @@ background-color: transparent;</string>
    <widget class="QLabel" name="skillsSection">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>170</y>
-      <width>361</width>
-      <height>531</height>
+      <x>-21</x>
+      <y>180</y>
+      <width>411</width>
+      <height>507</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -325,7 +325,7 @@ background-color: transparent;</string>
     <property name="styleSheet">
      <string notr="true">background-color: transparent;</string>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="2,2,2">
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,1,1">
      <item>
       <widget class="QWidget" name="divSkillFireball" native="true">
        <property name="styleSheet">
@@ -357,6 +357,28 @@ background-color: transparent;</string>
         <item row="1" column="0">
          <layout class="QHBoxLayout" name="fireballLabelPlusIcon">
           <item>
+           <widget class="QLabel" name="fireballIcon">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>FIREBALL_ICON</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <property name="indent">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="fireballLabel">
             <property name="styleSheet">
              <string notr="true">font-weight: bold;
@@ -381,39 +403,6 @@ font-size: 16pt;</string>
           </item>
          </layout>
         </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="fireballUpgradeButton">
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-	font-weight: bold;
-	background-color: #95DD7C;
-	color: #001500;
-	padding: 15px;	
-	border-radius: 5px;
-	border: 0;
-	outline: 0;
-}
-
-QPushButton::hover {
-	background-color: #027848;
-	color: #fff3e4;
-}</string>
-          </property>
-          <property name="text">
-           <string>UPGRADE</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QLabel" name="fireballCost">
-          <property name="text">
-           <string>100 SC</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
         <item row="2" column="0">
          <widget class="QLabel" name="fireballDescription">
           <property name="layoutDirection">
@@ -433,39 +422,14 @@ QPushButton::hover {
           </property>
          </widget>
         </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QWidget" name="divSkillChronomancy" native="true">
-       <property name="styleSheet">
-        <string notr="true">QWidget {
-	background-color: #383838;
-	border-radius: 5px;
-	color: #FFF3E4;
-}</string>
-       </property>
-       <layout class="QGridLayout" name="skillCardFireball_2" rowstretch="0,10,0" columnstretch="25,0,0">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetDefaultConstraint</enum>
-        </property>
-        <property name="leftMargin">
-         <number>16</number>
-        </property>
-        <property name="topMargin">
-         <number>8</number>
-        </property>
-        <property name="rightMargin">
-         <number>16</number>
-        </property>
-        <property name="bottomMargin">
-         <number>8</number>
-        </property>
-        <property name="spacing">
-         <number>8</number>
-        </property>
         <item row="1" column="2">
-         <widget class="QPushButton" name="chronomancyUpgradeButton">
+         <widget class="QPushButton" name="fireballUpgradeButton">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	font-weight: bold;
@@ -478,65 +442,33 @@ QPushButton::hover {
 }
 
 QPushButton::hover {
-	background-color: #027848;
+	background-color: #ddaa7c;
 	color: #fff3e4;
+}
+
+QPushButton::pressed {
+	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #fa9900, stop: .5 #face00, stop: .51 #8c510a, stop: 1 #c26e00);
+	color: #882300;
 }</string>
           </property>
           <property name="text">
-           <string>UPGRADE</string>
+           <string>UP</string>
           </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <layout class="QHBoxLayout" name="chronomancyPlusIcon">
-          <item>
-           <widget class="QLabel" name="chronomancyLabel">
-            <property name="styleSheet">
-             <string notr="true">font-weight: bold;
-font-size: 16pt;</string>
-            </property>
-            <property name="lineWidth">
-             <number>1</number>
-            </property>
-            <property name="text">
-             <string>Chronomancy</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="indent">
-             <number>-1</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="chronomancyDescription">
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
           </property>
-          <property name="text">
-           <string>Description.</string>
-          </property>
-          <property name="scaledContents">
-           <bool>false</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-          <property name="wordWrap">
+          <property name="autoRepeat">
            <bool>true</bool>
           </property>
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="QLabel" name="chronomancyCost">
+         <widget class="QLabel" name="fireballCost">
           <property name="text">
-           <string>250 SC</string>
+           <string>100 SC</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -555,7 +487,7 @@ font-size: 16pt;</string>
 	color: #FFF3E4;
 }</string>
        </property>
-       <layout class="QGridLayout" name="skillCardFireball_3" rowstretch="0,10,0" columnstretch="25,0,0">
+       <layout class="QGridLayout" name="skillCardFireball_3" rowstretch="0,0,0" columnstretch="25,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetDefaultConstraint</enum>
         </property>
@@ -576,6 +508,12 @@ font-size: 16pt;</string>
         </property>
         <item row="1" column="2">
          <widget class="QPushButton" name="destructionAuraUpgradeButton">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	font-weight: bold;
@@ -593,12 +531,25 @@ QPushButton::hover {
 }</string>
           </property>
           <property name="text">
-           <string>UPGRADE</string>
+           <string>UP</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
          <layout class="QHBoxLayout" name="destructionAuraPlusIcon">
+          <item>
+           <widget class="QLabel" name="destructionAuraIcon">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>DA_ICON</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QLabel" name="destructionAuraLabel">
             <property name="styleSheet">
@@ -630,7 +581,7 @@ font-size: 16pt;</string>
            <enum>Qt::LeftToRight</enum>
           </property>
           <property name="text">
-           <string>Description.</string>
+           <string>Cast a massive energy aura that causes damage overtime.</string>
           </property>
           <property name="scaledContents">
            <bool>false</bool>
@@ -647,6 +598,135 @@ font-size: 16pt;</string>
          <widget class="QLabel" name="destructionAuraCost">
           <property name="text">
            <string>400 SC</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="divSkillChronomancy" native="true">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+	background-color: #383838;
+	border-radius: 5px;
+	color: #FFF3E4;
+}</string>
+       </property>
+       <layout class="QGridLayout" name="skillCardFireball_2" rowstretch="0,0,0" columnstretch="25,0,0">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>16</number>
+        </property>
+        <property name="topMargin">
+         <number>8</number>
+        </property>
+        <property name="rightMargin">
+         <number>16</number>
+        </property>
+        <property name="bottomMargin">
+         <number>8</number>
+        </property>
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="chronomancyUpgradeButton">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	font-weight: bold;
+	background-color: #95DD7C;
+	color: #001500;
+	padding: 15px;	
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+}
+
+QPushButton::hover {
+	background-color: #027848;
+	color: #fff3e4;
+}</string>
+          </property>
+          <property name="text">
+           <string>UP</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="chronomancyPlusIcon">
+          <item>
+           <widget class="QLabel" name="chronomancyIcon">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>CHRONO_ICON</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="chronomancyLabel">
+            <property name="styleSheet">
+             <string notr="true">font-weight: bold;
+font-size: 16pt;</string>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string>Chronomancy</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="indent">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="chronomancyDescription">
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Freeze the time to manipulate your enemies.</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="chronomancyCost">
+          <property name="text">
+           <string>250 SC</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

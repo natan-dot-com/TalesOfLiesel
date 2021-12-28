@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <mutex>
+#include <QMovie>
 #include <./lib/backend/ctx.h>
 #include <./lib/frontend/components.h>
 
@@ -10,7 +11,6 @@ private:
     bool isDefaultDamage = true;
     bool isFireballCasted = false;
     bool isChronomancyActive = false;
-    bool isDestructionAuraActive = false;
     static std::mutex mutex;
 
 public:
