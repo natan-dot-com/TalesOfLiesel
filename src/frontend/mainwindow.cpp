@@ -1,4 +1,5 @@
 #include "./lib/frontend/mainwindow.h"
+#include "./lib/frontend/game.h"
 #include "ui_mainwindow.h"
 #include "./lib/frontend/stylesheet.h"
 
@@ -7,10 +8,26 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    h.defaultStyle = ui->Bar->styleSheet();
-    h.barWidth = ui->Bar->width();
-    ui->enemyName->setText(QString::fromStdString(enemy->getMobName()));
-    enemyButton.updateEnemyIcon(enemy, ui->enemyButton);
+    a = new ActiveComponents(
+                ui->xpValue,
+                ui->maxXP,
+                ui->enemyName,
+                ui->enemyMinHP,
+                ui->enemyMaxHP,
+                ui->Bar,
+                ui->floorValue,
+                ui->soulCoinsValue,
+                ui->fireballCost,
+                ui->chronomancyCost,
+                ui->destructionAuraCost,
+                ui->enemyButton,
+                ui->fireballUpgradeButton,
+                ui->chronomancyUpgradeButton,
+                ui->destructionAuraUpgradeButton
+                );
+
+    this->g = new Game(a);
+    g->setupGameStart();
 }
 
 MainWindow::~MainWindow()
@@ -18,35 +35,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-void MainWindow::on_giveLevelButton_clicked()
-{
-    liesel->updateExp(1);
-    ui->levelValue->setText(QString::number(liesel->getExp()));
-}
-
-void MainWindow::on_giveSoulCoins_clicked()
-{
-    liesel->updateGainedCoins(100);
-    ui->soulCoinsValue->setText(QString::number(liesel->getSoulCoins()));
-}
-
-
 void MainWindow::on_enemyButton_clicked()
 {
-    enemy->inflictDamage(5);
-    qDebug() << "DAMAGE!" << "\n";
-    ui->Bar->setFixedWidth(h.getDamagedRatio(enemy->getCurrHP(), enemy->getMaxHP()) * h.barWidth);
-    h.updateBar(ui->Bar, enemy);
-
-    if (enemy->getCurrHP() == 0) {
-        qDebug() << "RESET!" << "\n";
-        h.resetBar(ui->Bar);
-        // Now that the bar has been reseted, we need to spawn a new enemy.
-        delete enemy;
-        enemy = new Enemy();
-        ui->enemyName->setText(QString::fromStdString(enemy->getMobName()));
-        enemyButton.updateEnemyIcon(enemy, ui->enemyButton);
-    }
+    g->onDefaultDamage();
 }
 

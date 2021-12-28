@@ -33,6 +33,7 @@ void Context::damageOnClick() {
 		currEnemyInstance = newEnemy;
 
 		playerInstance->updateGainedCoins(gainedCoins);
+        playerInstance->updateExp(gainedExp);
 	}
 	// 0.5s delay for each damage dealt
 	std::this_thread::sleep_for(std::chrono::milliseconds(500));
@@ -65,6 +66,7 @@ void Context::damageFireball() {
 			currEnemyInstance = newEnemy;
 
 			playerInstance->updateGainedCoins(gainedCoins);
+            playerInstance->updateExp(gainedExp);
 		}
 
 		// 10s cooldown for each cast
@@ -104,6 +106,7 @@ void Context::damageDestructionAura() {
 			currEnemyInstance = newEnemy;
 
 			playerInstance->updateGainedCoins(gainedCoins);
+            playerInstance->updateExp(gainedExp);
 		}
 		damageCounter++;
 		// Delay between ticks (2 seconds)

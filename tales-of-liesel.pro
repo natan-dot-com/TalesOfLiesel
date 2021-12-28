@@ -11,21 +11,25 @@ CONFIG += c++11
 SOURCES += \
     ./src/main.cpp \
     ./src/frontend/mainwindow.cpp \
+    ./src/frontend/game.cpp \
     ./src/backend/liesel.cpp \
     ./src/backend/skills.cpp \
     ./src/backend/rng.cpp \
-    ./src/backend/enemy.cpp
+    ./src/backend/enemy.cpp \
+    ./src/backend/ctx.cpp \
+    ./src/backend/error_handling.cpp
 
 HEADERS += \
     ./lib/frontend/mainwindow.h \
     ./lib/frontend/stylesheet.h \
     ./lib/frontend/components.h \
+    ./lib/frontend/game.h \
     ./lib/backend/liesel.h \
     ./lib/backend/skills.h \
     ./lib/backend/rng.h \
-    ./lib/backend/enemy.h
-
-
+    ./lib/backend/enemy.h \
+    ./lib/backend/ctx.h \
+    ./lib/backend/error_handling.h
 
 FORMS += \
     ./ui/mainwindow.ui

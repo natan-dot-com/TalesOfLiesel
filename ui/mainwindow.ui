@@ -71,7 +71,7 @@ background-color: transparent;</string>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer_4">
+        <spacer name="divLevelSpacer1">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -97,7 +97,7 @@ background-color: transparent;</string>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer">
+        <spacer name="divLevelSpacer2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -110,7 +110,7 @@ background-color: transparent;</string>
         </spacer>
        </item>
        <item>
-        <widget class="QLabel" name="levelValue">
+        <widget class="QLabel" name="floorValue">
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
          </property>
@@ -143,7 +143,7 @@ background-color: transparent;</string>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer_5">
+        <spacer name="divXPSpacer1">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -169,7 +169,7 @@ background-color: transparent;</string>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer_2">
+        <spacer name="divXPSpacer2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -197,6 +197,20 @@ background-color: transparent;</string>
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QLabel" name="xpSeparator">
+         <property name="text">
+          <string>/</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="maxXP">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -209,7 +223,7 @@ background-color: transparent;</string>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer_6">
+        <spacer name="soulCoinsSpacer1">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -235,7 +249,7 @@ background-color: transparent;</string>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer_3">
+        <spacer name="soulCoinsSpacer2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -261,7 +275,7 @@ background-color: transparent;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="lieselSection">
+   <widget class="QLabel" name="lieselSectionBackground">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -341,9 +355,9 @@ background-color: transparent;</string>
          <number>8</number>
         </property>
         <item row="1" column="0">
-         <layout class="QHBoxLayout" name="skillNamePlusIcon_3">
+         <layout class="QHBoxLayout" name="fireballLabelPlusIcon">
           <item>
-           <widget class="QLabel" name="skillName_3">
+           <widget class="QLabel" name="fireballLabel">
             <property name="styleSheet">
              <string notr="true">font-weight: bold;
 font-size: 16pt;</string>
@@ -368,7 +382,7 @@ font-size: 16pt;</string>
          </layout>
         </item>
         <item row="1" column="2">
-         <widget class="QPushButton" name="upgradeButton_3">
+         <widget class="QPushButton" name="fireballUpgradeButton">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	font-weight: bold;
@@ -391,7 +405,7 @@ QPushButton::hover {
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="QLabel" name="description_3">
+         <widget class="QLabel" name="fireballCost">
           <property name="text">
            <string>100 SC</string>
           </property>
@@ -401,7 +415,7 @@ QPushButton::hover {
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="cost_3">
+         <widget class="QLabel" name="fireballDescription">
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
@@ -451,7 +465,7 @@ QPushButton::hover {
          <number>8</number>
         </property>
         <item row="1" column="2">
-         <widget class="QPushButton" name="upgradeButton">
+         <widget class="QPushButton" name="chronomancyUpgradeButton">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	font-weight: bold;
@@ -474,9 +488,9 @@ QPushButton::hover {
          </widget>
         </item>
         <item row="1" column="0">
-         <layout class="QHBoxLayout" name="skillNamePlusIcon">
+         <layout class="QHBoxLayout" name="chronomancyPlusIcon">
           <item>
-           <widget class="QLabel" name="skillName">
+           <widget class="QLabel" name="chronomancyLabel">
             <property name="styleSheet">
              <string notr="true">font-weight: bold;
 font-size: 16pt;</string>
@@ -501,7 +515,7 @@ font-size: 16pt;</string>
          </layout>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="description">
+         <widget class="QLabel" name="chronomancyDescription">
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
@@ -520,7 +534,7 @@ font-size: 16pt;</string>
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="QLabel" name="cost">
+         <widget class="QLabel" name="chronomancyCost">
           <property name="text">
            <string>250 SC</string>
           </property>
@@ -561,7 +575,7 @@ font-size: 16pt;</string>
          <number>8</number>
         </property>
         <item row="1" column="2">
-         <widget class="QPushButton" name="upgradeButton_2">
+         <widget class="QPushButton" name="destructionAuraUpgradeButton">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	font-weight: bold;
@@ -584,9 +598,9 @@ QPushButton::hover {
          </widget>
         </item>
         <item row="1" column="0">
-         <layout class="QHBoxLayout" name="skillNamePlusIcon_2">
+         <layout class="QHBoxLayout" name="destructionAuraPlusIcon">
           <item>
-           <widget class="QLabel" name="skillName_2">
+           <widget class="QLabel" name="destructionAuraLabel">
             <property name="styleSheet">
              <string notr="true">font-weight: bold;
 font-size: 16pt;</string>
@@ -611,7 +625,7 @@ font-size: 16pt;</string>
          </layout>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="cost_2">
+         <widget class="QLabel" name="destructionAuraDescription">
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
@@ -630,7 +644,7 @@ font-size: 16pt;</string>
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="QLabel" name="description_2">
+         <widget class="QLabel" name="destructionAuraCost">
           <property name="text">
            <string>400 SC</string>
           </property>
@@ -888,9 +902,86 @@ background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #08c850, 
      <string notr="true">image: url(:/imgs/src/assets/Platform.png);</string>
     </property>
    </widget>
+   <widget class="QWidget" name="enemyHPInfo" native="true">
+    <property name="geometry">
+     <rect>
+      <x>429</x>
+      <y>268</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+color: #FFF3E4;</string>
+    </property>
+    <layout class="QHBoxLayout" name="enemyInfo">
+     <item>
+      <widget class="QLabel" name="enemyHPInfoLimiterLeft">
+       <property name="text">
+        <string>&lt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="enemyHPInfoSpacer1">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="enemyMinHP">
+       <property name="text">
+        <string>MIN_HP</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="enemyHPInfoSlash">
+       <property name="text">
+        <string>/</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="enemyMaxHP">
+       <property name="text">
+        <string>MAX_HP</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="enemyHPInfoSpacer2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="enemyHPInfoLimiterRight">
+       <property name="text">
+        <string>&gt;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
    <zorder>platform</zorder>
    <zorder>skillsSection</zorder>
-   <zorder>lieselSection</zorder>
+   <zorder>lieselSectionBackground</zorder>
    <zorder>LieselInfo</zorder>
    <zorder>verticalFrame</zorder>
    <zorder>giveXP</zorder>
@@ -899,6 +990,7 @@ background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #08c850, 
    <zorder>EnemyFrame</zorder>
    <zorder>EnemyInfo</zorder>
    <zorder>enemy_2</zorder>
+   <zorder>enemyHPInfo</zorder>
   </widget>
  </widget>
  <resources>

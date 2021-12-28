@@ -4,8 +4,7 @@
 #include <QMainWindow>
 #include <QPropertyAnimation>
 #include <iostream>
-#include <./lib/backend/liesel.h>
-#include <./lib/backend/enemy.h>
+#include <./lib/frontend/game.h>
 #include <./lib/frontend/components.h>
 
 QT_BEGIN_NAMESPACE
@@ -21,16 +20,12 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_giveLevelButton_clicked();
-    void on_giveSoulCoins_clicked();
     void on_enemyButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    Liesel *liesel = new Liesel();
-    Enemy *enemy = new Enemy();
-    Healthbar h;
-    EnemyButton enemyButton;
+    ActiveComponents *a;
+    Game *g;
 };
 
 #endif // MAINWINDOW_H

@@ -7,28 +7,121 @@
 #include <QPushButton>
 #include <./lib/backend/enemy.h>
 
+struct ActiveComponents {
+    // Actively changed components.
+    QLabel *currentXP;
+    QLabel *maxXP;
+    QLabel *mobName;
+    QLabel *currentHP;
+    QLabel *maxHP;
+    QLabel *Bar;
+    QLabel *floorValue;
+    QLabel *soulCoinsValue;
+    QLabel *fireballCost;
+    QLabel *chronomancyCost;
+    QLabel *destructionAuraCost;
+    QPushButton *enemyButton;
+    QPushButton *upgradeFireball;
+    QPushButton *upgradeChronomancy;
+    QPushButton *upgradeDestructionAura;
+
+    ActiveComponents(QLabel *_currentXP,
+               QLabel *_maxXP,
+               QLabel *_mobName,
+               QLabel *_currentHP,
+               QLabel *_maxHP,
+               QLabel *_Bar,
+               QLabel *_floorValue,
+               QLabel *_soulCoinsValue,
+               QLabel *_fireballCost,
+               QLabel *_chronomancyCost,
+               QLabel *_destructionAuraCost,
+               QPushButton *_enemyButton,
+               QPushButton *_upgradeFireball,
+               QPushButton *_upgradeChronomancy,
+               QPushButton *_upgradeDestructionAura) {
+        this->currentXP = _currentXP;
+        this->maxXP = _maxXP;
+        this->mobName = _mobName;
+        this->currentHP = _currentHP;
+        this->maxHP = _maxHP;
+        this->Bar = _Bar;
+        this->floorValue = _floorValue;
+        this->soulCoinsValue = _soulCoinsValue;
+        this->fireballCost = _fireballCost;
+        this->chronomancyCost = _chronomancyCost;
+        this->destructionAuraCost = _destructionAuraCost;
+        this->enemyButton = _enemyButton;
+        this->upgradeFireball = _upgradeFireball;
+        this->upgradeChronomancy = _upgradeChronomancy;
+        this->upgradeDestructionAura = _upgradeDestructionAura;
+    }
+};
+
+struct LieselInformation {
+    // Pointers to the Qt Components
+    QLabel *currentXP;
+    QLabel *maxXP;
+    QLabel *floorValue;
+    QLabel *soulCoins;
+
+    LieselInformation(QLabel *_soulCoins, QLabel *_floorValue, QLabel *_currentXP, QLabel *_maxXP) {
+        this->soulCoins = _soulCoins;
+        this->floorValue = _floorValue;
+        this->currentXP = _currentXP;
+        this->maxXP = _maxXP;
+    }
+
+    void updateLieselInfo(int soulCoins, int floor, int curr, int max) {
+        this->floorValue->setText(QString::number(floor));
+        this->currentXP->setText(QString::number(curr));
+        this->maxXP->setText(QString::number(max));
+        this->soulCoins->setText(QString::number(soulCoins));
+    }
+};
+
+struct EnemyInformation {
+    // Pointers to the Qt Components
+    QLabel *currentHP;
+    QLabel *maxHP;
+    QLabel *mobName;
+
+    EnemyInformation(QLabel *_mobName, QLabel *_currentHP, QLabel *_maxHP) {
+        this->mobName = _mobName;
+        this->currentHP = _currentHP;
+        this->maxHP = _maxHP;
+    }
+
+    void updateEnemyInfo(QString _mobName, int curr, int max) {
+        this->mobName->setText(_mobName);
+        this->currentHP->setText(QString::number(curr));
+        this->maxHP->setText(QString::number(max));
+    }
+};
+
 struct Healthbar {
     int barWidth;
     QString defaultStyle;
+
+    // Pointer to the Qt Component
     QLabel *Bar;
 
-    Healthbar() {
-
-    }
-
-    Healthbar(int _barWidth, QString _defaultStyle) {
-        barWidth = _barWidth;
-        defaultStyle = _defaultStyle;
+    Healthbar(int _barWidth, QString _defaultStyle, QLabel *_Bar) {
+        this->barWidth = _barWidth;
+        this->defaultStyle = _defaultStyle;
+        this->Bar = _Bar;
     }
 
     float getDamagedRatio(float current, float max) {
         return current/max;
     }
 
-    void updateBar(QLabel *_Bar, Enemy *e) {
+    void updateBar(Enemy *e) {
+        this->Bar->setFixedWidth(getDamagedRatio(e->getCurrHP(), e->getMaxHP()) * barWidth);
+
         switch(e->getCurrHP()) {
             case 51 ... 75:
-                _Bar->setStyleSheet(
+                this->Bar->setStyleSheet(
                     "border-radius: \
                         3px; \
                      background-color: \
@@ -37,7 +130,7 @@ struct Healthbar {
             break;
 
             case 26 ... 50:
-                _Bar->setStyleSheet(
+                this->Bar->setStyleSheet(
                     "border-radius: \
                         3px; \
                      background-color: \
@@ -46,7 +139,7 @@ struct Healthbar {
              break;
 
             case 0 ... 25:
-                _Bar->setStyleSheet(
+                this->Bar->setStyleSheet(
                     "border-radius: \
                         3px; \
                      background-color: \
@@ -54,63 +147,68 @@ struct Healthbar {
                 );
              break;
         }
+
+        if (e->getCurrHP() == 0) {
+            resetBar();
+        }
     }
 
-    void resetBar(QLabel *_Bar) {
-        _Bar->setStyleSheet(defaultStyle);
-        _Bar->setFixedWidth(barWidth);
+    void resetBar() {
+        this->Bar->setStyleSheet(defaultStyle);
+        this->Bar->setFixedWidth(barWidth);
     }
 };
 
 struct EnemyButton {
     QIcon enemyIcon;
 
-    EnemyButton() {
+    // Pointer to the Qt Component
+    QPushButton *button;
 
+    EnemyButton(QPushButton *_button) {
+        this->button = _button;
     }
 
-    // "Mage",
-    // "Wolf",
-    // "Sorcerer",
-    // "Slayer",
-    // "Elf",
-    void updateEnemyIcon(Enemy *e, QPushButton *p) {
-        QString enemyName = QString::fromStdString(e->getMobName());
+    void updateEnemyIcon(Enemy *e) {
+        if (e->getCurrHP() == e->getMaxHP() or e->getCurrHP() == 0) {
+            QString enemyName = QString::fromStdString(e->getMobName());
 
-        if (enemyName.contains(QString("Mage"))) {
-            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/mage-1.png"));
-            p->setIconSize(QSize(600, 600));
-            // qDebug() << "Mage" << "\n";
-            return;
+            if (enemyName.contains(QString("Mage"))) {
+                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/mage-1.png"));
+                this->button->setIconSize(QSize(600, 600));
+                // qDebug() << "Mage" << "\n";
+                return;
+            }
+
+            if (enemyName.contains(QString("Elf"))) {
+                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/elf-1.png"));
+                this->button->setIconSize(QSize(600, 600));
+                // qDebug() << "Elf" << "\n";
+                return;
+            }
+
+            if (enemyName.contains(QString("Sorcerer"))) {
+                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/sorcerer-1.png"));
+                this->button->setIconSize(QSize(600, 600));
+                // qDebug() << "Sorcerer" << "\n";
+                return;
+            }
+
+            if (enemyName.contains(QString("Slayer"))) {
+                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/slayer-1.png"));
+                this->button->setIconSize(QSize(600, 600));
+                // qDebug() << "Sorcerer" << "\n";
+                return;
+            }
+
+            if (enemyName.contains(QString("Wolf"))) {
+                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/wolf-1.png"));
+                this->button->setIconSize(QSize(600, 600));
+                // qDebug() << "Sorcerer" << "\n";
+                return;
+            }
         }
 
-        if (enemyName.contains(QString("Elf"))) {
-            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/elf-1.png"));
-            p->setIconSize(QSize(600, 600));
-            // qDebug() << "Elf" << "\n";
-            return;
-        }
-
-        if (enemyName.contains(QString("Sorcerer"))) {
-            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/sorcerer-1.png"));
-            p->setIconSize(QSize(600, 600));
-            // qDebug() << "Sorcerer" << "\n";
-            return;
-        }
-
-        if (enemyName.contains(QString("Slayer"))) {
-            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/slayer-1.png"));
-            p->setIconSize(QSize(600, 600));
-            // qDebug() << "Sorcerer" << "\n";
-            return;
-        }
-
-        if (enemyName.contains(QString("Wolf"))) {
-            p->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/wolf-1.png"));
-            p->setIconSize(QSize(600, 600));
-            // qDebug() << "Sorcerer" << "\n";
-            return;
-        }
     }
 };
 
