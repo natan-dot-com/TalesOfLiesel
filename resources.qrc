@@ -49,5 +49,8 @@
         <file>src/assets/ui-components/ButtonEffectDestructionAura.gif</file>
         <file>src/assets/ui-components/ConfigureFloor.png</file>
         <file>src/assets/ui-components/FireballIcon.png</file>
+        <file>src/assets/ui-components/SkillsPanel-Bottom.png</file>
+        <file>src/assets/ui-components/SkillsPanel-Mid.png</file>
+        <file>src/assets/ui-components/SkillsPanel-Top.png</file>
     </qresource>
 </RCC>

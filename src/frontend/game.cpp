@@ -1,14 +1,20 @@
 #include <./lib/frontend/game.h>
+#include <QPoint>
+#include <QCursor>
+#include <QGraphicsOpacityEffect>
+#include <QPropertyAnimation>
 
-Game::Game(ActiveComponents *_activeComponents) {
+Game::Game(ActiveComponents *_activeComponents, QObject *_parent) {
     this->activeComponents = _activeComponents;
     this->context = new Context(); // Entire game backend
+    this->parent = _parent;
 
     // Game frontend
     this->eButton = new EnemyButton(activeComponents->enemyButton);
     this->eInfo = new EnemyInformation(activeComponents->mobName, activeComponents->currentHP, activeComponents->maxHP);
     this->lInfo = new LieselInformation(activeComponents->soulCoinsValue, activeComponents->floorValue, activeComponents->currentXP, activeComponents->maxXP);
     this->healthBar = new Healthbar(activeComponents->Bar->width(), activeComponents->Bar->styleSheet(), activeComponents->Bar);
+    this->context->playerInstance->fireSkill.updateExp(10000);
 }
 
 void Game::setupGameStart() {
@@ -18,14 +24,39 @@ void Game::setupGameStart() {
 }
 
 void Game::onDefaultDamage() {
-    this->context->evokeDamageOnClick();
+    TurnResults *dmg = this->context->evokeDamageOnClick();
+
+    if (dmg) {
+        QPoint pos = QCursor::pos();
+//        QGraphicsOpacityEffect a(activeComponents->damageIndicator);
+//        activeComponents->damageIndicator->setGraphicsEffect(&a);
+//        a.setOpacity(1);
+
+//        QPropertyAnimation b(&a, "opacity", this->parent);
+//        b.setStartValue(1);
+//        b.setEndValue(0);
+//        b.setDuration(200);
+//        b.setEasingCurve(QEasingCurve::Linear);
+//        b.start();
+
+//        if(b.state() != QAbstractAnimation::Stopped) {
+//            b.pause();
+//        }
+
+        this->activeComponents->damageIndicator->setGeometry(pos.x()+25, pos.y()-10, 50, 50);
+        this->activeComponents->damageIndicator->setText(QString::number(dmg->damageDealt));
+    }
+
     this->updateEnemyInfo();
     this->updateEnemyButton();
     this->updateLieselInfo();
 }
 
 void Game::onFireballDamage() {
-
+    this->context->evokeFireball();
+    this->updateEnemyInfo();
+    this->updateEnemyButton();
+    this->updateLieselInfo();
 }
 
 void Game::onChronomancy() {

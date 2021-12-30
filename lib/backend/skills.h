@@ -13,9 +13,9 @@ private:
 
 public:
 	Skill();
-	int getLevel();
-	int getExp();
-	int getLevelUp();
+    int getLevel(); // How much time it was updated
+    int getExp(); // How much coins were invested until now
+    int getLevelUp(); // How much coins it's needed to upgrade the ability
 	bool updateExp(int gainedExp);
 	virtual double skillEffect() = 0;
 };

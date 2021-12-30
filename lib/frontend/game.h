@@ -21,8 +21,9 @@ public:
     EnemyButton *eButton;
     LieselInformation *lInfo;
     Healthbar *healthBar;
+    QObject *parent;
 
-    Game(ActiveComponents *);
+    Game(ActiveComponents *, QObject *parent);
 
     void setupGameStart();
     void onDefaultDamage();

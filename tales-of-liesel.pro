@@ -32,7 +32,9 @@ HEADERS += \
     ./lib/backend/error_handling.h
 
 FORMS += \
-    ./ui/mainwindow.ui
+    ./ui/mainwindow.ui \
+    ./ui/replace_mainwindow.ui \
+    ./ui/mainwindow_backup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

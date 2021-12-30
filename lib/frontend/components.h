@@ -20,6 +20,7 @@ struct ActiveComponents {
     QLabel *fireballCost;
     QLabel *chronomancyCost;
     QLabel *destructionAuraCost;
+    QLabel *damageIndicator;
     QPushButton *enemyButton;
     QPushButton *upgradeFireball;
     QPushButton *upgradeChronomancy;
@@ -36,6 +37,7 @@ struct ActiveComponents {
                QLabel *_fireballCost,
                QLabel *_chronomancyCost,
                QLabel *_destructionAuraCost,
+               QLabel *_damageIndicator,
                QPushButton *_enemyButton,
                QPushButton *_upgradeFireball,
                QPushButton *_upgradeChronomancy,
@@ -51,6 +53,7 @@ struct ActiveComponents {
         this->fireballCost = _fireballCost;
         this->chronomancyCost = _chronomancyCost;
         this->destructionAuraCost = _destructionAuraCost;
+        this->damageIndicator = _damageIndicator;
         this->enemyButton = _enemyButton;
         this->upgradeFireball = _upgradeFireball;
         this->upgradeChronomancy = _upgradeChronomancy;
@@ -148,7 +151,7 @@ struct Healthbar {
              break;
         }
 
-        if (e->getCurrHP() == 0) {
+        if (e->getCurrHP() <= 0 or e->getCurrHP() == e->getMaxHP()) {
             resetBar();
         }
     }
