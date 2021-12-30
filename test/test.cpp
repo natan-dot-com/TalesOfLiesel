@@ -20,17 +20,27 @@ void EnemyTest() {
 
 void ThreadsTest() {
 	Context newContext = Context();
+	TurnResults *test;
 	char ch;
 	while (true) {
 		cin >> ch;
 		if (ch == 't') {
-			newContext.evokeDestructionAura();
+			test = newContext.evokeDestructionAura();
+			if (test) {
+				test->printResults();
+			}
 		}
 		else if (ch == 'k') {
-			newContext.evokeFireball();
+			test = newContext.evokeFireball();
+			if (test) {
+				test->printResults();
+			}
 		}
 		else if (ch == 'm') {
-			newContext.evokeDamageOnClick();
+			test = newContext.evokeDamageOnClick();
+			if (test) {
+				test->printResults();
+			}
 		}
 		else if (ch == 'z') {
 			newContext.previousFloor();
