@@ -22,6 +22,8 @@ public:
 private slots:
     void on_enemyButton_clicked();
 
+    void on_destructionAuraUseButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     ActiveComponents *a;

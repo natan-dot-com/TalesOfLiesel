@@ -25,10 +25,7 @@ public:
     Game(QObject *, ActiveComponents *_activeComponents);
 
     static void setupGameStart();
-    static void onDefaultDamage();
-    static void onFireballDamage();
-    static void onChronomancy();
-    static void onDestructionAura();
+    static void updateGame();
     static void updateLieselInfo();
     static void updateEnemyInfo();
     static void updateEnemyButton();

@@ -68,5 +68,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_enemyButton_clicked()
 {
-    Game::onDefaultDamage();
+    Game::context->evokeDamageOnClick();
 }
+
+void MainWindow::on_destructionAuraUseButton_clicked()
+{
+    Game::context->evokeDestructionAura();
+}
+

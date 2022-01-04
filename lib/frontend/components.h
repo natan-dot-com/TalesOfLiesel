@@ -103,10 +103,6 @@ struct Healthbar {
         this->defaultStyle = _defaultStyle;
     }
 
-    float getDamagedRatio(float current, float max) {
-        return current/max;
-    }
-
     void setupBar(Enemy *e) {
         this->Bar->setValue(e->getCurrHP());
         this->Bar->setMaximum(e->getMaxHP());
