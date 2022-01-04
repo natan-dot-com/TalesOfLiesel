@@ -76,10 +76,11 @@ TurnResults *Context::evokeDamageOnClick() {
 		bool isLevelUp = false;
 
 		// Proccess rewards and a new enemy if the current one dies
-		this->healthBarMut.lock();
-		this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-		Game::gameUpdate();
-		this->healthBarMut.unlock();
+		{
+			const std::lock_guard<std::mutex> lock(healthBarMut);
+			this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+			Game::gameUpdate();
+		}
 
 		// Cooldown: 0.5s delay for each damage dealt
 		this->clickExec->currThread = std::thread(&Context::startCooldown, this, this->clickExec, CD_CLICK_MILIS, MODE_MILIS);
@@ -108,10 +109,11 @@ TurnResults *Context::evokeFireball() {
 		bool isLevelUp = false;
 
 		// Proccess rewards and a new enemy if the current one dies
-		this->healthBarMut.lock();
-		this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-		Game::gameUpdate();
-		this->healthBarMut.unlock();
+		{
+			const std::lock_guard<std::mutex> lock(healthBarMut);
+			this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+			Game::gameUpdate();
+		}
 
 		// Cooldown: 10s
 		this->fireballExec->currThread = std::thread(&Context::startCooldown, this, this->fireballExec, CD_FIREBALL_SECS, MODE_SECS);
@@ -132,11 +134,12 @@ void Context::damageDestructionAura(const int dealtDamage, int &gainedExp, int &
 	while(damageCounter < DESTAURA_DOT_TICKS) {
 
 		// Process rewards and a new enemy if the current one dies
-		this->healthBarMut.lock();
-		this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-		Game::gameUpdate();
-		this->healthBarMut.unlock();
-		
+		{
+			const std::lock_guard<std::mutex> lock(healthBarMut);
+			this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+			Game::gameUpdate();
+		}
+
 		damageCounter++;
 
 		// Delay between ticks (1 second)
