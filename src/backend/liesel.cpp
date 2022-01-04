@@ -26,12 +26,10 @@ bool Liesel::updateExp(int gainedExp) {
 }
 
 void Liesel::updateGainedCoins(int gainedCoins) {
-	const std::lock_guard<std::mutex> lock(coinsMutex);
 	soulCoinsAmount += gainedCoins;
 }
 
 bool Liesel::updateSpentCoins(int spentCoins) {
-	const std::lock_guard<std::mutex> lock(coinsMutex);
 	if (soulCoinsAmount >= spentCoins) {
 		soulCoinsAmount -= spentCoins;
 		return true;	

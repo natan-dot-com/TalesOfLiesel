@@ -7,8 +7,7 @@
 #include <thread>
 #include <chrono>
 #include <atomic>
-
-#include <iostream>
+#include <mutex>
 
 #define CD_CLICK_MILIS 500
 #define CD_FIREBALL_SECS 10
@@ -28,13 +27,6 @@ typedef struct _TurnResults {
 		this->gainedExp = _gainedExp;
 		this->gainedCoins = _gainedCoins;
 		this->isLevelUp = _isLevelUp;
-	}
-
-	void printResults() {
-		std::cout << "Damage: " << this->damageDealt << '\n'
-  		   		  << "Exp: " << this->gainedExp << '\n'
-		 		  << "Coins: " << this->gainedCoins << '\n'
-		 		  << "Level Up: " << this->isLevelUp << '\n';
 	}
 } TurnResults;
 
@@ -62,6 +54,7 @@ private:
 	ThreadInstance *destAuraExec;
 	ThreadInstance *destAuraDmg;
 
+	std::mutex healthBarMut;
 	int currFloor;
 
 	void startCooldown(ThreadInstance *cooldownThread, int timeAmount, const int MODE);
