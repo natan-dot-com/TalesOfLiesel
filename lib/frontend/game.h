@@ -11,7 +11,6 @@ private:
     bool isDefaultDamage = true;
     bool isFireballCasted = false;
     bool isChronomancyActive = false;
-    static std::mutex mutex;
 
 public:
     // TODO: Remember to 'delete'/dealocate those.
@@ -29,6 +28,7 @@ public:
     void onDefaultDamage();
     void onFireballDamage();
     void onChronomancy();
+    void onDestructionAura();
     void updateLieselInfo();
     void updateEnemyInfo();
     void updateEnemyButton();

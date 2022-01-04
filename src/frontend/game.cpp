@@ -65,6 +65,12 @@ void Game::onChronomancy() {
 
 }
 
+void Game::onDestructionAura() {
+    this->updateEnemyInfo();
+    this->updateEnemyButton();
+    this->updateLieselInfo();
+}
+
 void Game::updateLieselInfo() {
     this->lInfo->updateLieselInfo(this->context->playerInstance->getSoulCoins(),
                                   this->context->getCurrentFloor(),
