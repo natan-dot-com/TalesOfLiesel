@@ -68,5 +68,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_enemyButton_clicked()
 {
-    g->onDefaultDamage();
+    Game::onDefaultDamage();
 }

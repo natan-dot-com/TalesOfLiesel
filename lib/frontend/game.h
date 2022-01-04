@@ -14,24 +14,24 @@ private:
 
 public:
     // TODO: Remember to 'delete'/dealocate those.
-    Context *context;
-    ActiveComponents *activeComponents;
-    EnemyInformation *eInfo;
-    EnemyButton *eButton;
-    LieselInformation *lInfo;
-    Healthbar *healthBar;
-    QObject *parent;
+    static Context *context;
+    static ActiveComponents *activeComponents;
+    static EnemyInformation *eInfo;
+    static EnemyButton *eButton;
+    static LieselInformation *lInfo;
+    static Healthbar *healthBar;
+    static QObject *parent;
 
     Game(QObject *, ActiveComponents *_activeComponents);
 
-    void setupGameStart();
-    void onDefaultDamage();
-    void onFireballDamage();
-    void onChronomancy();
-    void onDestructionAura();
-    void updateLieselInfo();
-    void updateEnemyInfo();
-    void updateEnemyButton();
+    static void setupGameStart();
+    static void onDefaultDamage();
+    static void onFireballDamage();
+    static void onChronomancy();
+    static void onDestructionAura();
+    static void updateLieselInfo();
+    static void updateEnemyInfo();
+    static void updateEnemyButton();
 };
 
 #endif // GAME_H

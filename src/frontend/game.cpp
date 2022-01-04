@@ -5,28 +5,36 @@
 #include <QPropertyAnimation>
 #include <ui_mainwindow.h>
 
+Healthbar *Game::healthBar;
+ActiveComponents *Game::activeComponents;
+Context *Game::context;
+QObject *Game::parent;
+EnemyInformation *Game::eInfo;
+EnemyButton *Game::eButton;
+LieselInformation *Game::lInfo;
+
 Game::Game(QObject *_ui, ActiveComponents *_activeComponents) {
-    this->parent = _ui;
-    this->activeComponents = _activeComponents;
-    this->context = new Context(); // Entire game backend
-    this->parent = _ui;
+    Game::parent = _ui;
+    Game::activeComponents = _activeComponents;
+    Game::context = new Context(); // Entire game backend
+    Game::parent = _ui;
 
     // Game frontend
-    this->eButton = new EnemyButton(activeComponents->enemyButton);
-    this->eInfo = new EnemyInformation(activeComponents->mobName);
-    this->lInfo = new LieselInformation(activeComponents->soulCoinsValue, activeComponents->floorValue, activeComponents->currentXP, activeComponents->maxXP);
-    this->healthBar = new Healthbar(activeComponents->Bar->styleSheet(), activeComponents->Bar);
-    this->context->playerInstance->fireSkill.updateExp(10000);
+    Game::eButton = new EnemyButton(activeComponents->enemyButton);
+    Game::eInfo = new EnemyInformation(activeComponents->mobName);
+    Game::lInfo = new LieselInformation(activeComponents->soulCoinsValue, activeComponents->floorValue, activeComponents->currentXP, activeComponents->maxXP);
+    Game::healthBar = new Healthbar(activeComponents->Bar->styleSheet(), activeComponents->Bar);
+    Game::context->playerInstance->fireSkill.updateExp(10000);
 }
 
 void Game::setupGameStart() {
-    this->updateEnemyInfo();
+    Game::updateEnemyInfo();
     // this->updateLieselInfo();
-    this->updateEnemyButton();
+    Game::updateEnemyButton();
 }
 
 void Game::onDefaultDamage() {
-    TurnResults *dmg = this->context->evokeDamageOnClick();
+    TurnResults *dmg = context->evokeDamageOnClick();
 
     if (dmg) {
         // QPoint pos = QCursor::pos();
@@ -49,16 +57,16 @@ void Game::onDefaultDamage() {
 //        this->activeComponents->damageIndicator->setText(QString::number(dmg->damageDealt));
     }
 
-    this->updateEnemyInfo();
-    this->updateEnemyButton();
-    this->updateLieselInfo();
+    Game::updateEnemyInfo();
+    Game::updateEnemyButton();
+    Game::updateLieselInfo();
 }
 
 void Game::onFireballDamage() {
-    this->context->evokeFireball();
-    this->updateEnemyInfo();
-    this->updateEnemyButton();
-    this->updateLieselInfo();
+    Game::context->evokeFireball();
+    Game::updateEnemyInfo();
+    Game::updateEnemyButton();
+    Game::updateLieselInfo();
 }
 
 void Game::onChronomancy() {
@@ -66,24 +74,24 @@ void Game::onChronomancy() {
 }
 
 void Game::onDestructionAura() {
-    this->updateEnemyInfo();
-    this->updateEnemyButton();
-    this->updateLieselInfo();
+    Game::updateEnemyInfo();
+    Game::updateEnemyButton();
+    Game::updateLieselInfo();
 }
 
 void Game::updateLieselInfo() {
-    this->lInfo->updateLieselInfo(this->context->playerInstance->getSoulCoins(),
-                                  this->context->getCurrentFloor(),
-                                  this->context->playerInstance->getExp(),
-                                  this->context->playerInstance->getLevelUp());
+    Game::lInfo->updateLieselInfo(context->playerInstance->getSoulCoins(),
+                                  context->getCurrentFloor(),
+                                  context->playerInstance->getExp(),
+                                  context->playerInstance->getLevelUp());
 }
 
 void Game::updateEnemyInfo() {
-    this->healthBar->setupBar(this->context->currEnemyInstance);
-    this->healthBar->updateBar(this->context->currEnemyInstance);
-    this->eInfo->updateEnemyInfo(QString::fromStdString(this->context->currEnemyInstance->getMobName()));
+    Game::healthBar->setupBar(context->currEnemyInstance);
+    Game::healthBar->updateBar(context->currEnemyInstance);
+    Game::eInfo->updateEnemyInfo(QString::fromStdString(context->currEnemyInstance->getMobName()));
 }
 
 void Game::updateEnemyButton() {
-    this->eButton->updateEnemyIcon(this->context->currEnemyInstance);
+    Game::eButton->updateEnemyIcon(context->currEnemyInstance);
 }
