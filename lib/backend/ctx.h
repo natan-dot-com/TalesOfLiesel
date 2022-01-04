@@ -11,6 +11,9 @@
 
 #include <iostream>
 
+#define FIREBALL_THREAD_STR "Fireball_1"
+#define DESTAURA_THREAD_STR "DestAura_2"
+
 #define CD_CLICK_MILIS 500
 #define CD_FIREBALL_SECS 10
 #define CD_DESTAURA_SECS 20
@@ -37,11 +40,13 @@ typedef struct _ThreadInstance {
 	std::atomic<bool> executionFlag;
 	int maxCooldown;
 	int cooldownProgress;
+	char *threadID;
 
-	_ThreadInstance(int _cooldownProgress=0) {
+	_ThreadInstance(int _cooldownProgress = 0, char *_threadID) {
 		this->executionFlag = false;
 		this->cooldownProgress = _cooldownProgress;
 		this->maxCooldown = _cooldownProgress;
+		this->threadID = threadID;
 	}
 
 	void toggleUsage() {
@@ -59,7 +64,6 @@ typedef struct _ThreadInstance {
 		else {
 			this->cooldownProgress--;
 		}
-		std::cout << this->cooldownProgress << " / " << this->maxCooldown << std::endl;
 	}
 } ThreadInstance;
 

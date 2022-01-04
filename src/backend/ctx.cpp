@@ -9,9 +9,9 @@ Context::Context() {
 	currEnemyInstance =  new Enemy(currFloor);
 	errHandler = new Error();
 
-	fireballExec = new ThreadInstance(CD_FIREBALL_SECS);
+	fireballExec = new ThreadInstance(CD_FIREBALL_SECS, FIREBALL_THREAD_STR);
 	clickExec = new ThreadInstance();
-	destAuraExec = new ThreadInstance(CD_DESTAURA_SECS);
+	destAuraExec = new ThreadInstance(CD_DESTAURA_SECS, DESTAURA_THREAD_STR);
 	destAuraDmg = new ThreadInstance();
 }
 
@@ -22,6 +22,7 @@ void Context::startCooldown(ThreadInstance *cooldownThread) {
 	cooldownThread->toggleUsage();
 	while (cooldownThread->cooldownProgress > 0) {
 		cooldownThread->decreaseCooldown();
+		Game::updateSkillButton(cooldownThread->threadID, cooldownThread->cooldownProgress);
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 	cooldownThread->decreaseCooldown();
