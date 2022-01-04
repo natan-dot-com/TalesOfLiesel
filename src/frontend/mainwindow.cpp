@@ -1,5 +1,5 @@
 #include "./lib/frontend/mainwindow.h"
-#include "./lib/frontend/game.h"
+#include "./lib/game.h"
 #include "ui_mainwindow.h"
 #include "./lib/frontend/stylesheet.h"
 #include <QMovie>
@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
         ui->destructionAuraUseButton,
         ui->chronomancyUseButton
     );
+
+    fireballCooldown = new QTimer(this);
 
     this->g = new Game(this, a);
     Game::gameUpdate();

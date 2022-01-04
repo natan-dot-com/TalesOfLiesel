@@ -1,7 +1,5 @@
 #include "./lib/backend/ctx.h"
-#include "./lib/frontend/game.h"
-
-std::mutex gameUpdateMut;
+#include "./lib/game.h"
 
 // Main constructor for context class
 Context::Context() {
@@ -22,9 +20,8 @@ Context::Context() {
 // - Sleeps thread for 'timeAmount' seconds/milisseconds, depending of the used 'MODE'.
 void Context::startCooldown(ThreadInstance *cooldownThread) {
 	cooldownThread->toggleUsage();
-	while (cooldownThread->cooldownProgress > 0) {
-		cooldownThread->decreaseCooldown();
-		Game::updateSkillButton(cooldownThread->threadID, cooldownThread->cooldownProgress);
+    while (cooldownThread->cooldownProgress > 0) {
+        cooldownThread->decreaseCooldown();
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 	cooldownThread->decreaseCooldown();
@@ -32,7 +29,9 @@ void Context::startCooldown(ThreadInstance *cooldownThread) {
 }
 
 void Context::clickCooldown() {
+    this->clickExec->toggleUsage();
 	std::this_thread::sleep_for(std::chrono::milliseconds(CD_CLICK_MILIS));
+    this->clickExec->toggleUsage();
 }
 
 // Proccess and refresh the monster HP bar after an attack.
@@ -62,7 +61,7 @@ bool Context::proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &
 TurnResults *Context::evokeDamageOnClick() {
 	if (!this->clickExec->isInUse()) {
 
-		// Reset the functionality of previously used thread
+        // Re the functionality of previously used thread
 		if (this->clickExec->currThread.joinable()) {
 			this->clickExec->currThread.join();
 		}
@@ -74,11 +73,11 @@ TurnResults *Context::evokeDamageOnClick() {
 		bool isLevelUp = false;
 
 		// Proccess rewards and a new enemy if the current one dies
-		{
-			const std::lock_guard<std::mutex> lock(healthBarMut);
-			this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-			Game::gameUpdate();
-		}
+        {
+            const std::lock_guard<std::mutex> lock(healthBarMut);
+            this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+            Game::gameUpdate();
+        }
 
 		// Cooldown: 0.5s delay for each damage dealt
 		this->clickExec->currThread = std::thread(&Context::clickCooldown, this);
@@ -95,7 +94,7 @@ TurnResults *Context::evokeDamageOnClick() {
 TurnResults *Context::evokeFireball() {
 	if (!this->fireballExec->isInUse()) {
 
-		// Reset the functionality of previously used thread
+        // Re the functionality of previously used thread
 		if (this->fireballExec->currThread.joinable()) {
 			this->fireballExec->currThread.join();
 		}
@@ -135,7 +134,7 @@ void Context::damageDestructionAura(const int dealtDamage, int &gainedExp, int &
 		{
 			const std::lock_guard<std::mutex> lock(healthBarMut);
 			this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-			Game::gameUpdate();
+            Game::gameUpdate();
 		}
 		damageCounter++;
 
@@ -159,7 +158,7 @@ TurnResults *Context::evokeDestructionAura() {
 		int gainedCoins = 0;
 		bool isLevelUp = false;
 
-		// Reset the functionality of previously used thread (destruction aura damage thread)
+        // Re the functionality of previously used thread (destruction aura damage thread)
 		if (this->destAuraDmg->currThread.joinable()) {
 			this->destAuraDmg->currThread.join();
 		}
@@ -168,7 +167,7 @@ TurnResults *Context::evokeDestructionAura() {
 					dealtDamage, std::ref(gainedExp), std::ref(gainedCoins), std::ref(isLevelUp));	
 		}
 
-		// Reset the functionality of previously used thread (destruction aura cooldown thread)
+        // Re the functionality of previously used thread (destruction aura cooldown thread)
 		if (this->destAuraExec->currThread.joinable()) {
 			this->destAuraExec->currThread.join();
 		}

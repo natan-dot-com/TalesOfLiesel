@@ -6,7 +6,7 @@
 #include <./lib/backend/ctx.h>
 #include <./lib/frontend/components.h>
 
-class Game : QObject {
+class Game {
 private:
     bool isDefaultDamage = true;
     bool isFireballCasted = false;

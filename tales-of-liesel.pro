@@ -11,7 +11,7 @@ CONFIG += c++11
 SOURCES += \
     ./src/main.cpp \
     ./src/frontend/mainwindow.cpp \
-    ./src/frontend/game.cpp \
+    ./src/game.cpp \
     ./src/backend/liesel.cpp \
     ./src/backend/skills.cpp \
     ./src/backend/rng.cpp \
@@ -23,7 +23,7 @@ HEADERS += \
     ./lib/frontend/mainwindow.h \
     ./lib/frontend/stylesheet.h \
     ./lib/frontend/components.h \
-    ./lib/frontend/game.h \
+    ./lib/game.h \
     ./lib/backend/liesel.h \
     ./lib/backend/skills.h \
     ./lib/backend/rng.h \

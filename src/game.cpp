@@ -1,9 +1,11 @@
-#include <./lib/frontend/game.h>
+#include <./lib/game.h>
 #include <QPoint>
 #include <QCursor>
 #include <QGraphicsOpacityEffect>
 #include <QPropertyAnimation>
 #include <ui_mainwindow.h>
+
+std::mutex gameUpdateMut;
 
 Healthbar *Game::healthBar;
 ActiveComponents *Game::activeComponents;
@@ -29,33 +31,13 @@ Game::Game(QObject *_ui, ActiveComponents *_activeComponents) {
 }
 
 void Game::gameUpdate() {
+    gameUpdateMut.lock();
     Game::updateEnemyInfo();
     Game::updateEnemyButton();
     Game::updateLieselInfo();
     // Game::updateSkillInfo();
     Game::activeComponents->fireballCost->setText(QString::number(Game::context->playerInstance->fireSkill.getLevelUp() - Game::context->playerInstance->fireSkill.getExp()) + " Soul Coins");
-}
-
-void Game::updateSkillButton(int THREAD_ID, int cooldownValue) {
-    switch (THREAD_ID) {
-        case FIREBALL_THREAD_ID:
-            Game::activeComponents->fireballUseButton->setText(QString::number(cooldownValue));
-
-            // If cooldown ends...
-            if (cooldownValue == 0) {
-                Game::activeComponents->fireballUseButton->setText("USE");
-            }
-        break;
-
-        case DESTAURA_THREAD_ID:
-            Game::activeComponents->destructionAuraUseButton->setText(QString::number(cooldownValue));
-
-            // If cooldown ends...
-            if (cooldownValue == 0) {
-                Game::activeComponents->destructionAuraUseButton->setText("USE");
-            }
-        break;
-    }
+    gameUpdateMut.unlock();
 }
 
 void Game::updateLieselInfo() {

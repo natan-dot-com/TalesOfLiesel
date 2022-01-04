@@ -2,9 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 #include <QPropertyAnimation>
 #include <iostream>
-#include <./lib/frontend/game.h>
+#include <./lib/game.h>
 #include <./lib/frontend/components.h>
 
 QT_BEGIN_NAMESPACE
@@ -32,6 +33,7 @@ private:
     Ui::MainWindow *ui;
     ActiveComponents *a;
     Game *g;
+    QTimer *fireballCooldown;
 };
 
 #endif // MAINWINDOW_H
