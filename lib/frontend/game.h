@@ -23,7 +23,7 @@ public:
     Healthbar *healthBar;
     QObject *parent;
 
-    Game(ActiveComponents *, QObject *parent);
+    Game(QObject *, ActiveComponents *_activeComponents);
 
     void setupGameStart();
     void onDefaultDamage();

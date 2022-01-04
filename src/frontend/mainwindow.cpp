@@ -9,31 +9,30 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setWindowFlags(windowFlags() | Qt::CustomizeWindowHint |
-                                   Qt::WindowMinimizeButtonHint |
-                                   Qt::WindowMaximizeButtonHint |
-                                   Qt::WindowCloseButtonHint);
-//    a = new ActiveComponents(
-//                ui->xpValue,
-//                ui->maxXP,
-//                ui->enemyName,
-//                ui->enemyMinHP,
-//                ui->enemyMaxHP,
-//                ui->Bar,
-//                ui->floorValue,
-//                ui->soulCoinsValue,
-//                ui->fireballCost,
-//                ui->chronomancyCost,
-//                ui->destructionAuraCost,
-//                ui->DMG,
-//                ui->enemyButton,
-//                ui->fireballUpgradeButton,
-//                ui->chronomancyUpgradeButton,
-//                ui->destructionAuraUpgradeButton
-//                );
+    setWindowFlags(windowFlags()                                |
+                   Qt::CustomizeWindowHint                      |
+                   Qt::WindowMinimizeButtonHint                 |
+                   Qt::WindowMaximizeButtonHint                 |
+                   Qt::WindowCloseButtonHint);
+    a = new ActiveComponents(
+        ui->lieselCurrentLevelExp,
+        ui->lieselLevelMax,
+        ui->enemyName,
+        ui->healthBar,
+        ui->lieselFloorValue,
+        ui->lieselSoulCoinsValue,
+        ui->fireballPriceValue,
+        ui->chronomancyPriceValue,
+        ui->destructionAuraPriceValue,
+        ui->damageIndicator,
+        ui->enemyButton,
+        ui->fireballUpgradeButton,
+        ui->chronomancyUpgradeButton,
+        ui->destructionAuraUpgradeButton
+    );
 
-//    this->g = new Game(a, this);
-//    g->setupGameStart();
+    this->g = new Game(this, a);
+    g->setupGameStart();
 
 //    // Fix this.
 //    QMovie *movie = new QMovie(this);
@@ -69,5 +68,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_enemyButton_clicked()
 {
-    qDebug() << "WORKED\n";
+    g->onDefaultDamage();
 }

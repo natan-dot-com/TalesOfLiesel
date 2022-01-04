@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QIcon>
 #include <QPushButton>
+#include <QProgressBar>
 #include <./lib/backend/enemy.h>
 
 struct ActiveComponents {
@@ -12,9 +13,7 @@ struct ActiveComponents {
     QLabel *currentXP;
     QLabel *maxXP;
     QLabel *mobName;
-    QLabel *currentHP;
-    QLabel *maxHP;
-    QLabel *Bar;
+    QProgressBar *Bar;
     QLabel *floorValue;
     QLabel *soulCoinsValue;
     QLabel *fireballCost;
@@ -29,9 +28,7 @@ struct ActiveComponents {
     ActiveComponents(QLabel *_currentXP,
                QLabel *_maxXP,
                QLabel *_mobName,
-               QLabel *_currentHP,
-               QLabel *_maxHP,
-               QLabel *_Bar,
+               QProgressBar *_Bar,
                QLabel *_floorValue,
                QLabel *_soulCoinsValue,
                QLabel *_fireballCost,
@@ -45,8 +42,6 @@ struct ActiveComponents {
         this->currentXP = _currentXP;
         this->maxXP = _maxXP;
         this->mobName = _mobName;
-        this->currentHP = _currentHP;
-        this->maxHP = _maxHP;
         this->Bar = _Bar;
         this->floorValue = _floorValue;
         this->soulCoinsValue = _soulCoinsValue;
@@ -85,20 +80,14 @@ struct LieselInformation {
 
 struct EnemyInformation {
     // Pointers to the Qt Components
-    QLabel *currentHP;
-    QLabel *maxHP;
     QLabel *mobName;
 
-    EnemyInformation(QLabel *_mobName, QLabel *_currentHP, QLabel *_maxHP) {
+    EnemyInformation(QLabel *_mobName) {
         this->mobName = _mobName;
-        this->currentHP = _currentHP;
-        this->maxHP = _maxHP;
     }
 
-    void updateEnemyInfo(QString _mobName, int curr, int max) {
+    void updateEnemyInfo(QString _mobName) {
         this->mobName->setText(_mobName);
-        this->currentHP->setText(QString::number(curr));
-        this->maxHP->setText(QString::number(max));
     }
 };
 
@@ -107,46 +96,70 @@ struct Healthbar {
     QString defaultStyle;
 
     // Pointer to the Qt Component
-    QLabel *Bar;
+    QProgressBar *Bar;
 
-    Healthbar(int _barWidth, QString _defaultStyle, QLabel *_Bar) {
-        this->barWidth = _barWidth;
-        this->defaultStyle = _defaultStyle;
+    Healthbar(QString _defaultStyle, QProgressBar *_Bar) {
         this->Bar = _Bar;
+        this->defaultStyle = _defaultStyle;
     }
 
     float getDamagedRatio(float current, float max) {
         return current/max;
     }
 
+    void setupBar(Enemy *e) {
+        this->Bar->setValue(e->getCurrHP());
+        this->Bar->setMaximum(e->getMaxHP());
+    }
+
     void updateBar(Enemy *e) {
-        this->Bar->setFixedWidth(getDamagedRatio(e->getCurrHP(), e->getMaxHP()) * barWidth);
+        this->Bar->setValue(e->getCurrHP());
+        this->Bar->setMaximum(e->getMaxHP());
+        this->Bar->setFormat(QString::number(e->getCurrHP()) + "/" + QString::number(e->getMaxHP()));
 
         switch(e->getCurrHP()) {
             case 51 ... 75:
                 this->Bar->setStyleSheet(
-                    "border-radius: \
-                        3px; \
-                     background-color: \
-                        QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #bee25b, stop: .5 #a1d54f, stop: .51 #729818, stop: 1 #7cbc0a);"
+                    "QProgressBar { \
+                        background-color: rgb(255, 255, 255); \
+                        color: rgb(58, 58, 58); \
+                        border-style: outset; \
+                        text-align: center; \
+                    } \
+                    \
+                    QProgressBar::chunk { \
+                        background-color: #EBCB8B; \
+                    }"
                 );
             break;
 
             case 26 ... 50:
                 this->Bar->setStyleSheet(
-                    "border-radius: \
-                        3px; \
-                     background-color: \
-                        QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dea801, stop: .5 #ffcf3b, stop: .51 #957107, stop: 1 #715e28);"
+                    "QProgressBar { \
+                        background-color: rgb(255, 255, 255); \
+                        color: rgb(58, 58, 58); \
+                        border-style: outset; \
+                        text-align: center; \
+                    } \
+                    \
+                    QProgressBar::chunk { \
+                        background-color: #D08770; \
+                    }"
                 );
              break;
 
             case 0 ... 25:
                 this->Bar->setStyleSheet(
-                    "border-radius: \
-                        3px; \
-                     background-color: \
-                        QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #bb5107, stop: .5 #f5873b, stop: .51 #973b00, stop: 1 #553521);"
+                    "QProgressBar { \
+                        background-color: rgb(255, 255, 255); \
+                        color: rgb(58, 58, 58); \
+                        border-style: outset; \
+                        text-align: center; \
+                    } \
+                    \
+                    QProgressBar::chunk { \
+                        background-color: #BF616A; \
+                    }"
                 );
              break;
         }
@@ -158,7 +171,6 @@ struct Healthbar {
 
     void resetBar() {
         this->Bar->setStyleSheet(defaultStyle);
-        this->Bar->setFixedWidth(barWidth);
     }
 };
 
@@ -177,36 +189,51 @@ struct EnemyButton {
             QString enemyName = QString::fromStdString(e->getMobName());
 
             if (enemyName.contains(QString("Mage"))) {
-                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/mage-1.png"));
-                this->button->setIconSize(QSize(600, 600));
+                this->button->setStyleSheet("background-image: url(:/imgs/src/assets/enemies/enemies_full/mage-1.png); \
+                                            background-repeat: none; \
+                                            background-position: bottom center; \
+                                            background-attachment: fixed; \
+                                            background-color: transparent;");
                 // qDebug() << "Mage" << "\n";
                 return;
             }
 
             if (enemyName.contains(QString("Elf"))) {
-                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/elf-1.png"));
-                this->button->setIconSize(QSize(600, 600));
+                this->button->setStyleSheet("background-image: url(:/imgs/src/assets/enemies/enemies_full/elf-1.png); \
+                                            background-repeat: none; \
+                                            background-position: bottom center; \
+                                            background-attachment: fixed; \
+                                            background-color: transparent;");
                 // qDebug() << "Elf" << "\n";
                 return;
             }
 
             if (enemyName.contains(QString("Sorcerer"))) {
-                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/sorcerer-1.png"));
-                this->button->setIconSize(QSize(600, 600));
+                this->button->setStyleSheet("background-image: url(:/imgs/src/assets/enemies/enemies_full/sorcerer-1.png); \
+                                            background-repeat: none; \
+                                            background-position: bottom center; \
+                                            background-attachment: fixed; \
+                                            background-color: transparent;");
                 // qDebug() << "Sorcerer" << "\n";
                 return;
             }
 
             if (enemyName.contains(QString("Slayer"))) {
-                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/slayer-1.png"));
-                this->button->setIconSize(QSize(600, 600));
+                this->button->setStyleSheet("background-image: url(:/imgs/src/assets/enemies/enemies_full/slayer-1.png); \
+                                            background-repeat: none; \
+                                            background-position: bottom center; \
+                                            background-attachment: fixed; \
+                                            background-color: transparent;");
                 // qDebug() << "Sorcerer" << "\n";
                 return;
             }
 
             if (enemyName.contains(QString("Wolf"))) {
-                this->button->setIcon(QIcon(":/imgs/src/assets/enemies/enemies_full/wolf-1.png"));
-                this->button->setIconSize(QSize(600, 600));
+                this->button->setStyleSheet("background-image: url(:/imgs/src/assets/enemies/enemies_full/wolf-1.png); \
+                                            background-repeat: none; \
+                                            background-position: bottom center; \
+                                            background-attachment: fixed; \
+                                            background-color: transparent;");
                 // qDebug() << "Sorcerer" << "\n";
                 return;
             }

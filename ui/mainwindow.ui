@@ -116,9 +116,9 @@
              </spacer>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <layout class="QHBoxLayout" name="lieselFloorDiv">
               <item>
-               <widget class="QLabel" name="label_2">
+               <widget class="QLabel" name="lieselFloorTitle">
                 <property name="text">
                  <string>FLOOR</string>
                 </property>
@@ -138,7 +138,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_3">
+               <widget class="QLabel" name="lieselFloorValue">
                 <property name="text">
                  <string>0</string>
                 </property>
@@ -147,11 +147,18 @@
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_16">
+             <layout class="QHBoxLayout" name="lieselLevelDiv">
               <item>
                <widget class="QLabel" name="label_4">
                 <property name="text">
-                 <string>EXP</string>
+                 <string>LEVEL</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lieselCurrentLevelValue">
+                <property name="text">
+                 <string>0</string>
                 </property>
                </widget>
               </item>
@@ -169,7 +176,21 @@
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_5">
+               <widget class="QLabel" name="lieselCurrentLevelExp">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>/</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lieselLevelMax">
                 <property name="text">
                  <string>0</string>
                 </property>
@@ -178,9 +199,9 @@
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_17">
+             <layout class="QHBoxLayout" name="lieselSoulCoinsDiv">
               <item>
-               <widget class="QLabel" name="label_6">
+               <widget class="QLabel" name="lieselSoulCoinsLabel">
                 <property name="text">
                  <string>SOUL COINS</string>
                 </property>
@@ -200,7 +221,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_7">
+               <widget class="QLabel" name="lieselSoulCoinsValue">
                 <property name="text">
                  <string>0</string>
                 </property>
@@ -267,58 +288,9 @@
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">#fireballUseButton {
-	background-color: tomato;
-	outline: 0;
-	border: 0;
-	border-radius: 4px;
-}
-
-#fireballUseButton::hover {
-	background-color: #ab1a00;
-	color: white;
-}
-
-#fireballUseButton::pressed {
-	background-color: #691000;
-	color: white;
-}
-
-#destructionAuraUseButton {
-	background-color: tomato;
-	outline: 0;
-	border: 0;
-	border-radius: 4px;
-}
-
-#destructionAuraUseButton::hover {
-	background-color: #ab1a00;
-	color: white;
-}
-
-#destructionAuraUseButton::pressed {
-	background-color: #691000;
-	color: white;
-}
-
-#chronomancyUseButton {
-	background-color: tomato;
-	outline: 0;
-	border: 0;
-	border-radius: 4px;
-}
-
-#chronomancyUseButton::hover {
-	background-color: #ab1a00;
-	color: white;
-}
-
-#chronomancyUseButton::pressed {
-	background-color: #691000;
-	color: white;
-}</string>
+              <string notr="true"/>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_5">
+             <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0,0">
               <property name="spacing">
                <number>9</number>
               </property>
@@ -390,6 +362,32 @@
                 </item>
                 <item row="3" column="0" colspan="4">
                  <widget class="QPushButton" name="fireballUpgradeButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#fireballUpgradeButton {
+	background-color: #A3BE8C;
+	color: #3f434c;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+
+}
+
+#fireballUpgradeButton::hover {
+	background-color: #89AC6B;
+	color: white;
+}
+
+#fireballUpgradeButton::pressed {
+	background-color: #709252;
+	color: white;
+}</string>
+                  </property>
                   <property name="text">
                    <string>UPGRADE</string>
                   </property>
@@ -412,6 +410,24 @@
                   <property name="layoutDirection">
                    <enum>Qt::LeftToRight</enum>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">#fireballUseButton {
+	background-color: #BF616A;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+}
+
+#fireballUseButton::hover {
+	background-color: #A9444E;
+	color: white;
+}
+
+#fireballUseButton::pressed {
+	background-color: #773037;
+	color: white;
+}</string>
+                  </property>
                   <property name="text">
                    <string>USE</string>
                   </property>
@@ -433,6 +449,32 @@
                 </item>
                 <item row="2" column="0" colspan="5">
                  <widget class="QPushButton" name="destructionAuraUpgradeButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#destructionAuraUpgradeButton {
+	background-color: #A3BE8C;
+	color: #3f434c;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+
+}
+
+#destructionAuraUpgradeButton::hover {
+	background-color: #89AC6B;
+	color: white;
+}
+
+#destructionAuraUpgradeButton::pressed {
+	background-color: #709252;
+	color: white;
+}</string>
+                  </property>
                   <property name="text">
                    <string>UPGRADE</string>
                   </property>
@@ -491,6 +533,24 @@
                     <height>40</height>
                    </size>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">#destructionAuraUseButton {
+	background-color: #BF616A;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+}
+
+#destructionAuraUseButton::hover {
+	background-color: #A9444E;
+	color: white;
+}
+
+#destructionAuraUseButton::pressed {
+	background-color: #773037;
+	color: white;
+}</string>
+                  </property>
                   <property name="text">
                    <string>USE</string>
                   </property>
@@ -514,7 +574,32 @@
                  </widget>
                 </item>
                 <item row="2" column="0" colspan="4">
-                 <widget class="QPushButton" name="chronomancyUpgrade">
+                 <widget class="QPushButton" name="chronomancyUpgradeButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#chronomancyUpgradeButton {
+	background-color: #A3BE8C;
+	color: #3f434c;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+}
+
+#chronomancyUpgradeButton::hover {
+	background-color: #89AC6B;
+	color: white;
+}
+
+#chronomancyUpgradeButton::pressed {
+	background-color: #709252;
+	color: white;
+}</string>
+                  </property>
                   <property name="text">
                    <string>UPGRADE</string>
                   </property>
@@ -581,6 +666,24 @@
                     <width>50</width>
                     <height>40</height>
                    </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#chronomancyUseButton {
+	background-color: #BF616A;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+}
+
+#chronomancyUseButton::hover {
+	background-color: #BF616A;
+	color: white;
+}
+
+#chronomancyUseButton::pressed {
+	background-color: #773037;
+	color: white;
+}</string>
                   </property>
                   <property name="text">
                    <string>USE</string>
@@ -666,6 +769,30 @@
            </property>
            <item>
             <widget class="QPushButton" name="goUpButton">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#goUpButton {
+	background-color: #BF616A;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+}
+
+#goUpButton::hover {
+	background-color: #A9444E;
+	color: white;
+}
+
+#goUpButton::pressed {
+	background-color: #773037;
+	color: white;
+}</string>
+             </property>
              <property name="text">
               <string>GO UP (CAUTION)</string>
              </property>
@@ -673,6 +800,32 @@
            </item>
            <item>
             <widget class="QPushButton" name="goDownButton">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#goDownButton {
+	background-color: #A3BE8C;
+	color: #3f434c;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+
+}
+
+#goDownButton::hover {
+	background-color: #89AC6B;
+	color: white;
+}
+
+#goDownButton::pressed {
+	background-color: #709252;
+	color: white;
+}</string>
+             </property>
              <property name="text">
               <string>GO DOWN</string>
              </property>
@@ -704,7 +857,7 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item row="0" column="0">
+         <item row="1" column="0">
           <widget class="QLabel" name="usefulInformationTitle">
            <property name="minimumSize">
             <size>
@@ -713,11 +866,20 @@
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 0, 4, 50);
-color: black;</string>
+            <string notr="true">color: black;</string>
            </property>
            <property name="text">
             <string>USEFUL_INFORMATION</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="damageIndicator">
+           <property name="text">
+            <string>DAMAGE</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -749,12 +911,12 @@ color: black;</string>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0">
+        <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0,0">
          <property name="leftMargin">
           <number>9</number>
          </property>
          <property name="topMargin">
-          <number>9</number>
+          <number>0</number>
          </property>
          <property name="rightMargin">
           <number>9</number>
@@ -762,9 +924,9 @@ color: black;</string>
          <item>
           <layout class="QVBoxLayout" name="enemyNameHealth">
            <item>
-            <widget class="QLabel" name="name">
+            <widget class="QLabel" name="enemyName">
              <property name="text">
-              <string>ENEMY_NAME</string>
+              <string>&lt;h1&gt;ENEMY_NAME&lt;/h1&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -782,12 +944,12 @@ color: black;</string>
 }
 
 QProgressBar::chunk {
-	background-color: rgb(85, 255, 127);
+	background-color: #A3BE8C;
 }
 </string>
              </property>
              <property name="value">
-              <number>100</number>
+              <number>-1</number>
              </property>
              <property name="textVisible">
               <bool>true</bool>
@@ -798,6 +960,19 @@ QProgressBar::chunk {
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item>
           <layout class="QHBoxLayout" name="enemyDiv">
@@ -830,7 +1005,7 @@ QProgressBar::chunk {
 color : black;</string>
              </property>
              <property name="text">
-              <string>ENEMY</string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -857,10 +1032,13 @@ color : black;</string>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
            <property name="sizeHint" stdset="0">
             <size>
              <width>20</width>
-             <height>40</height>
+             <height>35</height>
             </size>
            </property>
           </spacer>
