@@ -1,6 +1,8 @@
 #include "./lib/backend/ctx.h"
 #include "./lib/frontend/game.h"
 
+std::mutex gameUpdateMut;
+
 // Main constructor for context class
 Context::Context() {
 	currFloor = 1;
@@ -9,9 +11,9 @@ Context::Context() {
 	currEnemyInstance =  new Enemy(currFloor);
 	errHandler = new Error();
 
-	fireballExec = new ThreadInstance(CD_FIREBALL_SECS, FIREBALL_THREAD_STR);
+    fireballExec = new ThreadInstance(CD_FIREBALL_SECS, FIREBALL_THREAD_ID);
 	clickExec = new ThreadInstance();
-	destAuraExec = new ThreadInstance(CD_DESTAURA_SECS, DESTAURA_THREAD_STR);
+    destAuraExec = new ThreadInstance(CD_DESTAURA_SECS, DESTAURA_THREAD_ID);
 	destAuraDmg = new ThreadInstance();
 }
 

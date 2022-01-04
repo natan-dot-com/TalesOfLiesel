@@ -11,8 +11,8 @@
 
 #include <iostream>
 
-#define FIREBALL_THREAD_STR "Fireball_1"
-#define DESTAURA_THREAD_STR "DestAura_2"
+#define FIREBALL_THREAD_ID 1001
+#define DESTAURA_THREAD_ID 1002
 
 #define CD_CLICK_MILIS 500
 #define CD_FIREBALL_SECS 10
@@ -40,9 +40,9 @@ typedef struct _ThreadInstance {
 	std::atomic<bool> executionFlag;
 	int maxCooldown;
 	int cooldownProgress;
-	char *threadID;
+    int threadID;
 
-	_ThreadInstance(int _cooldownProgress = 0, char *_threadID) {
+    _ThreadInstance(int _cooldownProgress = 0, int threadID = -1) {
 		this->executionFlag = false;
 		this->cooldownProgress = _cooldownProgress;
 		this->maxCooldown = _cooldownProgress;

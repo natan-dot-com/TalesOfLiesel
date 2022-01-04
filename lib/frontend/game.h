@@ -6,7 +6,7 @@
 #include <./lib/backend/ctx.h>
 #include <./lib/frontend/components.h>
 
-class Game {
+class Game : QObject {
 private:
     bool isDefaultDamage = true;
     bool isFireballCasted = false;
@@ -24,8 +24,8 @@ public:
 
     Game(QObject *, ActiveComponents *_activeComponents);
 
-    static void setupGameStart();
-    static void updateGame();
+    static void gameUpdate();
+    static void updateSkillButton(int THREAD_ID, int cooldownValue);
     static void updateLieselInfo();
     static void updateEnemyInfo();
     static void updateEnemyButton();

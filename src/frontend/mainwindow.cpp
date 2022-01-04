@@ -28,11 +28,14 @@ MainWindow::MainWindow(QWidget *parent)
         ui->enemyButton,
         ui->fireballUpgradeButton,
         ui->chronomancyUpgradeButton,
-        ui->destructionAuraUpgradeButton
+        ui->destructionAuraUpgradeButton,
+        ui->fireballUseButton,
+        ui->destructionAuraUseButton,
+        ui->chronomancyUseButton
     );
 
     this->g = new Game(this, a);
-    g->setupGameStart();
+    Game::gameUpdate();
 
 //    // Fix this.
 //    QMovie *movie = new QMovie(this);
@@ -74,5 +77,18 @@ void MainWindow::on_enemyButton_clicked()
 void MainWindow::on_destructionAuraUseButton_clicked()
 {
     Game::context->evokeDestructionAura();
+}
+
+
+void MainWindow::on_fireballUpgradeButton_clicked()
+{
+    Game::context->updateFireball();
+    Game::gameUpdate();
+}
+
+
+void MainWindow::on_destructionAuraUpgradeButton_clicked()
+{
+
 }
 

@@ -23,7 +23,10 @@ struct ActiveComponents {
     QPushButton *enemyButton;
     QPushButton *upgradeFireball;
     QPushButton *upgradeChronomancy;
-    QPushButton *upgradeDestructionAura;
+    QPushButton *upgradeDestructionAura;\
+    QPushButton *fireballUseButton;
+    QPushButton *destructionAuraUseButton;
+    QPushButton *chronomancyUseButton;
 
     ActiveComponents(QLabel *_currentXP,
                QLabel *_maxXP,
@@ -38,7 +41,10 @@ struct ActiveComponents {
                QPushButton *_enemyButton,
                QPushButton *_upgradeFireball,
                QPushButton *_upgradeChronomancy,
-               QPushButton *_upgradeDestructionAura) {
+               QPushButton *_upgradeDestructionAura,
+               QPushButton *_fireballUseButton,
+               QPushButton *_destructionAuraUseButton,
+               QPushButton *_chronomancyUseButton) {
         this->currentXP = _currentXP;
         this->maxXP = _maxXP;
         this->mobName = _mobName;
@@ -53,6 +59,9 @@ struct ActiveComponents {
         this->upgradeFireball = _upgradeFireball;
         this->upgradeChronomancy = _upgradeChronomancy;
         this->upgradeDestructionAura = _upgradeDestructionAura;
+        this->fireballUseButton = _fireballUseButton;
+        this->destructionAuraUseButton = _destructionAuraUseButton;
+        this->chronomancyUseButton = _chronomancyUseButton;
     }
 };
 

@@ -24,6 +24,10 @@ private slots:
 
     void on_destructionAuraUseButton_clicked();
 
+    void on_fireballUpgradeButton_clicked();
+
+    void on_destructionAuraUpgradeButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     ActiveComponents *a;
