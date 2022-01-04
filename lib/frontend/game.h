@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include <mutex>
-#include <QMovie>
+//#include <QMovie>
 #include <./lib/backend/ctx.h>
 #include <./lib/frontend/components.h>
 

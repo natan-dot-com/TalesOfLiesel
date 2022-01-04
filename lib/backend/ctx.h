@@ -9,9 +9,11 @@
 #include <atomic>
 #include <mutex>
 
+#include <iostream>
+
 #define CD_CLICK_MILIS 500
 #define CD_FIREBALL_SECS 10
-#define CD_DESTAURA_SECS 15
+#define CD_DESTAURA_SECS 20
 #define DELAY_DESTAURA_DOT_SECS 1
 
 #define DESTAURA_DOT_TICKS 6
@@ -33,9 +35,13 @@ typedef struct _TurnResults {
 typedef struct _ThreadInstance {
 	std::thread currThread;
 	std::atomic<bool> executionFlag;
+	int maxCooldown;
+	int cooldownProgress;
 
-	_ThreadInstance() {
+	_ThreadInstance(int _cooldownProgress=0) {
 		this->executionFlag = false;
+		this->cooldownProgress = _cooldownProgress;
+		this->maxCooldown = _cooldownProgress;
 	}
 
 	void toggleUsage() {
@@ -44,6 +50,16 @@ typedef struct _ThreadInstance {
 
 	bool isInUse() {
 		return this->executionFlag;
+	}
+
+	void decreaseCooldown() {
+		if (this->cooldownProgress == 0) {
+			this->cooldownProgress = this->maxCooldown;
+		}
+		else {
+			this->cooldownProgress--;
+		}
+		std::cout << this->cooldownProgress << " / " << this->maxCooldown << std::endl;
 	}
 } ThreadInstance;
 
@@ -57,7 +73,8 @@ private:
 	std::mutex healthBarMut;
 	int currFloor;
 
-	void startCooldown(ThreadInstance *cooldownThread, int timeAmount, const int MODE);
+	void startCooldown(ThreadInstance *cooldownThread);
+	void clickCooldown();
 	bool proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp);
 	void damageDestructionAura(const int dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp);
 

@@ -19,44 +19,35 @@ void EnemyTest() {
 }
 
 void ThreadsTest() {
-	Context newContext = Context();
+	Context *newContext = new Context();
 	TurnResults *test;
 	char ch;
 	while (true) {
 		cin >> ch;
 		if (ch == 't') {
-			test = newContext.evokeDestructionAura();
-			if (test) {
-				test->printResults();
-			}
+			test = newContext->evokeDestructionAura();
 		}
 		else if (ch == 'k') {
-			test = newContext.evokeFireball();
-			if (test) {
-				test->printResults();
-			}
+			test = newContext->evokeFireball();
 		}
 		else if (ch == 'm') {
-			test = newContext.evokeDamageOnClick();
-			if (test) {
-				test->printResults();
-			}
+			test = newContext->evokeDamageOnClick();
 		}
 		else if (ch == 'z') {
-			newContext.previousFloor();
+			newContext->previousFloor();
 		}
 		else if (ch == 'x') {
-			newContext.nextFloor();
+			newContext->nextFloor();
 		} 
 		else if (ch == 'c') {
-			cout << newContext.getCurrentFloor() << endl;
+			cout << newContext->getCurrentFloor() << endl;
 		}
 		else if (ch == 'l') {
-			newContext.playerInstance->destructionSkill.updateExp(10000);
-			cout << newContext.playerInstance->destructionSkill.getLevel() << endl;;
+			newContext->playerInstance->destructionSkill.updateExp(10000);
+			cout << newContext->playerInstance->destructionSkill.getLevel() << endl;
 		}
 		else if (ch == 'p') {
-			cout << newContext.currEnemyInstance->getMaxHP() << "/" << newContext.currEnemyInstance->getCurrHP() << endl;
+			cout << newContext->currEnemyInstance->getMaxHP() << "/" << newContext->currEnemyInstance->getCurrHP() << endl;
 		}
 	}
 }
