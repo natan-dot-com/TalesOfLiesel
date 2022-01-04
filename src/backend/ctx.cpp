@@ -1,6 +1,9 @@
 #include "./lib/backend/ctx.h"
 #include "./lib/game.h"
 
+#define MODE_SECS -1
+#define MODE_MILIS -2
+
 // Main constructor for context class
 Context::Context() {
 	currFloor = 1;
@@ -9,29 +12,29 @@ Context::Context() {
 	currEnemyInstance =  new Enemy(currFloor);
 	errHandler = new Error();
 
-    fireballExec = new ThreadInstance(CD_FIREBALL_SECS, FIREBALL_THREAD_ID);
+    fireballExec = new ThreadInstance(CD_FIREBALL_SECS);
 	clickExec = new ThreadInstance();
-    destAuraExec = new ThreadInstance(CD_DESTAURA_SECS, DESTAURA_THREAD_ID);
+    destAuraExec = new ThreadInstance(CD_DESTAURA_SECS);
 	destAuraDmg = new ThreadInstance();
 }
 
 // Start the current skill cooldown on its representative thread
 // - Toggles the usage indicator of the predetermined thread (as 'cooldownThread')
 // - Sleeps thread for 'timeAmount' seconds/milisseconds, depending of the used 'MODE'.
-void Context::startCooldown(ThreadInstance *cooldownThread) {
+void Context::startCooldown(ThreadInstance *cooldownThread, const int timeAmount, const int MODE) {
 	cooldownThread->toggleUsage();
-    while (cooldownThread->cooldownProgress > 0) {
-        cooldownThread->decreaseCooldown();
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-	}
-	cooldownThread->decreaseCooldown();
-	cooldownThread->toggleUsage();
-}
+	if (timeAmount > 0) {
+		switch (MODE) {
+			case MODE_SECS:
+				this_thread::sleep_for(std::chrono::seconds(timeAmount));
+				break;
 
-void Context::clickCooldown() {
-    this->clickExec->toggleUsage();
-	std::this_thread::sleep_for(std::chrono::milliseconds(CD_CLICK_MILIS));
-    this->clickExec->toggleUsage();
+			case MODE_MILIS:
+				this_thread::sleep_for(std::chrono::milliseconds(timeAmount));
+				break;
+		}
+	}
+	cooldownThread->toggleUsage();
 }
 
 // Proccess and refresh the monster HP bar after an attack.
@@ -58,7 +61,7 @@ bool Context::proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &
 // - Cooldown between clicks: 0.5s (500ms) on 'clickExec' thread.
 // - Returns all the details from the current action, such as the damage dealt,
 // 	 the experience gained, if the player leveled up.
-TurnResults *Context::evokeDamageOnClick() {
+void Context::evokeDamageOnClick() {
 	if (!this->clickExec->isInUse()) {
 
         // Re the functionality of previously used thread
@@ -80,18 +83,15 @@ TurnResults *Context::evokeDamageOnClick() {
         }
 
 		// Cooldown: 0.5s delay for each damage dealt
-		this->clickExec->currThread = std::thread(&Context::clickCooldown, this);
-
-		return new TurnResults(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+		this->clickExec->currThread = std::thread(&Context::startCooldown, this, this->clickExec, CD_CLICK_MILIS, MODE_MILIS);
 	}
-	return NULL;
 }
 
 // Casts a fireball, dealing extra damage.
 // - Cooldown between fireball casts: 10s on 'fireballExec' thread.
 // - Returns all the details from the current action, such as the damage dealt,
 // 	 the experience gained, if the player leveled up.
-TurnResults *Context::evokeFireball() {
+void Context::evokeFireball() {
 	if (!this->fireballExec->isInUse()) {
 
         // Re the functionality of previously used thread
@@ -113,11 +113,8 @@ TurnResults *Context::evokeFireball() {
 		}
 
 		// Cooldown: 10s
-		this->fireballExec->currThread = std::thread(&Context::startCooldown, this, this->fireballExec);
-
-		return new TurnResults(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+		this->fireballExec->currThread = std::thread(&Context::startCooldown, this, this->fireballExec, CD_FIREBALL_SECS, MODE_SECS);
 	}
-	return NULL;
 }
 
 // Auxiliary function which proccess the total damage dealt in 'destAuraDmg' thread.
@@ -149,7 +146,7 @@ void Context::damageDestructionAura(const int dealtDamage, int &gainedExp, int &
 // - Cooldown between destruction aura damage ticks: 1s on 'destAuraDmg' thread.
 // - Returns all the details from the current action, such as the damage dealt,
 // 	 the experience gained, if the player leveled up.
-TurnResults *Context::evokeDestructionAura() {
+void Context::evokeDestructionAura() {
 	if (!this->destAuraExec->isInUse()) {
 
 		// Proccess destruction aura DoT-based damage system
@@ -172,11 +169,8 @@ TurnResults *Context::evokeDestructionAura() {
 			this->destAuraExec->currThread.join();
 		}
 		// Cooldown: 20s
-		this->destAuraExec->currThread = std::thread(&Context::startCooldown, this, this->destAuraExec);
-
-		return new TurnResults(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+		this->destAuraExec->currThread = std::thread(&Context::startCooldown, this, this->destAuraExec, CD_DESTAURA_SECS, MODE_SECS);
 	}
-	return NULL;
 }
 
 // Upgrade skills methods
