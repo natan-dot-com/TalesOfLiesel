@@ -18,7 +18,7 @@ public:
     void setupBar();
 
 public slots:
-    void updateBar();
+    void updateBarOnDamage(int current, int max);
 };
 
 #endif // HEALTHBAR_H

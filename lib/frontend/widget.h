@@ -29,9 +29,10 @@ private:
     EnemyButton *enemyButton;
     Game *game;
 
+    void connectAll();
     void startAnimationIcons();
     void setupMainWindow();
-    void setupHealthbar();
+    void setupHealthbar(int current, int max);
     void setupEnemyButton();
     void setupGame();
 };

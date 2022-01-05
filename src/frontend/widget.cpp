@@ -2,27 +2,26 @@
 #include "./lib/frontend/widget.h"
 #include <QMovie>
 
+enum Screen {
+    MENU,
+    GAME
+};
+
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+
+    // setupGame must come last!
     setupMainWindow();
+    setupEnemyButton();
+    setupGame();
+    setupHealthbar(game->currEnemyInstance->getCurrHP(), game->currEnemyInstance->getMaxHP());
+    connectAll();
 
-    this->enemyButton = new EnemyButton();
-    this->enemyButton->initButton(ui->enemyButton);
-
-    // Instantiate Game
-    this->game = new Game();
-
-    connect(game, SIGNAL(spawnEnemy(QString*)), enemyButton, SLOT(updateEnemyIcon(QString*)), Qt::QueuedConnection);
-    QString *name = new QString("Mage");
-    game->generateEnemy(name);
-
-    this->healthBar = new Healthbar();
-    this->healthBar->initHealthbar(ui->healthBar, 100, 100);
-    this->healthBar->setupBar();
-    connect(ui->enemyButton, SIGNAL(clicked()), healthBar, SLOT(updateBar()), Qt::QueuedConnection);
+    game->playerInstance->fireSkill.updateExp(5000);
+    game->playerInstance->destructionSkill.updateExp(5000);
 }
 
 Widget::~Widget()
@@ -33,6 +32,7 @@ Widget::~Widget()
     delete ui;
 }
 
+/* TODO: Deallocate QMovie */
 void Widget::startAnimationIcons()
 {
     QMovie *movie = new QMovie(this);
@@ -52,6 +52,36 @@ void Widget::startAnimationIcons()
     movie2->start();
 }
 
+void Widget::connectAll() {
+    connect(game, SIGNAL(updateHealthBar(int,int)), healthBar, SLOT(updateBarOnDamage(int,int)));
+    connect(ui->enemyButton, SIGNAL(clicked()), game, SLOT(evokeDamageOnClick()));
+    connect(ui->fireballUseButton, SIGNAL(clicked()), game, SLOT(evokeFireball()));
+    connect(ui->destructionAuraUseButton, SIGNAL(clicked()), game, SLOT(evokeDestructionAura()));
+}
+
+void Widget::setupEnemyButton() {
+    this->enemyButton = new EnemyButton(this);
+    this->enemyButton->initButton(ui->enemyButton);
+}
+
+void Widget::setupHealthbar(int current, int max) {
+    this->healthBar = new Healthbar(this);
+    this->healthBar->initHealthbar(ui->healthBar, current, max);
+
+    // connect(ui->enemyButton, SIGNAL(clicked()), healthBar, SLOT(updateBar()), Qt::QueuedConnection);
+}
+
+
+
+void Widget::setupGame() {
+    // Instantiate Game
+    this->game = new Game();
+
+    connect(game, SIGNAL(spawnEnemy(QString*)), enemyButton, SLOT(updateEnemyIcon(QString*)), Qt::QueuedConnection);
+    QString *name = new QString("Sorcerer");
+    game->generateEnemy(name);
+}
+
 void Widget::setupMainWindow() {
     setWindowFlags(windowFlags()                                |
                    Qt::CustomizeWindowHint                      |
@@ -59,17 +89,17 @@ void Widget::setupMainWindow() {
                    Qt::WindowMaximizeButtonHint                 |
                    Qt::WindowCloseButtonHint);
     move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center());
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(MENU);
     startAnimationIcons();
 }
 
 void Widget::on_newGameButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(GAME);
 }
 
 void Widget::on_saveGoMenuButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(MENU);
 }
 
