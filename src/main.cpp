@@ -1,12 +1,14 @@
-#include <./lib/frontend/mainwindow.h>
+#include "./lib/frontend/widget.h"
+
 #include <QApplication>
-#include <QGraphicsScene>
-#include <QGraphicsView>
+#include <QIcon>
 #include <QFontDatabase>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    // Setup app - Part 1
     QFontDatabase::addApplicationFont(":/fonts/src/alagard.ttf");
     QFont f = QFont("Alagard");
     QApplication::setFont(f);
@@ -14,9 +16,12 @@ int main(int argc, char *argv[])
     QCursor c = QCursor(p, 0, 0);
     QApplication::setOverrideCursor(c);
 
-    MainWindow w;
+    Widget w;
+
+    // Setup app - Part 2
     w.setWindowTitle("Tales of Liesel");
     w.setWindowIcon(QIcon(QPixmap(":/imgs/src/assets/ui-components/FireballIcon.png")));
     w.show();
+
     return a.exec();
 }

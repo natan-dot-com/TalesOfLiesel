@@ -1,0 +1,38 @@
+#ifndef WIDGET_H
+#define WIDGET_H
+
+#include <QWidget>
+#include <QScreen>
+#include <./lib/frontend/components/healthbar.h>
+#include <./lib/frontend/components/enemybutton.h>
+#include <./lib/Game.h>
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class Widget; }
+QT_END_NAMESPACE
+
+class Widget : public QWidget
+{
+    Q_OBJECT
+
+public:
+    Widget(QWidget *parent = nullptr);
+    ~Widget();
+
+private slots:
+    void on_newGameButton_clicked();
+    void on_saveGoMenuButton_clicked();
+
+private:
+    Ui::Widget *ui;
+    Healthbar *healthBar;
+    EnemyButton *enemyButton;
+    Game *game;
+
+    void startAnimationIcons();
+    void setupMainWindow();
+    void setupHealthbar();
+    void setupEnemyButton();
+    void setupGame();
+};
+#endif // WIDGET_H
