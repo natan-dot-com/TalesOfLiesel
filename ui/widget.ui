@@ -63,7 +63,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="menuScreen">
         <property name="minimumSize">
@@ -497,84 +497,23 @@ QPushButton::pressed {
 border-radius: 4px;
 margin: 2px;</string>
                         </property>
-                        <layout class="QGridLayout" name="fireballCard" rowstretch="0,0,0,0">
-                         <property name="horizontalSpacing">
-                          <number>6</number>
+                        <layout class="QGridLayout" name="fireballCard">
+                         <property name="leftMargin">
+                          <number>9</number>
                          </property>
-                         <item row="0" column="3" alignment="Qt::AlignRight">
-                          <widget class="QPushButton" name="fireballUseButton">
-                           <property name="minimumSize">
-                            <size>
-                             <width>50</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>50</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="layoutDirection">
-                            <enum>Qt::LeftToRight</enum>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">#fireballUseButton {
-            background-color: #BF616A;
-            outline: 0;
-            border: 0;
-            border-radius: 4px;
-        }
-
-        #fireballUseButton::hover {
-            background-color: #A9444E;
-            color: white;
-        }
-
-        #fireballUseButton::pressed {
-            background-color: #773037;
-            color: white;
-        }</string>
-                           </property>
-                           <property name="text">
-                            <string>USE</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="3" column="0" colspan="4">
-                          <widget class="QPushButton" name="fireballUpgradeButton">
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">#fireballUpgradeButton {
-            background-color: #A3BE8C;
-            color: #3f434c;
-            outline: 0;
-            border: 0;
-            border-radius: 4px;
-
-        }
-
-        #fireballUpgradeButton::hover {
-            background-color: #89AC6B;
-            color: white;
-        }
-
-        #fireballUpgradeButton::pressed {
-            background-color: #709252;
-            color: white;
-        }</string>
-                           </property>
-                           <property name="text">
-                            <string>UPGRADE</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="0" colspan="3">
+                         <property name="topMargin">
+                          <number>9</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>9</number>
+                         </property>
+                         <property name="horizontalSpacing">
+                          <number>4</number>
+                         </property>
+                         <property name="verticalSpacing">
+                          <number>0</number>
+                         </property>
+                         <item row="1" column="0" colspan="3">
                           <widget class="QWidget" name="fireballNameButtonDiv" native="true">
                            <layout class="QHBoxLayout" name="horizontalLayout_5">
                             <property name="leftMargin">
@@ -630,8 +569,74 @@ margin: 2px;</string>
                            </layout>
                           </widget>
                          </item>
-                         <item row="2" column="0" colspan="2">
+                         <item row="1" column="3" alignment="Qt::AlignRight">
+                          <widget class="QPushButton" name="fireballUseButton">
+                           <property name="minimumSize">
+                            <size>
+                             <width>50</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>50</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="layoutDirection">
+                            <enum>Qt::LeftToRight</enum>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">#fireballUseButton {
+            background-color: #BF616A;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+			font-size: 10px;
+        }
+
+        #fireballUseButton::hover {
+            background-color: #A9444E;
+            color: white;
+        }
+
+        #fireballUseButton::pressed {
+            background-color: #773037;
+            color: white;
+        }</string>
+                           </property>
+                           <property name="text">
+                            <string>USE</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="0" colspan="4">
+                          <widget class="QWidget" name="fireballPriceDiv" native="true">
+                           <layout class="QHBoxLayout" name="horizontalLayout_7">
+                            <item>
+                             <widget class="QLabel" name="fireballCoinsNeededUpgrade">
+                              <property name="styleSheet">
+                               <string notr="true">font-size: 12px;</string>
+                              </property>
+                              <property name="text">
+                               <string>X SOUL COINS NEEDED FOR NEXT LEVEL</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="3" column="0" colspan="4">
                           <widget class="QWidget" name="fireballDescriptionDiv" native="true">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>50</height>
+                            </size>
+                           </property>
                            <property name="styleSheet">
                             <string notr="true"/>
                            </property>
@@ -641,6 +646,15 @@ margin: 2px;</string>
                             </property>
                             <item>
                              <widget class="QLabel" name="fireballDescription">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>50</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">font-size: 14px;</string>
+                              </property>
                               <property name="text">
                                <string>Cast a fireball that deals more damage to your enemy.</string>
                               </property>
@@ -655,20 +669,62 @@ margin: 2px;</string>
                            </layout>
                           </widget>
                          </item>
-                         <item row="2" column="2" colspan="2">
-                          <widget class="QWidget" name="fireballPriceDiv" native="true">
-                           <layout class="QHBoxLayout" name="horizontalLayout_7">
-                            <item>
-                             <widget class="QLabel" name="fireballPriceValue">
-                              <property name="text">
-                               <string>SKILL_PRICE</string>
-                              </property>
-                              <property name="alignment">
-                               <set>Qt::AlignHCenter|Qt::AlignTop</set>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
+                         <item row="8" column="0" colspan="4">
+                          <widget class="QPushButton" name="fireballUpgradeButton">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>30</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">#fireballUpgradeButton {
+            background-color: #A3BE8C;
+            color: #3f434c;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+
+        }
+
+        #fireballUpgradeButton::hover {
+            background-color: #89AC6B;
+            color: white;
+        }
+
+        #fireballUpgradeButton::pressed {
+            background-color: #709252;
+            color: white;
+        }</string>
+                           </property>
+                           <property name="text">
+                            <string>UPGRADE</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="0" colspan="4">
+                          <widget class="QLabel" name="fireballLevelValue">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">font-size: 12px;</string>
+                           </property>
+                           <property name="text">
+                            <string>LEVEL 1</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
                           </widget>
                          </item>
                         </layout>
@@ -688,7 +744,13 @@ border-radius: 4px;
 margin: 2px;</string>
                         </property>
                         <layout class="QGridLayout" name="destructionAuraCard">
-                         <item row="0" column="0" colspan="4">
+                         <property name="horizontalSpacing">
+                          <number>4</number>
+                         </property>
+                         <property name="verticalSpacing">
+                          <number>0</number>
+                         </property>
+                         <item row="1" column="0" colspan="4">
                           <widget class="QWidget" name="destructionAuraNameUseButton" native="true">
                            <layout class="QHBoxLayout" name="horizontalLayout_8">
                             <property name="leftMargin">
@@ -735,52 +797,28 @@ margin: 2px;</string>
                            </layout>
                           </widget>
                          </item>
-                         <item row="0" column="4" alignment="Qt::AlignRight">
-                          <widget class="QPushButton" name="destructionAuraUseButton">
-                           <property name="enabled">
-                            <bool>true</bool>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>50</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>50</width>
-                             <height>40</height>
-                            </size>
-                           </property>
+                         <item row="2" column="0" colspan="5">
+                          <widget class="QLabel" name="destructionAuraDescription">
                            <property name="styleSheet">
-                            <string notr="true">#destructionAuraUseButton {
-            background-color: #BF616A;
-            outline: 0;
-            border: 0;
-            border-radius: 4px;
-        }
-
-        #destructionAuraUseButton::hover {
-            background-color: #A9444E;
-            color: white;
-        }
-
-        #destructionAuraUseButton::pressed {
-            background-color: #773037;
-            color: white;
-        }</string>
+                            <string notr="true">font-size: 14px;</string>
                            </property>
                            <property name="text">
-                            <string>USE</string>
+                            <string>Cast a massive energy aura that causes damage overtime.</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                           </property>
+                           <property name="wordWrap">
+                            <bool>true</bool>
                            </property>
                           </widget>
                          </item>
-                         <item row="2" column="0" colspan="5">
+                         <item row="5" column="0" colspan="5">
                           <widget class="QPushButton" name="destructionAuraUpgradeButton">
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
-                             <height>40</height>
+                             <height>30</height>
                             </size>
                            </property>
                            <property name="styleSheet">
@@ -808,26 +846,16 @@ margin: 2px;</string>
                            </property>
                           </widget>
                          </item>
-                         <item row="1" column="0" colspan="3">
-                          <widget class="QLabel" name="destructionAuraDescription">
-                           <property name="text">
-                            <string>Cast a massive energy aura that causes damage overtime.</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                           </property>
-                           <property name="wordWrap">
-                            <bool>true</bool>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="3" colspan="2">
+                         <item row="3" column="0" colspan="5">
                           <widget class="QWidget" name="destructionAuraPriceDiv" native="true">
                            <layout class="QHBoxLayout" name="horizontalLayout_9">
                             <item>
-                             <widget class="QLabel" name="destructionAuraPriceValue">
+                             <widget class="QLabel" name="destructionAuraCoinsNeededUpgrade">
+                              <property name="styleSheet">
+                               <string notr="true">font-size: 12px;</string>
+                              </property>
                               <property name="text">
-                               <string>SKILL_PRICE</string>
+                               <string>X SOUL COINS NEEDED FOR NEXT LEVEL</string>
                               </property>
                               <property name="alignment">
                                <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -835,6 +863,72 @@ margin: 2px;</string>
                              </widget>
                             </item>
                            </layout>
+                          </widget>
+                         </item>
+                         <item row="1" column="4" alignment="Qt::AlignRight">
+                          <widget class="QPushButton" name="destructionAuraUseButton">
+                           <property name="enabled">
+                            <bool>true</bool>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>50</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>50</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">#destructionAuraUseButton {
+            background-color: #BF616A;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+			font-size: 10px;
+        }
+
+        #destructionAuraUseButton::hover {
+            background-color: #A9444E;
+            color: white;
+        }
+
+        #destructionAuraUseButton::pressed {
+            background-color: #773037;
+            color: white;
+        }</string>
+                           </property>
+                           <property name="text">
+                            <string>USE</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="0" colspan="5">
+                          <widget class="QLabel" name="destructionAuraLevelValue">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">font-size: 12px;</string>
+                           </property>
+                           <property name="text">
+                            <string>LEVEL 1</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
                           </widget>
                          </item>
                         </layout>
@@ -1045,7 +1139,7 @@ margin: 2px;</string>
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>500</height>
+                     <height>50</height>
                     </size>
                    </property>
                    <property name="styleSheet">

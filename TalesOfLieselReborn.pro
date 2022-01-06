@@ -37,6 +37,7 @@ HEADERS += \
     lib/backend/gamephrases.h \
     lib/frontend/components/eventpanel.h \
     lib/frontend/components/lieselinfo.h \
+    lib/frontend/components/skillinfo.h \
     lib/gamemacros.h
 
 FORMS += \
