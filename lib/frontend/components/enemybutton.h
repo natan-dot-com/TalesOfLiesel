@@ -3,17 +3,21 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QLabel>
 #include <QPushButton>
 #include <QString>
+
+/*
+ * Front end component that represents the QPushButton that represents
+ * the hitbox where the enemy will be.
+ *
+ */
 
 class EnemyButton : public QObject {
     Q_OBJECT
 
 private:
     static QPushButton *hitbox;
-
-signals:
-    void damaged();
 
 public:
     EnemyButton(QWidget *parent = nullptr);
@@ -25,7 +29,7 @@ public slots:
     // Changes the icon of the QPushButton
     // signal: enemyDead();
     // signal: enemySpawn();
-    void updateEnemyIcon(QString *name);
+    void updateEnemyIcon(QString name);
 };
 
 #endif // ENEMYBUTTON_H

@@ -13,12 +13,17 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
+    this->eventPanel = new EventPanel();
+    this->eventPanel->initEventPanel(ui->eventList);
+
     // setupGame must come last!
     setupMainWindow();
     setupEnemyButton();
     setupGame();
     setupHealthbar(game->currEnemyInstance->getCurrHP(), game->currEnemyInstance->getMaxHP());
     connectAll();
+
+    game->generateEnemy(QString::fromStdString(game->currEnemyInstance->getMobName()));
 
     game->playerInstance->fireSkill.updateExp(5000);
     game->playerInstance->destructionSkill.updateExp(5000);
@@ -53,10 +58,13 @@ void Widget::startAnimationIcons()
 }
 
 void Widget::connectAll() {
+    connect(game, SIGNAL(spawnEnemy(QString)), enemyButton, SLOT(updateEnemyIcon(QString)));
     connect(game, SIGNAL(updateHealthBar(int,int)), healthBar, SLOT(updateBarOnDamage(int,int)));
     connect(ui->enemyButton, SIGNAL(clicked()), game, SLOT(evokeDamageOnClick()));
     connect(ui->fireballUseButton, SIGNAL(clicked()), game, SLOT(evokeFireball()));
     connect(ui->destructionAuraUseButton, SIGNAL(clicked()), game, SLOT(evokeDestructionAura()));
+    connect(game, SIGNAL(updateEventFeed(QString)), eventPanel, SLOT(addEventOnFeed(QString)));
+    connect(ui->exitGameButton, SIGNAL(clicked()), this, SLOT(close()));
 }
 
 void Widget::setupEnemyButton() {
@@ -66,7 +74,9 @@ void Widget::setupEnemyButton() {
 
 void Widget::setupHealthbar(int current, int max) {
     this->healthBar = new Healthbar(this);
-    this->healthBar->initHealthbar(ui->healthBar, current, max);
+
+    QString name = QString::fromStdString(game->currEnemyInstance->getMobName());
+    this->healthBar->initHealthbar(ui->enemyName, &name, ui->healthBar, current, max);
 
     // connect(ui->enemyButton, SIGNAL(clicked()), healthBar, SLOT(updateBar()), Qt::QueuedConnection);
 }
@@ -76,10 +86,6 @@ void Widget::setupHealthbar(int current, int max) {
 void Widget::setupGame() {
     // Instantiate Game
     this->game = new Game();
-
-    connect(game, SIGNAL(spawnEnemy(QString*)), enemyButton, SLOT(updateEnemyIcon(QString*)), Qt::QueuedConnection);
-    QString *name = new QString("Sorcerer");
-    game->generateEnemy(name);
 }
 
 void Widget::setupMainWindow() {

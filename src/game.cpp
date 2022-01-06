@@ -1,5 +1,16 @@
 #include <./lib/Game.h>
-#include <iostream>
+#include <QDebug>
+#include <QString>
+#include <./lib/backend/gamephrases.h>
+
+// MACRO PAIR
+// Macro to get a string with the type of the damage and the QString with the value.
+#define GENERATE_TYPE_DAMAGE_EVENT(TYPE) QString event = TYPE + QString::number(dealtDamage)
+#define EMIT_CLICK_DAMAGE_FEED updateEventFeed(event)
+//
+#define EMIT_SPAWN_NEW_ENEMY spawnEnemy(QString::fromStdString(this->currEnemyInstance->getMobName()))
+#define EMIT_TEMPLATE_PHRASE(X) updateEventFeed(QString::fromStdString(GamePhrases::gameEventPhrases[X]))
+#define EMIT_UPDATE_HEALTHBAR updateHealthBar(this->currEnemyInstance->getCurrHP(), this->currEnemyInstance->getMaxHP())
 
 Game::Game(QWidget *parent) : QObject(parent){
     this->currFloor = 1;
@@ -16,6 +27,9 @@ Game::~Game() {
     delete this->playerInstance;
     delete this->currEnemyInstance;
     delete this->clickExec;
+    delete this->fireballExec;
+    delete this->destAuraExec;
+    delete this->destAuraDmg;
 }
 
 // Proccess and refresh the monster HP bar after an attack.
@@ -30,6 +44,12 @@ bool Game::proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &gai
         Enemy *newEnemy = new Enemy(currFloor);
         delete this->currEnemyInstance;
         this->currEnemyInstance = newEnemy;
+
+        // Signal to spawn a new enemy.
+        emit EMIT_SPAWN_NEW_ENEMY;
+
+        // Signal to post a event on the feed of a new enemy.
+        emit EMIT_TEMPLATE_PHRASE(NEW_ENEMY_PHRASE);
 
         this->playerInstance->updateGainedCoins(gainedCoins);
         isLevelUp = this->playerInstance->updateExp(gainedExp);
@@ -71,15 +91,19 @@ void Game::evokeDamageOnClick() {
         {
             const std::lock_guard<std::mutex> lock(healthBarMut);
             this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-            //Game::updateEventFeed(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-            //Game::gameUpdate();
         }
 
         // Cooldown: 0.5s delay for each damage dealt
         this->clickExec->currThread = std::thread(&Game::startCooldown, this, this->clickExec, CD_CLICK_MILIS);
+
+        emit EMIT_UPDATE_HEALTHBAR;
+
+        GENERATE_TYPE_DAMAGE_EVENT("[CLICK] Damage: ");
+
+        emit EMIT_CLICK_DAMAGE_FEED;
     }
 
-    emit updateHealthBar(this->currEnemyInstance->getCurrHP(), this->currEnemyInstance->getMaxHP());
+
 }
 
 // Casts a fireball, dealing extra damage.
@@ -104,15 +128,18 @@ void Game::evokeFireball() {
         {
             const std::lock_guard<std::mutex> lock(healthBarMut);
             this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-            // Game::updateEventFeed(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-            // Game::gameUpdate();
         }
 
         // Cooldown: 10s
         this->fireballExec->currThread = std::thread(&Game::startCooldown, this, this->fireballExec, CD_FIREBALL_MILIS);
+
+        GENERATE_TYPE_DAMAGE_EVENT("[FIREBALL] Damage: ");
+        emit EMIT_CLICK_DAMAGE_FEED;
+
+        emit updateHealthBar(this->currEnemyInstance->getCurrHP(), this->currEnemyInstance->getMaxHP());
     }
 
-    emit updateHealthBar(this->currEnemyInstance->getCurrHP(), this->currEnemyInstance->getMaxHP());
+
 }
 
 // Auxiliary function which proccess the total damage dealt in 'destAuraDmg' thread.
@@ -135,9 +162,11 @@ void Game::damageDestructionAura() {
             const std::lock_guard<std::mutex> lock(healthBarMut);
             this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
             emit updateHealthBar(this->currEnemyInstance->getCurrHP(), this->currEnemyInstance->getMaxHP());
-            // Game::updateEventFeed(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-            // Game::gameUpdate();
+
+            GENERATE_TYPE_DAMAGE_EVENT("[DESTRUCTION AURA] Damage: ");
+            emit EMIT_CLICK_DAMAGE_FEED;
         }
+
         damageCounter++;
 
         // Delay between ticks (1 second)
@@ -170,7 +199,53 @@ void Game::evokeDestructionAura() {
     }
 }
 
-void Game::generateEnemy(QString *name) {
+// Upgrade skills methods
+bool Game::updateFireball() {
+    const int currSoulCoins = this->playerInstance->getSoulCoins();
+    this->playerInstance->updateSpentCoins(currSoulCoins);
+    return this->playerInstance->fireSkill.updateExp(currSoulCoins);
+}
+
+bool Game::updateChronomancy() {
+    const int currSoulCoins = this->playerInstance->getSoulCoins();
+    this->playerInstance->updateSpentCoins(currSoulCoins);
+    return this->playerInstance->chronoSkill.updateExp(currSoulCoins);
+}
+
+bool Game::updateDestructionAura() {
+    const int currSoulCoins = this->playerInstance->getSoulCoins();
+    this->playerInstance->updateSpentCoins(currSoulCoins);
+    return this->playerInstance->destructionSkill.updateExp(currSoulCoins);
+}
+
+// Current floor management methods
+void Game::nextFloor() {
+    this->currFloor++;
+    delete this->currEnemyInstance;
+    this->currEnemyInstance = new Enemy(currFloor);
+
+    // Signal to spawn a new enemy.
+    QString name = QString::fromStdString(this->currEnemyInstance->getMobName());
+    emit spawnEnemy(name);
+}
+
+void Game::previousFloor() {
+    if (this->currFloor > 1) {
+        this->currFloor--;
+        delete this->currEnemyInstance;
+        this->currEnemyInstance = new Enemy(currFloor);
+
+        // Signal to spawn a new enemy.
+        QString name = QString::fromStdString(this->currEnemyInstance->getMobName());
+        emit spawnEnemy(name);
+    }
+}
+
+int Game::getCurrentFloor() {
+    return this->currFloor;
+}
+
+void Game::generateEnemy(QString name) {
     emit spawnEnemy(name);
 }
 

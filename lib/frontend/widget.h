@@ -5,6 +5,7 @@
 #include <QScreen>
 #include <./lib/frontend/components/healthbar.h>
 #include <./lib/frontend/components/enemybutton.h>
+#include <./lib/frontend/components/eventpanel.h>
 #include <./lib/Game.h>
 
 QT_BEGIN_NAMESPACE
@@ -27,6 +28,8 @@ private:
     Ui::Widget *ui;
     Healthbar *healthBar;
     EnemyButton *enemyButton;
+    EventPanel *eventPanel;
+
     Game *game;
 
     void connectAll();

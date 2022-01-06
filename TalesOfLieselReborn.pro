@@ -19,7 +19,8 @@ SOURCES += \
     ./src/frontend/widget.cpp \
     ./src/frontend/components/healthbar.cpp \
     ./src/Game.cpp \
-    ./src/frontend/components/enemybutton.cpp
+    ./src/frontend/components/enemybutton.cpp \
+    src/frontend/components/eventpanel.cpp
 
 HEADERS += \
     ./lib/backend/ctx.h \
@@ -31,7 +32,9 @@ HEADERS += \
     ./lib/frontend/widget.h \
     ./lib/frontend/components/healthbar.h \
     ./lib/Game.h \
-    ./lib/frontend/components/enemybutton.h
+    ./lib/frontend/components/enemybutton.h \
+    lib/backend/gamephrases.h \
+    lib/frontend/components/eventpanel.h
 
 FORMS += \
     ./ui/widget.ui

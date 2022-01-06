@@ -428,6 +428,12 @@ QPushButton::hover {
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,20">
                  <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
                   <number>9</number>
                  </property>
                  <item>
@@ -460,21 +466,6 @@ QPushButton::hover {
                       <string notr="true"/>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
-                      <property name="spacing">
-                       <number>8</number>
-                      </property>
-                      <property name="leftMargin">
-                       <number>8</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>8</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>8</number>
-                      </property>
-                      <property name="bottomMargin">
-                       <number>8</number>
-                      </property>
                       <item>
                        <widget class="QWidget" name="fireballSkillDiv" native="true">
                         <property name="maximumSize">
@@ -483,19 +474,12 @@ QPushButton::hover {
                           <height>200</height>
                          </size>
                         </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: #2E3440;
+border-radius: 4px;
+margin: 2px;</string>
+                        </property>
                         <layout class="QGridLayout" name="fireballCard" rowstretch="0,0,0,0">
-                         <property name="leftMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="topMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="rightMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="bottomMargin">
-                          <number>0</number>
-                         </property>
                          <property name="horizontalSpacing">
                           <number>6</number>
                          </property>
@@ -544,7 +528,7 @@ QPushButton::hover {
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
-                             <height>50</height>
+                             <height>40</height>
                             </size>
                            </property>
                            <property name="styleSheet">
@@ -591,7 +575,7 @@ QPushButton::hover {
                              <widget class="QLabel" name="fireballIcon">
                               <property name="minimumSize">
                                <size>
-                                <width>75</width>
+                                <width>60</width>
                                 <height>50</height>
                                </size>
                               </property>
@@ -680,19 +664,12 @@ QPushButton::hover {
                           <height>200</height>
                          </size>
                         </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: #2E3440;
+border-radius: 4px;
+margin: 2px;</string>
+                        </property>
                         <layout class="QGridLayout" name="destructionAuraCard">
-                         <property name="leftMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="topMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="rightMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="bottomMargin">
-                          <number>0</number>
-                         </property>
                          <item row="0" column="0" colspan="4">
                           <widget class="QWidget" name="destructionAuraNameUseButton" native="true">
                            <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -712,7 +689,7 @@ QPushButton::hover {
                              <widget class="QLabel" name="destructionAuraIcon">
                               <property name="minimumSize">
                                <size>
-                                <width>75</width>
+                                <width>60</width>
                                 <height>50</height>
                                </size>
                               </property>
@@ -785,7 +762,7 @@ QPushButton::hover {
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
-                             <height>50</height>
+                             <height>40</height>
                             </size>
                            </property>
                            <property name="styleSheet">
@@ -1062,6 +1039,12 @@ background-color: rgba(0, 0, 0, 150);
 border: 0;
 border-radius: 4px;</string>
                    </property>
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="uniformItemSizes">
+                    <bool>false</bool>
+                   </property>
                   </widget>
                  </item>
                  <item row="2" column="0">
@@ -1092,7 +1075,7 @@ border-radius: 4px;</string>
                 <property name="styleSheet">
                  <string notr="true"/>
                 </property>
-                <layout class="QVBoxLayout" name="enemyInfoButton" stretch="0,0,0">
+                <layout class="QVBoxLayout" name="enemyInfoButton" stretch="0,0,0,0">
                  <property name="leftMargin">
                   <number>0</number>
                  </property>
@@ -1150,10 +1133,13 @@ border-radius: 4px;</string>
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
                    </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Expanding</enum>
+                   </property>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>20</width>
-                     <height>40</height>
+                     <height>20</height>
                     </size>
                    </property>
                   </spacer>
@@ -1210,6 +1196,22 @@ border-radius: 4px;</string>
                     </spacer>
                    </item>
                   </layout>
+                 </item>
+                 <item>
+                  <spacer name="spacerGroundEnemy">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                  </spacer>
                  </item>
                 </layout>
                </widget>

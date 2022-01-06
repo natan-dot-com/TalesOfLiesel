@@ -18,6 +18,10 @@
 #define DELAY_DESTAURA_DOT_SECS 1
 #define DESTAURA_DOT_TICKS 6
 
+/**
+ * Struct that represents an instance of a thread.
+ *
+ */
 typedef struct _ThreadInstance {
     std::thread currThread;
     std::atomic<bool> executionFlag;
@@ -35,6 +39,13 @@ typedef struct _ThreadInstance {
     }
 } ThreadInstance;
 
+/**
+ * Main backend class with all classes that make the game logic.
+ * Basically, it has all the multithreaded resources and
+ * calls the Qt framework signals when needed.
+ *
+ */
+
 class Game : public QObject {
     Q_OBJECT
 
@@ -43,11 +54,9 @@ private:
     ThreadInstance *fireballExec;
     ThreadInstance *destAuraExec;
     ThreadInstance *destAuraDmg;
-
     std::mutex healthBarMut;
 
     int currFloor;
-
     void startCooldown(ThreadInstance *cooldownThread, const int timeAmount);
     bool proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp);
     void damageDestructionAura();
@@ -59,14 +68,12 @@ public:
     Liesel *playerInstance;
     Enemy *currEnemyInstance;
 
-    void callUpdateBar(int current, int max);
-
     // This function will have lots of IF's to check game state and emit signals to
     // components if needed.
     void checkInstance();
 
     // @emit: spawnEnemy
-    void generateEnemy(QString *name);
+    void generateEnemy(QString name);
 
     // @emit: defaultDamage;
     void onDefaultDamage(int current, int max);
@@ -77,19 +84,37 @@ public:
     // @emit: destructionAuraDamage;
     void onDestructionAuraDamage(int current, int max);
 
+    int getCurrentFloor();
+
 public slots:
+    // Damage/skills related methods
     void evokeDamageOnClick();
     void evokeFireball();
     void evokeDestructionAura();
 
+    // Skills management
+    bool updateFireball();
+    bool updateChronomancy();
+    bool updateDestructionAura();
+
+    // Floor management
+    void nextFloor();
+    void previousFloor();
+
+
 signals:
+    void changeEnemyName(QString name);
+    void updateEventFeed(QString event);
     void updateHealthBar(int current, int max);
+
+    /* STAYING FOR LEGACY OR IF I CHANGE MY MIND */
+    /* PROBABLY WON'T USE THIS */
 
     // @sender: backend
     // @reciever: EnemyButton
     // @slot: updateEnemyIcon
     // @function: generateEnemy();
-    void spawnEnemy(QString *name);
+    void spawnEnemy(QString name);
 
     // @sender: backend
     // @reciever: Healthbar
