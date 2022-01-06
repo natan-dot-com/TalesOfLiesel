@@ -225,8 +225,7 @@ void Game::nextFloor() {
     this->currEnemyInstance = new Enemy(currFloor);
 
     // Signal to spawn a new enemy.
-    QString name = QString::fromStdString(this->currEnemyInstance->getMobName());
-    emit spawnEnemy(name);
+    emit EMIT_SPAWN_NEW_ENEMY;
 }
 
 void Game::previousFloor() {
@@ -236,8 +235,7 @@ void Game::previousFloor() {
         this->currEnemyInstance = new Enemy(currFloor);
 
         // Signal to spawn a new enemy.
-        QString name = QString::fromStdString(this->currEnemyInstance->getMobName());
-        emit spawnEnemy(name);
+        emit EMIT_SPAWN_NEW_ENEMY;
     }
 }
 

@@ -2,6 +2,8 @@
 #include "./lib/frontend/widget.h"
 #include <QMovie>
 
+#define GENERATE_FIRST_ENEMY game->generateEnemy(QString::fromStdString(game->currEnemyInstance->getMobName()))
+
 enum Screen {
     MENU,
     GAME
@@ -16,15 +18,16 @@ Widget::Widget(QWidget *parent)
     this->eventPanel = new EventPanel();
     this->eventPanel->initEventPanel(ui->eventList);
 
-    // setupGame must come last!
+    // Don't switch the order!
     setupMainWindow();
     setupEnemyButton();
     setupGame();
     setupHealthbar(game->currEnemyInstance->getCurrHP(), game->currEnemyInstance->getMaxHP());
     connectAll();
 
-    game->generateEnemy(QString::fromStdString(game->currEnemyInstance->getMobName()));
+    GENERATE_FIRST_ENEMY;
 
+    // This is a test induced call of these functions, DELETE those for release.
     game->playerInstance->fireSkill.updateExp(5000);
     game->playerInstance->destructionSkill.updateExp(5000);
 }
@@ -58,7 +61,11 @@ void Widget::startAnimationIcons()
 }
 
 void Widget::connectAll() {
+
+    // spawnEnemy signal triggers both a update on the enemy icon and label.
+    connect(game, SIGNAL(spawnEnemy(QString)), healthBar, SLOT(updateEnemyLabel(QString)));
     connect(game, SIGNAL(spawnEnemy(QString)), enemyButton, SLOT(updateEnemyIcon(QString)));
+
     connect(game, SIGNAL(updateHealthBar(int,int)), healthBar, SLOT(updateBarOnDamage(int,int)));
     connect(ui->enemyButton, SIGNAL(clicked()), game, SLOT(evokeDamageOnClick()));
     connect(ui->fireballUseButton, SIGNAL(clicked()), game, SLOT(evokeFireball()));
@@ -77,8 +84,6 @@ void Widget::setupHealthbar(int current, int max) {
 
     QString name = QString::fromStdString(game->currEnemyInstance->getMobName());
     this->healthBar->initHealthbar(ui->enemyName, &name, ui->healthBar, current, max);
-
-    // connect(ui->enemyButton, SIGNAL(clicked()), healthBar, SLOT(updateBar()), Qt::QueuedConnection);
 }
 
 
