@@ -103,6 +103,7 @@ public slots:
 
 
 signals:
+    void updateLieselInfo(QString, QString, QString, QString, QString);
     void changeEnemyName(QString name);
     void updateEventFeed(QString event);
     void updateHealthBar(int current, int max);
@@ -115,24 +116,6 @@ signals:
     // @slot: updateEnemyIcon
     // @function: generateEnemy();
     void spawnEnemy(QString name);
-
-    // @sender: backend
-    // @reciever: Healthbar
-    // @slot: updateBarOnDamage
-    // @function: onDefaultDamage();
-    void defaultDamage(int current, int max);
-
-    // @sender: backend
-    // @reciever: Healthbar
-    // @slot: updateBarOnDamage
-    // @function: onFireballDamage();
-    void fireballDamage(int current, int max);
-
-    // @sender: backend
-    // @reciever: Healthbar
-    // @slot: updateBarOnDamage
-    // @function: onDestructionAuraDamage();
-    void destructionAuraDamage(int current, int max);
 };
 
 #endif // GAME_H

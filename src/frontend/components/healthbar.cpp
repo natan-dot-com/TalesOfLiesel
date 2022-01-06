@@ -3,7 +3,7 @@
 #include <QDebug>
 
 QLabel *Healthbar::mobLabel;
-QString *Healthbar::mobName;
+QString Healthbar::mobName;
 QProgressBar *Healthbar::Bar;
 int Healthbar::currentHP;
 int Healthbar::maxHP;
@@ -17,7 +17,7 @@ Healthbar::~Healthbar() {
 
 }
 
-void Healthbar::initHealthbar(QLabel *_mobLabel, QString *_mobName, QProgressBar *_Bar, int _currentHP, int _maxHP) {
+void Healthbar::initHealthbar(QLabel *_mobLabel, QString _mobName, QProgressBar *_Bar, int _currentHP, int _maxHP) {
     this->mobLabel = _mobLabel;
     this->mobName = _mobName;
     this->Bar = _Bar;
@@ -95,7 +95,7 @@ void Healthbar::changeColorOnDamage() {
 }
 
 void Healthbar::setupName() {
-    this->mobLabel->setText(*this->mobName);
+    this->mobLabel->setText(this->mobName);
 }
 
 void Healthbar::setupBar() {
@@ -107,7 +107,7 @@ void Healthbar::setupBar() {
 }
 
 void Healthbar::updateEnemyLabel(QString name) {
-    this->mobLabel->setText(name);
+    this->mobLabel->setText("<h2>" + name + "</h2>");
 }
 
 void Healthbar::updateBarOnDamage(int current, int max) {

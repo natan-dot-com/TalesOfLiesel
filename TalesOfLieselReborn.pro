@@ -20,7 +20,8 @@ SOURCES += \
     ./src/frontend/components/healthbar.cpp \
     ./src/Game.cpp \
     ./src/frontend/components/enemybutton.cpp \
-    src/frontend/components/eventpanel.cpp
+    src/frontend/components/eventpanel.cpp \
+    src/frontend/components/lieselinfo.cpp
 
 HEADERS += \
     ./lib/backend/ctx.h \
@@ -34,7 +35,9 @@ HEADERS += \
     ./lib/Game.h \
     ./lib/frontend/components/enemybutton.h \
     lib/backend/gamephrases.h \
-    lib/frontend/components/eventpanel.h
+    lib/frontend/components/eventpanel.h \
+    lib/frontend/components/lieselinfo.h \
+    lib/gamemacros.h
 
 FORMS += \
     ./ui/widget.ui

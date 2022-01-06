@@ -2,15 +2,7 @@
 #include <QDebug>
 #include <QString>
 #include <./lib/backend/gamephrases.h>
-
-// MACRO PAIR
-// Macro to get a string with the type of the damage and the QString with the value.
-#define GENERATE_TYPE_DAMAGE_EVENT(TYPE) QString event = TYPE + QString::number(dealtDamage)
-#define EMIT_CLICK_DAMAGE_FEED updateEventFeed(event)
-//
-#define EMIT_SPAWN_NEW_ENEMY spawnEnemy(QString::fromStdString(this->currEnemyInstance->getMobName()))
-#define EMIT_TEMPLATE_PHRASE(X) updateEventFeed(QString::fromStdString(GamePhrases::gameEventPhrases[X]))
-#define EMIT_UPDATE_HEALTHBAR updateHealthBar(this->currEnemyInstance->getCurrHP(), this->currEnemyInstance->getMaxHP())
+#include <./lib/gamemacros.h>
 
 Game::Game(QWidget *parent) : QObject(parent){
     this->currFloor = 1;
@@ -26,6 +18,7 @@ Game::Game(QWidget *parent) : QObject(parent){
 Game::~Game() {
     delete this->playerInstance;
     delete this->currEnemyInstance;
+
     delete this->clickExec;
     delete this->fireballExec;
     delete this->destAuraExec;
@@ -53,6 +46,11 @@ bool Game::proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &gai
 
         this->playerInstance->updateGainedCoins(gainedCoins);
         isLevelUp = this->playerInstance->updateExp(gainedExp);
+
+        if (isLevelUp) {
+            emit EMIT_TEMPLATE_PHRASE(LEVEL_UP_PHRASE);
+        }
+
         return true;
     }
     return false;
@@ -91,6 +89,8 @@ void Game::evokeDamageOnClick() {
         {
             const std::lock_guard<std::mutex> lock(healthBarMut);
             this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+
+            emit EMIT_UPDATE_LIESEL_INFO;
         }
 
         // Cooldown: 0.5s delay for each damage dealt
@@ -99,7 +99,6 @@ void Game::evokeDamageOnClick() {
         emit EMIT_UPDATE_HEALTHBAR;
 
         GENERATE_TYPE_DAMAGE_EVENT("[CLICK] Damage: ");
-
         emit EMIT_CLICK_DAMAGE_FEED;
     }
 
@@ -128,6 +127,8 @@ void Game::evokeFireball() {
         {
             const std::lock_guard<std::mutex> lock(healthBarMut);
             this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+
+            emit EMIT_UPDATE_LIESEL_INFO;
         }
 
         // Cooldown: 10s
@@ -161,8 +162,9 @@ void Game::damageDestructionAura() {
         {
             const std::lock_guard<std::mutex> lock(healthBarMut);
             this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-            emit updateHealthBar(this->currEnemyInstance->getCurrHP(), this->currEnemyInstance->getMaxHP());
 
+            emit EMIT_UPDATE_LIESEL_INFO;
+            emit EMIT_UPDATE_HEALTHBAR;
             GENERATE_TYPE_DAMAGE_EVENT("[DESTRUCTION AURA] Damage: ");
             emit EMIT_CLICK_DAMAGE_FEED;
         }
@@ -226,6 +228,7 @@ void Game::nextFloor() {
 
     // Signal to spawn a new enemy.
     emit EMIT_SPAWN_NEW_ENEMY;
+    emit EMIT_UPDATE_LIESEL_INFO;
 }
 
 void Game::previousFloor() {
@@ -236,6 +239,7 @@ void Game::previousFloor() {
 
         // Signal to spawn a new enemy.
         emit EMIT_SPAWN_NEW_ENEMY;
+        emit EMIT_UPDATE_LIESEL_INFO;
     }
 }
 
@@ -245,16 +249,4 @@ int Game::getCurrentFloor() {
 
 void Game::generateEnemy(QString name) {
     emit spawnEnemy(name);
-}
-
-void Game::onDefaultDamage(int current, int max) {
-    emit defaultDamage(current, max);
-}
-
-void Game::onFireballDamage(int current, int max) {
-    emit fireballDamage(current, max);
-}
-
-void Game::onDestructionAuraDamage(int current, int max) {
-    emit destructionAuraDamage(current, max);
 }

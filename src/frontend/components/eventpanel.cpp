@@ -1,6 +1,7 @@
 #include <./lib/frontend/components/eventpanel.h>
 #include <QTime>
 #include <QDebug>
+#include <QListWidgetItem>
 
 QListWidget *EventPanel::eventList;
 
@@ -13,6 +14,6 @@ void EventPanel::initEventPanel(QListWidget *_eventList) {
 }
 
 void EventPanel::addEventOnFeed(QString event) {
-    this->eventList->insertItem(0, "[" + QTime::currentTime().toString() + "] " + event);
+    this->eventList->insertItem(0, new QListWidgetItem("[" + QTime::currentTime().toString() + "] " + event));
     this->eventList->scrollToTop();
 }

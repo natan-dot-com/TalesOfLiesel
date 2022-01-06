@@ -14,7 +14,7 @@ class Healthbar : public QObject {
     Q_OBJECT
 private:
     static QLabel *mobLabel;
-    static QString *mobName;
+    static QString mobName;
 
     static QProgressBar *Bar;
     static int currentHP;
@@ -30,7 +30,7 @@ public:
 
     // Necessary to be public due to irregular constructor for this purpose.
     void initHealthbar(QLabel *_mobLabel,
-                       QString *_mobName,
+                       QString _mobName,
                        QProgressBar *_Bar,
                        int _currentHP,
                        int _maxHP);

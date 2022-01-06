@@ -12,10 +12,10 @@ enum Phrases {
 };
 
 struct GamePhrases {
-    static const std::string gameEventPhrases[];
+    static std::string gameEventPhrases[];
 };
 
-const std::string GamePhrases::gameEventPhrases[] = {
+std::string GamePhrases::gameEventPhrases[] = {
     std::string("FIREBALL ACTIVATED!"), // When the user presses the useFireballButton
     std::string("DESTRUCTION AURA ACTIVATED"), // When the user presses the useDestructionAuraButton
     std::string("YOU LEVELED UP!"), // When Liesel levels up
