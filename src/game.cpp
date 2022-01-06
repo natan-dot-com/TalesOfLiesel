@@ -205,6 +205,10 @@ void Game::evokeDestructionAura() {
 bool Game::updateFireball() {
     const int currSoulCoins = this->playerInstance->getSoulCoins();
     this->playerInstance->updateSpentCoins(currSoulCoins);
+
+    GENERATE_FIREBALL_INFO_LABELS;
+    emit EMIT_UPDATE_FIREBALL_INFO(FIREBALL);
+    emit EMIT_UPDATE_LIESEL_INFO;
     return this->playerInstance->fireSkill.updateExp(currSoulCoins);
 }
 
@@ -217,6 +221,10 @@ bool Game::updateChronomancy() {
 bool Game::updateDestructionAura() {
     const int currSoulCoins = this->playerInstance->getSoulCoins();
     this->playerInstance->updateSpentCoins(currSoulCoins);
+
+    GENERATE_DESTAURA_INFO_LABELS;
+    emit EMIT_UPDATE_DESTAURA_INFO(DESTAURA);
+    emit EMIT_UPDATE_LIESEL_INFO;
     return this->playerInstance->destructionSkill.updateExp(currSoulCoins);
 }
 
@@ -229,6 +237,7 @@ void Game::nextFloor() {
     // Signal to spawn a new enemy.
     emit EMIT_SPAWN_NEW_ENEMY;
     emit EMIT_UPDATE_LIESEL_INFO;
+    emit EMIT_UPDATE_HEALTHBAR;
 }
 
 void Game::previousFloor() {
@@ -240,6 +249,7 @@ void Game::previousFloor() {
         // Signal to spawn a new enemy.
         emit EMIT_SPAWN_NEW_ENEMY;
         emit EMIT_UPDATE_LIESEL_INFO;
+        emit EMIT_UPDATE_HEALTHBAR;
     }
 }
 

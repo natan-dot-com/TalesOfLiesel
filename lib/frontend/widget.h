@@ -7,6 +7,7 @@
 #include <./lib/frontend/components/enemybutton.h>
 #include <./lib/frontend/components/eventpanel.h>
 #include <./lib/frontend/components/lieselinfo.h>
+#include <./lib/frontend/components/skillinfo.h>
 #include <./lib/Game.h>
 
 QT_BEGIN_NAMESPACE
@@ -33,6 +34,9 @@ private:
     EnemyButton *enemyButton;
     EventPanel *eventPanel;
     LieselInfo *lieselInfo;
+    SkillInfo *fireballInfo;
+    SkillInfo *destructionAuraInfo;
+
 
     // Game backend.
     Game *game;
@@ -47,6 +51,8 @@ private:
     void setupEnemyButton();
     void setupEventPanel();
     void setupLieselInfo();
+    void setupFireballInfo();
+    void setupDestructionAuraInfo();
     void setupGame();
 
     // Initialize all classes with it's pointer to the Qt Widget

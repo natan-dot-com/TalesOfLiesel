@@ -18,7 +18,7 @@ void LieselInfo::initLieselInfo(QPair<QLabel *, QString> _floorValue,
     this->currentLevelMax.LABEL = _currentLevelMax.LABEL;
     this->currentLevelMax.STRING = _currentLevelMax.STRING;
     this->soulCoinsValue.LABEL = _soulCoinsValue.LABEL;
-    this->soulCoinsValue.STRING = _soulCoinsValue.second;
+    this->soulCoinsValue.STRING = _soulCoinsValue.STRING;
     setupLieselInfo();
 }
 

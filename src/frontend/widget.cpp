@@ -25,14 +25,17 @@ Widget::Widget(QWidget *parent)
     setupEnemyButton();
     setupEventPanel();
     setupLieselInfo();
+    setupFireballInfo();
+    setupDestructionAuraInfo();
     setupGame();
     connectAll();
-    initAllComponents();
-    GENERATE_FIRST_ENEMY;
 
     // This is a test induced call of these functions, DELETE those for release.
     game->playerInstance->fireSkill.updateExp(5000);
     game->playerInstance->destructionSkill.updateExp(5000);
+
+    initAllComponents();
+    GENERATE_FIRST_ENEMY;
 }
 
 Widget::~Widget()
@@ -90,6 +93,12 @@ void Widget::connectAll() {
     connect(ui->exitGameButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->goUpButton, SIGNAL(clicked()), game, SLOT(nextFloor()));
     connect(ui->goDownButton, SIGNAL(clicked()), game, SLOT(previousFloor()));
+    connect(ui->fireballUpgradeButton, SIGNAL(clicked()), game, SLOT(updateFireball()));
+    connect(ui->destructionAuraUpgradeButton, SIGNAL(clicked()), game, SLOT(updateDestructionAura()));
+
+    // TODO: Explain
+    connect(game, SIGNAL(updateFireballInfo(QString,QString)), fireballInfo, SLOT(updateSkillInfoLabels(QString,QString)));
+    connect(game, SIGNAL(updateDestructionAuraInfo(QString,QString)), destructionAuraInfo, SLOT(updateSkillInfoLabels(QString,QString)));
 }
 
 void Widget::setupHealthbar() {
@@ -108,11 +117,31 @@ void Widget::setupLieselInfo() {
     this->lieselInfo = new LieselInfo(this);
 }
 
+void Widget::setupFireballInfo() {
+    this->fireballInfo = new SkillInfo(this);
+}
+
+void Widget::setupDestructionAuraInfo() {
+    this->destructionAuraInfo = new SkillInfo(this);
+}
+
 void Widget::initAllComponents() {
     INIT_HEALTHBAR;
     INIT_ENEMYBUTTON;
     INIT_EVENTPANEL;
     INIT_LIESELINFO;
+
+    QString a = "LEVEL " + QString::number(game->playerInstance->fireSkill.getLevel());
+    QString b = QString::number(game->playerInstance->fireSkill.getLevelUp() - game->playerInstance->fireSkill.getExp()) + "IS NEEDED TO LEVEL UP";
+
+    this->fireballInfo->initSkillInfo(qMakePair(ui->fireballLevelValue, a),
+                                      qMakePair(ui->fireballCoinsNeededUpgrade, b));
+
+    QString c = "LEVEL " + QString::number(game->playerInstance->destructionSkill.getLevel());
+    QString d = QString::number(game->playerInstance->destructionSkill.getLevelUp() - game->playerInstance->destructionSkill.getExp()) + "IS NEEDED TO LEVEL UP";
+
+    this->destructionAuraInfo->initSkillInfo(qMakePair(ui->destructionAuraLevelValue, c),
+                                             qMakePair(ui->destructionAuraCoinsNeededUpgrade, d));
 }
 
 void Widget::setupGame() {

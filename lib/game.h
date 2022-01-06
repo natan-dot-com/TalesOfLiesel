@@ -103,6 +103,8 @@ public slots:
 
 
 signals:
+    void updateFireballInfo(QString, QString);
+    void updateDestructionAuraInfo(QString, QString);
     void updateLieselInfo(QString, QString, QString, QString, QString);
     void changeEnemyName(QString name);
     void updateEventFeed(QString event);

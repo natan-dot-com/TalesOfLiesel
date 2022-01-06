@@ -8,6 +8,20 @@
 #define GENERATE_TYPE_DAMAGE_EVENT(TYPE)    QString event = TYPE + QString::number(dealtDamage)
 #define EMIT_CLICK_DAMAGE_FEED              updateEventFeed(event)
 
+// MACRO PAIR
+
+#define FIREBALL a,b
+#define DESTAURA c,d
+
+#define GENERATE_FIREBALL_INFO_LABELS       QString a = "LEVEL " + QString::number(this->playerInstance->fireSkill.getLevel()); \
+                                            QString b = QString::number(this->playerInstance->fireSkill.getLevelUp() - this->playerInstance->fireSkill.getExp()) + "IS NEEDED TO LEVEL UP"
+
+#define GENERATE_DESTAURA_INFO_LABELS       QString c = "LEVEL " + QString::number(this->playerInstance->destructionSkill.getLevel()); \
+                                            QString d = QString::number(this->playerInstance->destructionSkill.getLevelUp() - this->playerInstance->destructionSkill.getExp()) + "IS NEEDED TO LEVEL UP"
+
+#define EMIT_UPDATE_FIREBALL_INFO(X)        updateFireballInfo(X)
+#define EMIT_UPDATE_DESTAURA_INFO(X)        updateDestructionAuraInfo(X)
+
 // SELF EXPLANATORY EMIT MACROS
 #define EMIT_SPAWN_NEW_ENEMY                spawnEnemy(QString::fromStdString(this->currEnemyInstance->getMobName()))
 #define EMIT_TEMPLATE_PHRASE(X)             updateEventFeed(QString::fromStdString(GamePhrases::gameEventPhrases[X]))
