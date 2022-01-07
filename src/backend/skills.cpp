@@ -1,6 +1,7 @@
 #include "./lib/backend/skills.h"
 
-#define BASE_DOT_DMG 0.3
+#define BASE_DOT_DMG 1.2
+#define BASE_DOT_MULTIPLIER 0.4
 #define BASE_FIREBALL_DMG 15
 
 #define BASE_SKILL_EXP 100
@@ -56,7 +57,7 @@ double Chronomancy::skillEffect() {
 
 // Destruction Aura: Enable DoT (Damage Over Time) per tick.
 double DestructionAura::skillEffect() {
-	return BASE_DOT_DMG * pow(this->getLevel(), 1.25);
+	return BASE_DOT_DMG + BASE_DOT_MULTIPLIER * pow(this->getLevel(), 1.25);
 } 	
 
 bool DestructionAura::updateExp(int gainedExp) {
