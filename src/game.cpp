@@ -10,8 +10,8 @@ Game::Game(QWidget *parent) : QObject(parent){
     this->currEnemyInstance = new Enemy();
 
     this->clickExec = new ThreadInstance();
-    this->fireballExec = new ThreadInstance();
-    this->destAuraExec = new ThreadInstance();
+    this->fireballExec = new ThreadInstance(FIREBALL_THREAD_ID);
+    this->destAuraExec = new ThreadInstance(DESTAURA_THREAD_ID);
     this->destAuraDmg = new ThreadInstance();
 }
 
@@ -62,7 +62,19 @@ bool Game::proccessMonsterDamage(const double dealtDamage, int &gainedExp, int &
 void Game::startCooldown(ThreadInstance *cooldownThread, const int timeAmount) {
     cooldownThread->toggleUsage();
     if (timeAmount > 0) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(timeAmount));
+        switch (cooldownThread->threadID) {
+            case FIREBALL_THREAD_ID:
+            emit toggleFireballButton(false);
+            std::this_thread::sleep_for(std::chrono::milliseconds(timeAmount));
+            emit toggleFireballButton(true);
+            break;
+
+            case DESTAURA_THREAD_ID:
+            emit toggleDestructionAuraButton(false);
+            std::this_thread::sleep_for(std::chrono::milliseconds(timeAmount));
+            emit toggleDestructionAuraButton(true);
+            break;
+        }
     }
     cooldownThread->toggleUsage();
 }

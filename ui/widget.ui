@@ -63,7 +63,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="menuScreen">
         <property name="minimumSize">
@@ -79,7 +79,11 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: black;</string>
+         <string notr="true">#menuScreen {
+    background-image: url(:/imgs/src/assets/background-menu.png);
+	background-position: bottom left;
+	background-attachment: fixed;
+}</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_00">
          <item>
@@ -97,8 +101,67 @@ QPushButton::hover {
 	background-color: gray;
 }</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout_00" rowstretch="1,5,5,0">
+           <layout class="QGridLayout" name="gridLayout_00" rowstretch="1,5,5,0,0">
+            <item row="1" column="0">
+             <widget class="QLabel" name="gameTitle">
+              <property name="styleSheet">
+               <string notr="true">color: white;</string>
+              </property>
+              <property name="text">
+               <string>&lt;h1&gt;TALES OF LIESEL&lt;/h1&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <spacer name="titleSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>250</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
             <item row="2" column="0">
+             <widget class="QPushButton" name="newGameButton">
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: white;
+    color: black;
+    outline: 0;
+    border: 0;
+    border-radius: 4px;
+
+}
+
+QPushButton::hover {
+    background-color: gray;
+    color: white;
+}
+
+QPushButton::pressed {
+    background-color: gray;
+    color: white;
+}</string>
+              </property>
+              <property name="text">
+               <string>PLAY</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
              <widget class="QPushButton" name="exitGameButton">
               <property name="maximumSize">
                <size>
@@ -115,60 +178,14 @@ QPushButton::hover {
              </widget>
             </item>
             <item row="0" column="0">
-             <widget class="QLabel" name="gameTitle">
-              <property name="styleSheet">
-               <string notr="true">color: white;</string>
-              </property>
-              <property name="text">
-               <string>&lt;h1&gt;TALES OF LIESEL&lt;/h1&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="newGameButton">
-              <property name="maximumSize">
-               <size>
-                <width>250</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-    background-color: #81A1C1;
-    color: black;
-    outline: 0;
-    border: 0;
-    border-radius: 4px;
-
-}
-
-QPushButton::hover {
-    background-color: #5E81AC;
-    color: white;
-}
-
-QPushButton::pressed {
-    background-color: #4e6d92;
-    color: white;
-}</string>
-              </property>
-              <property name="text">
-               <string>PLAY</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <spacer name="titleSpacer">
+             <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
-                <height>250</height>
+                <height>40</height>
                </size>
               </property>
              </spacer>
@@ -603,6 +620,11 @@ margin: 2px;</string>
         #fireballUseButton::pressed {
             background-color: #773037;
             color: white;
+        }
+
+        #fireballUseButton::disabled {
+            background-color: gray;
+            color: white;
         }</string>
                            </property>
                            <property name="text">
@@ -896,10 +918,12 @@ margin: 2px;</string>
             color: white;
         }
 
-        #destructionAuraUseButton::pressed {
-            background-color: #773037;
+        #destructionAuraUseButton::disabled {
+            background-color: gray;
             color: white;
-        }</string>
+        }
+
+	</string>
                            </property>
                            <property name="text">
                             <string>USE</string>

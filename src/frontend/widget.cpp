@@ -92,6 +92,8 @@ void Widget::connectAll() {
     connect(ui->enemyButton, SIGNAL(clicked()), game, SLOT(evokeDamageOnClick()));
     connect(ui->fireballUseButton, SIGNAL(clicked()), game, SLOT(evokeFireball()));
     connect(ui->destructionAuraUseButton, SIGNAL(clicked()), game, SLOT(evokeDestructionAura()));
+    connect(game, SIGNAL(toggleFireballButton(bool)), ui->fireballUseButton, SLOT(setEnabled(bool)));
+    connect(game, SIGNAL(toggleDestructionAuraButton(bool)), ui->destructionAuraUseButton, SLOT(setEnabled(bool)));
     connect(ui->exitGameButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->goUpButton, SIGNAL(clicked()), game, SLOT(nextFloor()));
     connect(ui->goDownButton, SIGNAL(clicked()), game, SLOT(previousFloor()));

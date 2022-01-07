@@ -18,6 +18,9 @@
 #define DELAY_DESTAURA_DOT_SECS 1
 #define DESTAURA_DOT_TICKS 6
 
+#define FIREBALL_THREAD_ID 1000
+#define DESTAURA_THREAD_ID 1001
+
 /**
  * Struct that represents an instance of a thread.
  *
@@ -25,8 +28,11 @@
 typedef struct _ThreadInstance {
     std::thread currThread;
     std::atomic<bool> executionFlag;
+    int threadID;
 
-    _ThreadInstance() {
+
+    _ThreadInstance(int _threadID = -1) {
+        this->threadID = _threadID;
         this->executionFlag = false;
     }
 
@@ -103,6 +109,8 @@ public slots:
 
 
 signals:
+    void toggleDestructionAuraButton(bool);
+    void toggleFireballButton(bool);
     void updateFireballInfo(QString, QString);
     void updateDestructionAuraInfo(QString, QString);
     void updateLieselInfo(QString, QString, QString, QString, QString);

@@ -82,5 +82,6 @@
         <file>src/assets/enemies/enemies_full/wolf-5.png</file>
         <file>src/assets/enemies/enemies_full/wolf-5v2.png</file>
         <file>src/assets/enemies/enemies_full/wolf-4v2.png</file>
+        <file>src/assets/background-menu.png</file>
     </qresource>
 </RCC>

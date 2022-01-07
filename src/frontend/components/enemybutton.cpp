@@ -2,6 +2,7 @@
 #include <./lib/backend/enemy.h>
 QPushButton *EnemyButton::hitbox;
 
+// Autoria: Osni Brito
 QString getEnemyIconVersion(QString enemyName) {
     QString enemyAdjectIndex;
 
@@ -41,7 +42,6 @@ void EnemyButton::updateEnemyIcon(QString enemyName) {
                         background-color: transparent;";
         this->hitbox->setStyleSheet(style);
         // qDebug() << "Mage" << "\n";
-        qDebug() << style << "\n";
         return;
     }
 
@@ -53,7 +53,6 @@ void EnemyButton::updateEnemyIcon(QString enemyName) {
                         background-color: transparent;";
         this->hitbox->setStyleSheet(style);
         // qDebug() << "Elf" << "\n";
-        qDebug() << style << "\n";
         return;
     }
 
@@ -65,7 +64,6 @@ void EnemyButton::updateEnemyIcon(QString enemyName) {
                         background-color: transparent;";
         this->hitbox->setStyleSheet(style);
         // qDebug() << "Sorcerer" << "\n";
-        qDebug() << style << "\n";
         return;
     }
 
@@ -77,7 +75,6 @@ void EnemyButton::updateEnemyIcon(QString enemyName) {
                         background-color: transparent;";
         this->hitbox->setStyleSheet(style);
         // qDebug() << "Sorcerer" << "\n";
-        qDebug() << style << "\n";
         return;
     }
 
@@ -89,7 +86,6 @@ void EnemyButton::updateEnemyIcon(QString enemyName) {
                         background-color: transparent;";
         this->hitbox->setStyleSheet(style);
         // qDebug() << "Sorcerer" << "\n";
-        qDebug() << style << "\n";
         return;
     }
 }
