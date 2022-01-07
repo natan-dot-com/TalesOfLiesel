@@ -14,10 +14,10 @@
 #define DESTAURA c,d
 
 #define GENERATE_FIREBALL_INFO_LABELS       QString a = "LEVEL " + QString::number(this->playerInstance->fireSkill.getLevel()); \
-                                            QString b = QString::number(this->playerInstance->fireSkill.getLevelUp() - this->playerInstance->fireSkill.getExp()) + "IS NEEDED TO LEVEL UP"
+                                            QString b = QString::number(this->playerInstance->fireSkill.getLevelUp() - this->playerInstance->fireSkill.getExp()) + " IS NEEDED TO LEVEL UP"
 
 #define GENERATE_DESTAURA_INFO_LABELS       QString c = "LEVEL " + QString::number(this->playerInstance->destructionSkill.getLevel()); \
-                                            QString d = QString::number(this->playerInstance->destructionSkill.getLevelUp() - this->playerInstance->destructionSkill.getExp()) + "IS NEEDED TO LEVEL UP"
+                                            QString d = QString::number(this->playerInstance->destructionSkill.getLevelUp() - this->playerInstance->destructionSkill.getExp()) + " IS NEEDED TO LEVEL UP"
 
 #define EMIT_UPDATE_FIREBALL_INFO(X)        updateFireballInfo(X)
 #define EMIT_UPDATE_DESTAURA_INFO(X)        updateDestructionAuraInfo(X)

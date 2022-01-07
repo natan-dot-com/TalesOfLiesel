@@ -12,7 +12,7 @@
 #include <atomic>
 #include <mutex>
 
-#define CD_CLICK_MILIS 500
+#define CD_CLICK_MILIS 100
 #define CD_FIREBALL_MILIS 10000
 #define CD_DESTAURA_MILIS 20000
 #define DELAY_DESTAURA_DOT_SECS 1
@@ -58,7 +58,7 @@ private:
 
     int currFloor;
     void startCooldown(ThreadInstance *cooldownThread, const int timeAmount);
-    bool proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp);
+    bool proccessMonsterDamage(const double dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp);
     void damageDestructionAura();
 
 public:

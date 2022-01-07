@@ -28,7 +28,7 @@ Game::~Game() {
 // Proccess and refresh the monster HP bar after an attack.
 // - Also immediately evoke a new enemy if the current one is dead after the attack.
 // - Returns bool indicating whether the current enemy is dead ('true') or not ('false').
-bool Game::proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp) {
+bool Game::proccessMonsterDamage(const double dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp) {
     if (currEnemyInstance->inflictDamage(dealtDamage)) {
         gainedExp = this->currEnemyInstance->dropExpOnDeath();
         gainedCoins = this->currEnemyInstance->dropCoinsOnDeath();
@@ -80,7 +80,7 @@ void Game::evokeDamageOnClick() {
         }
 
         // Proccess click damage system
-        const int dealtDamage = this->playerInstance->generateDamageOnClick();
+        const double dealtDamage = this->playerInstance->generateDamageOnClick();
         int gainedExp = 0;
         int gainedCoins = 0;
         bool isLevelUp = false;
@@ -95,7 +95,6 @@ void Game::evokeDamageOnClick() {
 
         // Cooldown: 0.5s delay for each damage dealt
         this->clickExec->currThread = std::thread(&Game::startCooldown, this, this->clickExec, CD_CLICK_MILIS);
-
         emit EMIT_UPDATE_HEALTHBAR;
 
         GENERATE_TYPE_DAMAGE_EVENT("[CLICK] Damage: ");
@@ -110,7 +109,7 @@ void Game::evokeDamageOnClick() {
 // - Returns all the details from the current action, such as the damage dealt,
 // 	 the experience gained, if the player leveled up.
 void Game::evokeFireball() {
-    if (!this->fireballExec->isInUse()) {
+    if (!this->fireballExec->isInUse() and this->playerInstance->fireSkill.getLevel()) {
 
         // Re the functionality of previously used thread
         if (this->fireballExec->currThread.joinable()) {
@@ -118,7 +117,7 @@ void Game::evokeFireball() {
         }
 
         // Proccess fireball damage system
-        const int dealtDamage = this->playerInstance->fireSkill.skillEffect();
+        const double dealtDamage = this->playerInstance->fireSkill.skillEffect();
         int gainedExp = 0;
         int gainedCoins = 0;
         bool isLevelUp = false;
@@ -153,7 +152,7 @@ void Game::damageDestructionAura() {
     // Each second, a damage tick occurs. Max damage goes around 'DESTAURA_DOT_TICKS' ticks.
     while(damageCounter < DESTAURA_DOT_TICKS) {
         // Proccess destruction aura DoT-based damage system
-        const int dealtDamage = this->playerInstance->destructionSkill.getCurrDoT();
+        const double dealtDamage = this->playerInstance->destructionSkill.getCurrDoT();
         int gainedExp = 0;
         int gainedCoins = 0;
         bool isLevelUp = false;
@@ -165,6 +164,7 @@ void Game::damageDestructionAura() {
 
             emit EMIT_UPDATE_LIESEL_INFO;
             emit EMIT_UPDATE_HEALTHBAR;
+            qDebug() << dealtDamage;
             GENERATE_TYPE_DAMAGE_EVENT("[DESTRUCTION AURA] Damage: ");
             emit EMIT_CLICK_DAMAGE_FEED;
         }
@@ -183,7 +183,7 @@ void Game::damageDestructionAura() {
 // - Returns all the details from the current action, such as the damage dealt,
 // 	 the experience gained, if the player leveled up.
 void Game::evokeDestructionAura() {
-    if (!this->destAuraExec->isInUse()) {
+    if (!this->destAuraExec->isInUse() and this->playerInstance->destructionSkill.getLevel()) {
         // Re the functionality of previously used thread (destruction aura damage thread)
         if (this->destAuraDmg->currThread.joinable()) {
             this->destAuraDmg->currThread.join();
@@ -205,11 +205,12 @@ void Game::evokeDestructionAura() {
 bool Game::updateFireball() {
     const int currSoulCoins = this->playerInstance->getSoulCoins();
     this->playerInstance->updateSpentCoins(currSoulCoins);
+    bool result = this->playerInstance->fireSkill.updateExp(currSoulCoins);
 
     GENERATE_FIREBALL_INFO_LABELS;
     emit EMIT_UPDATE_FIREBALL_INFO(FIREBALL);
     emit EMIT_UPDATE_LIESEL_INFO;
-    return this->playerInstance->fireSkill.updateExp(currSoulCoins);
+    return result;
 }
 
 bool Game::updateChronomancy() {
@@ -222,10 +223,12 @@ bool Game::updateDestructionAura() {
     const int currSoulCoins = this->playerInstance->getSoulCoins();
     this->playerInstance->updateSpentCoins(currSoulCoins);
 
+    bool result = this->playerInstance->destructionSkill.updateExp(currSoulCoins);
+
     GENERATE_DESTAURA_INFO_LABELS;
     emit EMIT_UPDATE_DESTAURA_INFO(DESTAURA);
     emit EMIT_UPDATE_LIESEL_INFO;
-    return this->playerInstance->destructionSkill.updateExp(currSoulCoins);
+    return result;
 }
 
 // Current floor management methods

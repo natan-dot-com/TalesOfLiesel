@@ -1,13 +1,13 @@
 #include "./lib/backend/skills.h"
 
-#define BASE_DOT_DMG 1.2
-#define BASE_DOT_MULTIPLIER 0.4
+#define BASE_DOT_DMG 3
+#define BASE_DOT_MULTIPLIER 0.7
 #define BASE_FIREBALL_DMG 15
 
 #define BASE_SKILL_EXP 100
 
 Skill::Skill() {
-	skillLevel = 1;
+    skillLevel = 0;
 	skillExp = 0;
 }
 
