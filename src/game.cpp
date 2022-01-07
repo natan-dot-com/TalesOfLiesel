@@ -58,7 +58,7 @@ bool Game::proccessMonsterDamage(const double dealtDamage, int &gainedExp, int &
 
 // Start the current skill cooldown on its representative thread
 // - Toggles the usage indicator of the predetermined thread (as 'cooldownThread')
-// - Sleeps thread for 'timeAmount' seconds/milisseconds, depending of the used 'MODE'.
+// - Sleeps thread for 'timeAmount' seconds/milisseconds
 void Game::startCooldown(ThreadInstance *cooldownThread, const int timeAmount) {
     cooldownThread->toggleUsage();
     if (timeAmount > 0) {
@@ -86,7 +86,7 @@ void Game::startCooldown(ThreadInstance *cooldownThread, const int timeAmount) {
 void Game::evokeDamageOnClick() {
     if (!this->clickExec->isInUse()) {
 
-        // Re the functionality of previously used thread
+        // Rebuild the functionality of previously used thread
         if (this->clickExec->currThread.joinable()) {
             this->clickExec->currThread.join();
         }
@@ -112,8 +112,6 @@ void Game::evokeDamageOnClick() {
         GENERATE_TYPE_DAMAGE_EVENT("[CLICK] Damage: ");
         emit EMIT_CLICK_DAMAGE_FEED;
     }
-
-
 }
 
 // Casts a fireball, dealing extra damage.
@@ -123,7 +121,7 @@ void Game::evokeDamageOnClick() {
 void Game::evokeFireball() {
     if (!this->fireballExec->isInUse() and this->playerInstance->fireSkill.getLevel()) {
 
-        // Re the functionality of previously used thread
+        // Rebuild the functionality of previously used thread
         if (this->fireballExec->currThread.joinable()) {
             this->fireballExec->currThread.join();
         }
@@ -150,12 +148,9 @@ void Game::evokeFireball() {
 
         emit updateHealthBar(this->currEnemyInstance->getCurrHP(), this->currEnemyInstance->getMaxHP());
     }
-
-
 }
 
 // Auxiliary function which proccess the total damage dealt in 'destAuraDmg' thread.
-// PROBLEM: referencing variables inside a thread call (think how to fix it)
 void Game::damageDestructionAura() {
     int damageCounter = 0;
 
@@ -163,6 +158,7 @@ void Game::damageDestructionAura() {
 
     // Each second, a damage tick occurs. Max damage goes around 'DESTAURA_DOT_TICKS' ticks.
     while(damageCounter < DESTAURA_DOT_TICKS) {
+
         // Proccess destruction aura DoT-based damage system
         const double dealtDamage = this->playerInstance->destructionSkill.getCurrDoT();
         int gainedExp = 0;
@@ -176,7 +172,6 @@ void Game::damageDestructionAura() {
 
             emit EMIT_UPDATE_LIESEL_INFO;
             emit EMIT_UPDATE_HEALTHBAR;
-            qDebug() << dealtDamage;
             GENERATE_TYPE_DAMAGE_EVENT("[DESTRUCTION AURA] Damage: ");
             emit EMIT_CLICK_DAMAGE_FEED;
         }
@@ -196,7 +191,8 @@ void Game::damageDestructionAura() {
 // 	 the experience gained, if the player leveled up.
 void Game::evokeDestructionAura() {
     if (!this->destAuraExec->isInUse() and this->playerInstance->destructionSkill.getLevel()) {
-        // Re the functionality of previously used thread (destruction aura damage thread)
+
+        // Rebuild the functionality of previously used thread (destruction aura damage thread)
         if (this->destAuraDmg->currThread.joinable()) {
             this->destAuraDmg->currThread.join();
         }
@@ -204,7 +200,7 @@ void Game::evokeDestructionAura() {
             this->destAuraDmg->currThread = std::thread(&Game::damageDestructionAura, this);
         }
 
-        // Re the functionality of previously used thread (destruction aura cooldown thread)
+        // Rebuild the functionality of previously used thread (destruction aura cooldown thread)
         if (this->destAuraExec->currThread.joinable()) {
             this->destAuraExec->currThread.join();
         }
