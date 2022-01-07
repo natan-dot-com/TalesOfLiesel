@@ -11,7 +11,6 @@ Liesel::Liesel() {
 	soulCoinsAmount = 0;
 	fireSkill = Fireball();
 	destructionSkill = DestructionAura();
-	chronoSkill = Chronomancy();
 }
 
 // Setters
@@ -56,5 +55,5 @@ int Liesel::getSoulCoins() {
 
 // Generates a random click damage based on at most 2 standard deviations (normalized).
 int Liesel::generateDamageOnClick() {
-	return std::round(BASE_CLICK_DMG * (0.8 * currLevel) + 1.25 * Rng::generateRandom(2.0));
+	return std::round(BASE_CLICK_DMG + (0.85 * currLevel) + 1.25 * Rng::generateRandom(2.0));
 }

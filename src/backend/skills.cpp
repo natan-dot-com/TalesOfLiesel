@@ -49,15 +49,9 @@ double Fireball::skillEffect() {
 	return 0;
 }
 
-// Chronomancy: Stops the current monster watch for a few seconds.
-double Chronomancy::skillEffect() {
-	return 1;
-	// WIP...
-}
-
 // Destruction Aura: Enable DoT (Damage Over Time) per tick.
 double DestructionAura::skillEffect() {
-	return BASE_DOT_DMG + BASE_DOT_MULTIPLIER * pow(this->getLevel(), 1.25);
+	return std::roundf(BASE_DOT_DMG + BASE_DOT_MULTIPLIER * pow(this->getLevel(), 1.25) * 10 / 10);
 } 	
 
 bool DestructionAura::updateExp(int gainedExp) {
