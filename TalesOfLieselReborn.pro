@@ -18,7 +18,7 @@ SOURCES += \
     ./src/backend/skills.cpp \
     ./src/frontend/widget.cpp \
     ./src/frontend/components/healthbar.cpp \
-    ./src/Game.cpp \
+    ./src/game.cpp \
     ./src/frontend/components/enemybutton.cpp \
     ./src/frontend/components/eventpanel.cpp \
     ./src/frontend/components/lieselinfo.cpp \
@@ -33,7 +33,7 @@ HEADERS += \
     ./lib/backend/skills.h \
     ./lib/frontend/widget.h \
     ./lib/frontend/components/healthbar.h \
-    ./lib/Game.h \
+    ./lib/game.h \
     ./lib/frontend/components/enemybutton.h \
     ./lib/backend/gamephrases.h \
     ./lib/frontend/components/eventpanel.h \

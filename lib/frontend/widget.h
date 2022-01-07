@@ -8,7 +8,7 @@
 #include <./lib/frontend/components/eventpanel.h>
 #include <./lib/frontend/components/lieselinfo.h>
 #include <./lib/frontend/components/skillinfo.h>
-#include <./lib/Game.h>
+#include <./lib/game.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }

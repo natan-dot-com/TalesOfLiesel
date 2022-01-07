@@ -1,4 +1,4 @@
-#include <./lib/Game.h>
+#include <./lib/game.h>
 #include <QDebug>
 #include <QString>
 #include <./lib/backend/gamephrases.h>

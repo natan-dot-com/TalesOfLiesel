@@ -1,5 +1,4 @@
-#include "./lib/frontend/widget.h"
-
+#include <./lib/frontend/widget.h>
 #include <QApplication>
 #include <QIcon>
 #include <QFontDatabase>

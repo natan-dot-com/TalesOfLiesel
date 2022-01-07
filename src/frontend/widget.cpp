@@ -44,6 +44,8 @@ Widget::~Widget()
     delete this->enemyButton;
     delete this->healthBar;
     delete this->eventPanel;
+    delete this->fireballInfo;
+    delete this->destructionAuraInfo;
     delete movies[0];
     delete movies[1];
     delete ui;
@@ -134,7 +136,6 @@ void Widget::initAllComponents() {
 
     QString a = "LEVEL " + QString::number(game->playerInstance->fireSkill.getLevel());
     QString b = QString::number(game->playerInstance->fireSkill.getLevelUp() - game->playerInstance->fireSkill.getExp()) + " IS NEEDED TO LEVEL UP";
-    qDebug() << a << b;
     this->fireballInfo->initSkillInfo(qMakePair(ui->fireballLevelValue, a),
                                       qMakePair(ui->fireballCoinsNeededUpgrade, b));
 
