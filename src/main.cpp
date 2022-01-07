@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     // Setup app - Part 1
-    QFontDatabase::addApplicationFont(":/fonts/src/alagard.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/src/assets/alagard.ttf");
     QFont f = QFont("Alagard");
     QApplication::setFont(f);
     QPixmap p = QPixmap(":/imgs/src/assets/ui-components/cursor.png");
