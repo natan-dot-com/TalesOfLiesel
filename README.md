@@ -1,6 +1,6 @@
 # Tales Of Liesel
 
-Tales of Liesel is an open source idle-based game made with pourposes of learning how does threads and semaphores actually work. This project was initially made for Operational Systems (SSC0140) class at ICMC-USP. As an extension, all of the front-end related stuff (such as the UI) were made using C++ Qt. Besides being a fairly simple game, it had worked pretty well for learning pourposes.
+Tales of Liesel is an open source idle-based game made with pourposes of learning how does threads and semaphores actually work. This project was initially made for **Operational Systems (SSC0140)** class at ICMC-USP. As an extension, all of the front-end related stuff (such as the UI) were made using C++ Qt. Besides being a fairly simple game, it had worked pretty well for learning pourposes.
 
 Current build only does support Windows. Linux support coming later on.
 
