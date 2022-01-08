@@ -4,8 +4,7 @@ Tales of Liesel is an open source idle-based game made with pourposes of learnin
 
 Current build only does support Windows. Linux support coming later on.
 
-#### Did I get a good grade?
-We'll see!
+#### Did I get a good grade? We'll see!
 
 ![](./tales-of-liesel-example.gif)
 
@@ -13,3 +12,6 @@ We'll see!
 
 - Thanks to everyone who had worked with me this month to make this project happen.
 - Thanks to [Alexander Nakarada](https://filmmusic.io/artists/alexander-nakarada) for the incredible medieval-like royalty free music used as BGM.
+- Thanks to [Eder Muniz](https://edermunizz.itch.io) for the gorgeous background art.
+- Thanks to [XYEzawr](https://xyezawr.itch.io) for the icons we've used.
+- Elfic characters assets taken from [Craftpix](https://craftpix.net/freebies/free-dark-elf-pixel-art-asset-pack/).
