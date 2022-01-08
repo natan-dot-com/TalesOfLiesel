@@ -33,7 +33,7 @@ void Healthbar::changeColorOnDamage() {
     int relativeValue = 100 * ratio;
 
     switch (relativeValue) {
-        case 76 ... 101:
+        case 100:
             this->Bar->setStyleSheet(
                 "QProgressBar { \
                     background-color: rgb(255, 255, 255); \
@@ -48,7 +48,7 @@ void Healthbar::changeColorOnDamage() {
             );
         break;
 
-        case 51 ... 75:
+        case 75:
             this->Bar->setStyleSheet(
                 "QProgressBar { \
                     background-color: rgb(255, 255, 255); \
@@ -63,7 +63,7 @@ void Healthbar::changeColorOnDamage() {
             );
         break;
 
-        case 26 ... 50:
+        case 50:
             this->Bar->setStyleSheet(
                 "QProgressBar { \
                     background-color: rgb(255, 255, 255); \
@@ -78,7 +78,7 @@ void Healthbar::changeColorOnDamage() {
             );
          break;
 
-        case 0 ... 25:
+        case 25:
             this->Bar->setStyleSheet(
                 "QProgressBar { \
                     background-color: rgb(255, 255, 255); \

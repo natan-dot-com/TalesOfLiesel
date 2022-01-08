@@ -26,6 +26,8 @@ private slots:
     void on_newGameButton_clicked();
     void on_saveGoMenuButton_clicked();
 
+    void on_exitGameButton_clicked();
+
 private:
     Ui::Widget *ui;
 
@@ -47,6 +49,7 @@ private:
     void setupMainWindow();
 
     // Setup and allocate each auxiliary class.
+    void setupMusic();
     void setupHealthbar();
     void setupEnemyButton();
     void setupEventPanel();

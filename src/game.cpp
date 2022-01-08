@@ -18,7 +18,6 @@ Game::Game(QWidget *parent) : QObject(parent){
 Game::~Game() {
     delete this->playerInstance;
     delete this->currEnemyInstance;
-
     delete this->clickExec;
     delete this->fireballExec;
     delete this->destAuraExec;
