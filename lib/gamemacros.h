@@ -8,17 +8,17 @@
 #define GENERATE_TYPE_DAMAGE_EVENT(TYPE)    QString event = TYPE + QString::number(dealtDamage)
 #define EMIT_CLICK_DAMAGE_FEED              updateEventFeed(event)
 
-#define GENERATE_FIREBALL_INIT_LABELS QString a = "LEVEL " + QString::number(game->playerInstance->fireSkill.getLevel()); \
-                                      QString b = QString::number(game->playerInstance->fireSkill.getLevelUp() - game->playerInstance->fireSkill.getExp()) + " IS NEEDED TO LEVEL UP"
+#define GENERATE_FIREBALL_INIT_LABELS       QString a = "LEVEL " + QString::number(game->playerInstance->fireSkill.getLevel()); \
+                                            QString b = QString::number(game->playerInstance->fireSkill.getLevelUp() - game->playerInstance->fireSkill.getExp()) + " IS NEEDED TO LEVEL UP"
 
-#define INIT_FIREBALL_INFO  this->fireballInfo->initSkillInfo(qMakePair(ui->fireballLevelValue, a), \
-                                      qMakePair(ui->fireballCoinsNeededUpgrade, b))
+#define INIT_FIREBALL_INFO                  this->fireballInfo->initSkillInfo(qMakePair(ui->fireballLevelValue, a), \
+                                             qMakePair(ui->fireballCoinsNeededUpgrade, b))
 
-#define GENERATE_DESTAURA_INIT_LABELS QString c = "LEVEL " + QString::number(game->playerInstance->destructionSkill.getLevel()); \
-    QString d = QString::number(game->playerInstance->destructionSkill.getLevelUp() - game->playerInstance->destructionSkill.getExp()) + " IS NEEDED TO LEVEL UP"
+#define GENERATE_DESTAURA_INIT_LABELS       QString c = "LEVEL " + QString::number(game->playerInstance->destructionSkill.getLevel()); \
+                                            QString d = QString::number(game->playerInstance->destructionSkill.getLevelUp() - game->playerInstance->destructionSkill.getExp()) + " IS NEEDED TO LEVEL UP"
 
-#define INIT_DESTAURA_INFO     this->destructionAuraInfo->initSkillInfo(qMakePair(ui->destructionAuraLevelValue, c), \
-                                             qMakePair(ui->destructionAuraCoinsNeededUpgrade, d))
+#define INIT_DESTAURA_INFO                  this->destructionAuraInfo->initSkillInfo(qMakePair(ui->destructionAuraLevelValue, c), \
+                                            qMakePair(ui->destructionAuraCoinsNeededUpgrade, d))
 
 // MACRO PAIR
 #define FIREBALL a,b
@@ -57,27 +57,27 @@
                                             game->currEnemyInstance->getMaxHP())
 
 // INITIALIZE ENEMY BUTTON
-#define INIT_ENEMYBUTTON this->enemyButton->initButton(ui->enemyButton);
+#define INIT_ENEMYBUTTON                    this->enemyButton->initButton(ui->enemyButton);
 
 // INITIALIZE EVENT FEED
-#define INIT_EVENTPANEL this->eventPanel->initEventPanel(ui->eventList);
+#define INIT_EVENTPANEL                     this->eventPanel->initEventPanel(ui->eventList);
 
 // INITIALIZE LIESEL INFO
-#define INIT_LIESELINFO this->lieselInfo->initLieselInfo(qMakePair(ui->lieselFloorValue, QString::number(game->getCurrentFloor())), \
-                        qMakePair(ui->lieselCurrentLevelValue, QString::number(game->playerInstance->getLevel())), \
-                        qMakePair(ui->lieselCurrentLevelExp, QString::number(game->playerInstance->getExp())), \
-                        qMakePair(ui->lieselLevelMax, QString::number(game->playerInstance->getLevelUp())), \
-                        qMakePair(ui->lieselSoulCoinsValue, QString::number(game->playerInstance->getSoulCoins())))
+#define INIT_LIESELINFO                     this->lieselInfo->initLieselInfo(qMakePair(ui->lieselFloorValue, QString::number(game->getCurrentFloor())), \
+                                            qMakePair(ui->lieselCurrentLevelValue, QString::number(game->playerInstance->getLevel())), \
+                                            qMakePair(ui->lieselCurrentLevelExp, QString::number(game->playerInstance->getExp())), \
+                                            qMakePair(ui->lieselLevelMax, QString::number(game->playerInstance->getLevelUp())), \
+                                            qMakePair(ui->lieselSoulCoinsValue, QString::number(game->playerInstance->getSoulCoins())))
 
 
 /* -- QT RELATED MACROS -- */
 
-#define SET_WINDOW_FLAGS setWindowFlags(windowFlags()                                | \
-                                        Qt::CustomizeWindowHint                      | \
-                                        Qt::WindowMinimizeButtonHint                 | \
-                                        Qt::WindowMaximizeButtonHint                 | \
-                                        Qt::WindowCloseButtonHint)
+#define SET_WINDOW_FLAGS                    setWindowFlags(windowFlags()                                | \
+                                            Qt::CustomizeWindowHint                                     | \
+                                            Qt::WindowMinimizeButtonHint                                | \
+                                            Qt::WindowMaximizeButtonHint                                | \
+                                            Qt::WindowCloseButtonHint)
 
-#define SET_WINDOW_CENTERED move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center())
+#define SET_WINDOW_CENTERED                 move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center())
 
 #endif // GAMEMACROS_H
