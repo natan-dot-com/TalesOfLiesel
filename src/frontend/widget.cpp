@@ -6,18 +6,24 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 
-// Variables only used in this file.
-// Mainly Qt components that doesnt need to be defined in the class.
-QMovie *movies[2];
-QMediaPlayer *title;
-QMediaPlayer *gameplay;
-QMediaPlaylist *gamePlaylist;
+// Auxiliary enum to identify each Qt QMovies.
+enum QMovies {
+    FIREBALL_ICON,
+    DESTAURA_ICON
+};
 
 // Auxiliary enum to identify each Qt StackedWidgets.
 enum Screen {
     MENU,
     GAME
 };
+
+// Variables only used in this file.
+// Mainly Qt components that doesnt need to be defined in the class.
+QMovie *movies[2];
+QMediaPlayer *title;
+QMediaPlayer *gameplay;
+QMediaPlaylist *gamePlaylist;
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -35,21 +41,24 @@ Widget::Widget(QWidget *parent)
     setupGame();
     connectAll();
     setupMusic();
-
     initAllComponents();
+
     GENERATE_FIRST_ENEMY;
 }
 
 Widget::~Widget()
 {
+    delete title;
+    delete gameplay;
+    delete gamePlaylist;
     delete this->game;
     delete this->enemyButton;
     delete this->healthBar;
     delete this->eventPanel;
     delete this->fireballInfo;
     delete this->destructionAuraInfo;
-    delete movies[0];
-    delete movies[1];
+    delete movies[FIREBALL_ICON];
+    delete movies[DESTAURA_ICON];
     delete ui;
 }
 
@@ -75,22 +84,22 @@ void Widget::setupMusic() {
 void Widget::startAnimationIcons()
 {
     // Start Firball Attack Icon GIF.
-    movies[0] = new QMovie(this);
-    movies[0]->setFileName(":/imgs/src/assets/ui-components/ButtonEffectFire2.gif");
-    connect(movies[0], &QMovie::frameChanged, [=]{
-        ui->fireballIcon->setMovie(movies[0]);
+    movies[FIREBALL_ICON] = new QMovie(this);
+    movies[FIREBALL_ICON]->setFileName(":/imgs/src/assets/ui-components/ButtonEffectFire2.gif");
+    connect(movies[FIREBALL_ICON], &QMovie::frameChanged, [=]{
+        ui->fireballIcon->setMovie(movies[FIREBALL_ICON]);
     });
-    movies[0]->setScaledSize(QSize(75, 75));
-    movies[0]->start();
+    movies[FIREBALL_ICON]->setScaledSize(QSize(75, 75));
+    movies[FIREBALL_ICON]->start();
 
     // Start Destruction Aura Icon GIF.
-    movies[1] = new QMovie(this);
-    movies[1]->setFileName(":/imgs/src/assets/ui-components/ButtonEffectDestructionAura.gif");
-    connect(movies[1], &QMovie::frameChanged, [=]{
-        ui->destructionAuraIcon->setMovie(movies[1]);
+    movies[DESTAURA_ICON] = new QMovie(this);
+    movies[DESTAURA_ICON]->setFileName(":/imgs/src/assets/ui-components/ButtonEffectDestructionAura.gif");
+    connect(movies[DESTAURA_ICON], &QMovie::frameChanged, [=]{
+        ui->destructionAuraIcon->setMovie(movies[DESTAURA_ICON]);
     });
-    movies[1]->setScaledSize(QSize(40, 40));
-    movies[1]->start();
+    movies[DESTAURA_ICON]->setScaledSize(QSize(40, 40));
+    movies[DESTAURA_ICON]->start();
 }
 
 void Widget::connectAll() {
@@ -118,11 +127,10 @@ void Widget::connectAll() {
     connect(ui->exitGameButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->goUpButton, SIGNAL(clicked()), game, SLOT(nextFloor()));
     connect(ui->goDownButton, SIGNAL(clicked()), game, SLOT(previousFloor()));
-
     connect(ui->fireballUpgradeButton, SIGNAL(clicked()), game, SLOT(updateFireball()));
     connect(ui->destructionAuraUpgradeButton, SIGNAL(clicked()), game, SLOT(updateDestructionAura()));
 
-    // TODO: Explain
+    // backend sending signals to UI components
     connect(game, SIGNAL(updateFireballInfo(QString,QString)), fireballInfo, SLOT(updateSkillInfoLabels(QString,QString)));
     connect(game, SIGNAL(updateDestructionAuraInfo(QString,QString)), destructionAuraInfo, SLOT(updateSkillInfoLabels(QString,QString)));
 }
@@ -151,26 +159,7 @@ void Widget::setupDestructionAuraInfo() {
     this->destructionAuraInfo = new SkillInfo(this);
 }
 
-void Widget::initAllComponents() {
-    INIT_HEALTHBAR;
-    INIT_ENEMYBUTTON;
-    INIT_EVENTPANEL;
-    INIT_LIESELINFO;
-
-    QString a = "LEVEL " + QString::number(game->playerInstance->fireSkill.getLevel());
-    QString b = QString::number(game->playerInstance->fireSkill.getLevelUp() - game->playerInstance->fireSkill.getExp()) + " IS NEEDED TO LEVEL UP";
-    this->fireballInfo->initSkillInfo(qMakePair(ui->fireballLevelValue, a),
-                                      qMakePair(ui->fireballCoinsNeededUpgrade, b));
-
-    QString c = "LEVEL " + QString::number(game->playerInstance->destructionSkill.getLevel());
-    QString d = QString::number(game->playerInstance->destructionSkill.getLevelUp() - game->playerInstance->destructionSkill.getExp()) + " IS NEEDED TO LEVEL UP";
-
-    this->destructionAuraInfo->initSkillInfo(qMakePair(ui->destructionAuraLevelValue, c),
-                                             qMakePair(ui->destructionAuraCoinsNeededUpgrade, d));
-}
-
 void Widget::setupGame() {
-    // Instantiate Game
     this->game = new Game();
 }
 
@@ -180,6 +169,19 @@ void Widget::setupMainWindow() {
 
     ui->stackedWidget->setCurrentIndex(MENU);
     startAnimationIcons();
+}
+
+void Widget::initAllComponents() {
+    INIT_HEALTHBAR;
+    INIT_ENEMYBUTTON;
+    INIT_EVENTPANEL;
+    INIT_LIESELINFO;
+
+    GENERATE_FIREBALL_INIT_LABELS;
+    INIT_FIREBALL_INFO;
+
+    GENERATE_DESTAURA_INIT_LABELS;
+    INIT_DESTAURA_INFO;
 }
 
 void Widget::on_newGameButton_clicked()

@@ -6,32 +6,16 @@
         <file>src/assets/ui-components/LieselInfo.png</file>
         <file>src/assets/ui-components/cursor.png</file>
         <file>src/assets/ui-components/SkillsPanel.png</file>
-        <file>src/assets/ui-components/upgradeCyan.png</file>
-        <file>src/assets/ui-components/upgradeGreen.png</file>
-        <file>src/assets/ui-components/upgradeYellow.png</file>
-        <file>src/assets/ui-components/progress-bar/Background Bar.png</file>
-        <file>src/assets/ui-components/progress-bar/Background Static.png</file>
-        <file>src/assets/ui-components/progress-bar/Foreground.png</file>
-        <file>src/assets/ui-components/Custom Button Active 2.png</file>
-        <file>src/assets/ui-components/Custom Button Disable 2.png</file>
-        <file>src/assets/ui-components/Custom Button Hover 2.png</file>
-        <file>src/assets/ui-components/Custom Button Normal 2.png</file>
         <file>src/assets/ui-components/FireballCard.png</file>
         <file>src/assets/EnemyFrame.png</file>
         <file>src/assets/background.png</file>
-        <file>src/assets/Platform.png</file>
         <file>src/assets/game-items/soulCoin.png</file>
         <file>src/assets/game-items/level.png</file>
         <file>src/assets/game-items/floor.png</file>
-        <file>src/assets/ui-components/ButtonEffectFire.gif</file>
         <file>src/assets/ui-components/ButtonEffectFire2.gif</file>
-        <file>src/assets/ui-components/ButtonEffectChrono1.gif</file>
         <file>src/assets/ui-components/ButtonEffectDestructionAura.gif</file>
         <file>src/assets/ui-components/ConfigureFloor.png</file>
         <file>src/assets/ui-components/FireballIcon.png</file>
-        <file>src/assets/ui-components/SkillsPanel-Bottom.png</file>
-        <file>src/assets/ui-components/SkillsPanel-Mid.png</file>
-        <file>src/assets/ui-components/SkillsPanel-Top.png</file>
         <file>src/assets/enemies/enemies_full/elf-1.png</file>
         <file>src/assets/enemies/enemies_full/elf-1v2.png</file>
         <file>src/assets/enemies/enemies_full/elf-2.png</file>

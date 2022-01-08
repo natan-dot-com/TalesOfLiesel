@@ -63,7 +63,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="menuScreen">
         <property name="minimumSize">
@@ -322,6 +322,16 @@ QPushButton::pressed {
                     <item>
                      <layout class="QHBoxLayout" name="lieselFloorDiv">
                       <item>
+                       <widget class="QLabel" name="label">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="pixmap">
+                         <pixmap resource="../assets.qrc">:/imgs/src/assets/game-items/level.png</pixmap>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
                        <widget class="QLabel" name="lieselFloorTitle">
                         <property name="text">
                          <string>FLOOR</string>
@@ -352,6 +362,16 @@ QPushButton::pressed {
                     </item>
                     <item>
                      <layout class="QHBoxLayout" name="lieselLevelDiv">
+                      <item>
+                       <widget class="QLabel" name="label_2">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="pixmap">
+                         <pixmap resource="../assets.qrc">:/imgs/src/assets/game-items/floor.png</pixmap>
+                        </property>
+                       </widget>
+                      </item>
                       <item>
                        <widget class="QLabel" name="lieselLevelLabel">
                         <property name="text">
@@ -404,6 +424,16 @@ QPushButton::pressed {
                     </item>
                     <item>
                      <layout class="QHBoxLayout" name="lieselSoulCoinsDiv">
+                      <item>
+                       <widget class="QLabel" name="label_3">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="pixmap">
+                         <pixmap resource="../assets.qrc">:/imgs/src/assets/game-items/soulCoin.png</pixmap>
+                        </property>
+                       </widget>
+                      </item>
                       <item>
                        <widget class="QLabel" name="lieselSoulCoinsLabel">
                         <property name="text">
@@ -1366,6 +1396,8 @@ QScrollBarl {
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../assets.qrc"/>
+ </resources>
  <connections/>
 </ui>

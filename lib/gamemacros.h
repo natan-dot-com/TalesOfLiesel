@@ -8,8 +8,19 @@
 #define GENERATE_TYPE_DAMAGE_EVENT(TYPE)    QString event = TYPE + QString::number(dealtDamage)
 #define EMIT_CLICK_DAMAGE_FEED              updateEventFeed(event)
 
-// MACRO PAIR
+#define GENERATE_FIREBALL_INIT_LABELS QString a = "LEVEL " + QString::number(game->playerInstance->fireSkill.getLevel()); \
+                                      QString b = QString::number(game->playerInstance->fireSkill.getLevelUp() - game->playerInstance->fireSkill.getExp()) + " IS NEEDED TO LEVEL UP"
 
+#define INIT_FIREBALL_INFO  this->fireballInfo->initSkillInfo(qMakePair(ui->fireballLevelValue, a), \
+                                      qMakePair(ui->fireballCoinsNeededUpgrade, b))
+
+#define GENERATE_DESTAURA_INIT_LABELS QString c = "LEVEL " + QString::number(game->playerInstance->destructionSkill.getLevel()); \
+    QString d = QString::number(game->playerInstance->destructionSkill.getLevelUp() - game->playerInstance->destructionSkill.getExp()) + " IS NEEDED TO LEVEL UP"
+
+#define INIT_DESTAURA_INFO     this->destructionAuraInfo->initSkillInfo(qMakePair(ui->destructionAuraLevelValue, c), \
+                                             qMakePair(ui->destructionAuraCoinsNeededUpgrade, d))
+
+// MACRO PAIR
 #define FIREBALL a,b
 #define DESTAURA c,d
 
