@@ -8,3 +8,8 @@ Current build only does support Windows. Linux support coming later on.
 We'll see!
 
 ![](./tales-of-liesel-example.gif)
+
+## Special credits
+
+- Thanks to everyone who had worked with me this month to make this project happen.
+- Thanks to [Alexander Nakarada](https://filmmusic.io/artists/alexander-nakarada) for the incredible medieval-like royalty free music used as BGM.
