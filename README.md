@@ -6,7 +6,7 @@ Current build only does support Windows. Linux support coming later on.
 
 #### Did I get a good grade? We'll see!
 
-![](./tales-of-liesel-example.gif)
+![](misc/tales-of-liesel-example.gif)
 
 ## Special credits
 
