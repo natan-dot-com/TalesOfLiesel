@@ -18,7 +18,6 @@ public:
 	// Main character skills
 	Fireball fireSkill;
 	DestructionAura destructionSkill;
-	Chronomancy chronoSkill;
 	
 	Liesel();
 	bool updateExp(int gainedExp);

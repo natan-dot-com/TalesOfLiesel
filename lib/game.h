@@ -100,7 +100,6 @@ public slots:
 
     // Skills management
     bool updateFireball();
-    bool updateChronomancy();
     bool updateDestructionAura();
 
     // Floor management
