@@ -1,5 +1,4 @@
 #include "./lib/backend/ctx.h"
-#include "./lib/game.h"
 
 #define MODE_SECS -1
 #define MODE_MILIS -2
@@ -12,9 +11,9 @@ Context::Context() {
 	currEnemyInstance =  new Enemy(currFloor);
 	errHandler = new Error();
 
-    fireballExec = new ThreadInstance(CD_FIREBALL_SECS);
+    fireballExec = new ThreadInstance();
 	clickExec = new ThreadInstance();
-    destAuraExec = new ThreadInstance(CD_DESTAURA_SECS);
+    destAuraExec = new ThreadInstance();
 	destAuraDmg = new ThreadInstance();
 }
 
@@ -26,11 +25,11 @@ void Context::startCooldown(ThreadInstance *cooldownThread, const int timeAmount
 	if (timeAmount > 0) {
 		switch (MODE) {
 			case MODE_SECS:
-				this_thread::sleep_for(std::chrono::seconds(timeAmount));
+                std::this_thread::sleep_for(std::chrono::seconds(timeAmount));
 				break;
 
 			case MODE_MILIS:
-				this_thread::sleep_for(std::chrono::milliseconds(timeAmount));
+                std::this_thread::sleep_for(std::chrono::milliseconds(timeAmount));
 				break;
 		}
 	}
@@ -79,7 +78,8 @@ void Context::evokeDamageOnClick() {
         {
             const std::lock_guard<std::mutex> lock(healthBarMut);
             this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-            Game::gameUpdate();
+            // Game::updateEventFeed(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+            // Game::gameUpdate();
         }
 
 		// Cooldown: 0.5s delay for each damage dealt
@@ -109,7 +109,8 @@ void Context::evokeFireball() {
 		{
 			const std::lock_guard<std::mutex> lock(healthBarMut);
 			this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-			Game::gameUpdate();
+            // Game::updateEventFeed(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+            // Game::gameUpdate();
 		}
 
 		// Cooldown: 10s
@@ -119,19 +120,25 @@ void Context::evokeFireball() {
 
 // Auxiliary function which proccess the total damage dealt in 'destAuraDmg' thread.
 // PROBLEM: referencing variables inside a thread call (think how to fix it)
-void Context::damageDestructionAura(const int dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp) {
+void Context::damageDestructionAura() {
 	int damageCounter = 0;
 
 	this->destAuraDmg->toggleUsage();
 
 	// Each second, a damage tick occurs. Max damage goes around 'DESTAURA_DOT_TICKS' ticks.
 	while(damageCounter < DESTAURA_DOT_TICKS) {
+        // Proccess destruction aura DoT-based damage system
+        const int dealtDamage = this->playerInstance->destructionSkill.getCurrDoT();
+        int gainedExp = 0;
+        int gainedCoins = 0;
+        bool isLevelUp = false;
 
 		// Process rewards and a new enemy if the current one dies
 		{
 			const std::lock_guard<std::mutex> lock(healthBarMut);
 			this->proccessMonsterDamage(dealtDamage, gainedExp, gainedCoins, isLevelUp);
-            Game::gameUpdate();
+            // Game::updateEventFeed(dealtDamage, gainedExp, gainedCoins, isLevelUp);
+            // Game::gameUpdate();
 		}
 		damageCounter++;
 
@@ -148,20 +155,12 @@ void Context::damageDestructionAura(const int dealtDamage, int &gainedExp, int &
 // 	 the experience gained, if the player leveled up.
 void Context::evokeDestructionAura() {
 	if (!this->destAuraExec->isInUse()) {
-
-		// Proccess destruction aura DoT-based damage system
-		const int dealtDamage = this->playerInstance->destructionSkill.getCurrDoT();
-		int gainedExp = 0;
-		int gainedCoins = 0;
-		bool isLevelUp = false;
-
         // Re the functionality of previously used thread (destruction aura damage thread)
 		if (this->destAuraDmg->currThread.joinable()) {
 			this->destAuraDmg->currThread.join();
 		}
 		if (!this->destAuraDmg->isInUse()) {
-			this->destAuraDmg->currThread = std::thread(&Context::damageDestructionAura, this, 
-					dealtDamage, std::ref(gainedExp), std::ref(gainedCoins), std::ref(isLevelUp));	
+            this->destAuraDmg->currThread = std::thread(&Context::damageDestructionAura, this);
 		}
 
         // Re the functionality of previously used thread (destruction aura cooldown thread)
@@ -178,12 +177,6 @@ bool Context::updateFireball() {
 	const int currSoulCoins = this->playerInstance->getSoulCoins();
 	this->playerInstance->updateSpentCoins(currSoulCoins);
 	return this->playerInstance->fireSkill.updateExp(currSoulCoins);
-}
-
-bool Context::updateChronomancy() {
-	const int currSoulCoins = this->playerInstance->getSoulCoins();
-	this->playerInstance->updateSpentCoins(currSoulCoins);
-	return this->playerInstance->chronoSkill.updateExp(currSoulCoins);
 }
 
 bool Context::updateDestructionAura() {

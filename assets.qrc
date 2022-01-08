@@ -1,0 +1,94 @@
+<RCC>
+    <qresource prefix="/fonts">
+        <file>src/assets/alagard.ttf</file>
+    </qresource>
+    <qresource prefix="/imgs">
+        <file>src/assets/ui-components/LieselInfo.png</file>
+        <file>src/assets/ui-components/cursor.png</file>
+        <file>src/assets/ui-components/SkillsPanel.png</file>
+        <file>src/assets/ui-components/upgradeCyan.png</file>
+        <file>src/assets/ui-components/upgradeGreen.png</file>
+        <file>src/assets/ui-components/upgradeYellow.png</file>
+        <file>src/assets/ui-components/progress-bar/Background Bar.png</file>
+        <file>src/assets/ui-components/progress-bar/Background Static.png</file>
+        <file>src/assets/ui-components/progress-bar/Foreground.png</file>
+        <file>src/assets/ui-components/Custom Button Active 2.png</file>
+        <file>src/assets/ui-components/Custom Button Disable 2.png</file>
+        <file>src/assets/ui-components/Custom Button Hover 2.png</file>
+        <file>src/assets/ui-components/Custom Button Normal 2.png</file>
+        <file>src/assets/ui-components/FireballCard.png</file>
+        <file>src/assets/EnemyFrame.png</file>
+        <file>src/assets/background.png</file>
+        <file>src/assets/Platform.png</file>
+        <file>src/assets/game-items/soulCoin.png</file>
+        <file>src/assets/game-items/level.png</file>
+        <file>src/assets/game-items/floor.png</file>
+        <file>src/assets/ui-components/ButtonEffectFire.gif</file>
+        <file>src/assets/ui-components/ButtonEffectFire2.gif</file>
+        <file>src/assets/ui-components/ButtonEffectChrono1.gif</file>
+        <file>src/assets/ui-components/ButtonEffectDestructionAura.gif</file>
+        <file>src/assets/ui-components/ConfigureFloor.png</file>
+        <file>src/assets/ui-components/FireballIcon.png</file>
+        <file>src/assets/ui-components/SkillsPanel-Bottom.png</file>
+        <file>src/assets/ui-components/SkillsPanel-Mid.png</file>
+        <file>src/assets/ui-components/SkillsPanel-Top.png</file>
+        <file>src/assets/enemies/enemies_full/elf-1.png</file>
+        <file>src/assets/enemies/enemies_full/elf-1v2.png</file>
+        <file>src/assets/enemies/enemies_full/elf-2.png</file>
+        <file>src/assets/enemies/enemies_full/elf-2v2.png</file>
+        <file>src/assets/enemies/enemies_full/elf-3.png</file>
+        <file>src/assets/enemies/enemies_full/elf-3v2.png</file>
+        <file>src/assets/enemies/enemies_full/elf-4.png</file>
+        <file>src/assets/enemies/enemies_full/elf-4v2.png</file>
+        <file>src/assets/enemies/enemies_full/elf-5.png</file>
+        <file>src/assets/enemies/enemies_full/elf-5v2.png</file>
+        <file>src/assets/enemies/enemies_full/mage-1.png</file>
+        <file>src/assets/enemies/enemies_full/mage-1v2.png</file>
+        <file>src/assets/enemies/enemies_full/mage-2.png</file>
+        <file>src/assets/enemies/enemies_full/mage-2v2.png</file>
+        <file>src/assets/enemies/enemies_full/mage-3.png</file>
+        <file>src/assets/enemies/enemies_full/mage-3v2.png</file>
+        <file>src/assets/enemies/enemies_full/mage-4.png</file>
+        <file>src/assets/enemies/enemies_full/mage-4v2.png</file>
+        <file>src/assets/enemies/enemies_full/mage-5.png</file>
+        <file>src/assets/enemies/enemies_full/mage-5v2.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-1.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-1v2.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-2.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-2v2.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-3.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-3v2.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-4.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-4v2.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-5.png</file>
+        <file>src/assets/enemies/enemies_full/slayer-5v2.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-1.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-1v2.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-2.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-2v2.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-3.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-3v2.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-4.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-4v2.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-5.png</file>
+        <file>src/assets/enemies/enemies_full/sorcerer-5v2.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-1.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-1v2.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-2.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-2v2.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-3.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-3v2.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-4.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-5.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-5v2.png</file>
+        <file>src/assets/enemies/enemies_full/wolf-4v2.png</file>
+        <file>src/assets/background-menu.png</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>music/0-tavern.mp3</file>
+        <file>music/1-highland.mp3</file>
+        <file>music/2-streets-of-plague.mp3</file>
+        <file>music/3-battle-of-the-creek.mp3</file>
+        <file>music/4-medieval.mp3</file>
+    </qresource>
+</RCC>

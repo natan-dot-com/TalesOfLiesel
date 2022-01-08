@@ -1,12 +1,13 @@
 #include "./lib/backend/skills.h"
 
-#define BASE_DOT_DMG 0.3
+#define BASE_DOT_DMG 3
+#define BASE_DOT_MULTIPLIER 0.7
 #define BASE_FIREBALL_DMG 15
 
 #define BASE_SKILL_EXP 100
 
 Skill::Skill() {
-	skillLevel = 1;
+    skillLevel = 0;
 	skillExp = 0;
 }
 
@@ -48,15 +49,9 @@ double Fireball::skillEffect() {
 	return 0;
 }
 
-// Chronomancy: Stops the current monster watch for a few seconds.
-double Chronomancy::skillEffect() {
-	return 1;
-	// WIP...
-}
-
 // Destruction Aura: Enable DoT (Damage Over Time) per tick.
 double DestructionAura::skillEffect() {
-	return BASE_DOT_DMG * pow(this->getLevel(), 1.25);
+	return std::roundf(BASE_DOT_DMG + BASE_DOT_MULTIPLIER * pow(this->getLevel(), 1.25) * 10 / 10);
 } 	
 
 bool DestructionAura::updateExp(int gainedExp) {

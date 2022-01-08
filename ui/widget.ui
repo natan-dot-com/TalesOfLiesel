@@ -1,0 +1,1371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1282</width>
+    <height>722</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1920</width>
+    <height>1080</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Fade in/out demo</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+	color: #fff8e1;
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="mainGrid">
+     <item row="0" column="0">
+      <widget class="QStackedWidget" name="stackedWidget">
+       <property name="minimumSize">
+        <size>
+         <width>1280</width>
+         <height>720</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1920</width>
+         <height>1080</height>
+        </size>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="menuScreen">
+        <property name="minimumSize">
+         <size>
+          <width>1280</width>
+          <height>720</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1920</width>
+          <height>1080</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#menuScreen {
+    background-image: url(:/imgs/src/assets/background-menu.png);
+	background-position: bottom left;
+	background-attachment: fixed;
+}</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_00">
+         <item>
+          <widget class="QWidget" name="titleButtons" native="true">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	padding: 8px;
+	border: 0;
+	border-radius: 4px;
+	background-color: white;
+	color: black;
+}
+
+QPushButton::hover {
+	background-color: gray;
+}</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_00" rowstretch="1,5,5,0,0">
+            <item row="1" column="0">
+             <widget class="QLabel" name="gameTitle">
+              <property name="styleSheet">
+               <string notr="true">color: white;</string>
+              </property>
+              <property name="text">
+               <string>&lt;h1&gt;TALES OF LIESEL&lt;/h1&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <spacer name="titleSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>250</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="0">
+             <widget class="QPushButton" name="newGameButton">
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: white;
+    color: black;
+    outline: 0;
+    border: 0;
+    border-radius: 4px;
+
+}
+
+QPushButton::hover {
+    background-color: gray;
+    color: white;
+}
+
+QPushButton::pressed {
+    background-color: gray;
+    color: white;
+}</string>
+              </property>
+              <property name="text">
+               <string>PLAY</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QPushButton" name="exitGameButton">
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>EXIT</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gameScreen">
+        <property name="minimumSize">
+         <size>
+          <width>1280</width>
+          <height>720</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1920</width>
+          <height>1080</height>
+         </size>
+        </property>
+        <property name="windowTitle">
+         <string>MainWindow</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QMainWindow {
+            /* background-color: #25252a;
+            background-image: url(:/imgs/src/assets/background.png); */
+        }</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QWidget" name="centralwidget" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>1280</width>
+             <height>720</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#centralwidget {
+    background-image: url(:/imgs/src/assets/background.png);
+	background-position: bottom left;
+	background-attachment: fixed;
+}</string>
+           </property>
+           <layout class="QHBoxLayout" name="gameScreenEntire" stretch="10,5,15">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="leftMargin">
+             <number>8</number>
+            </property>
+            <property name="topMargin">
+             <number>8</number>
+            </property>
+            <property name="rightMargin">
+             <number>8</number>
+            </property>
+            <property name="bottomMargin">
+             <number>8</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="lieselPlusSkills" stretch="7,0,0,0">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetDefaultConstraint</enum>
+              </property>
+              <item>
+               <widget class="QWidget" name="lieselInfo" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>355</width>
+                  <height>153</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>355</width>
+                  <height>153</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#lieselInfo {
+            background-image: url(:/imgs/src/assets/ui-components/LieselInfo.png) no-repeat;
+            background-repeat: none;
+            background-position: top left;
+            background-attachment: fixed;
+        }
+
+        </string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <property name="topMargin">
+                  <number>9</number>
+                 </property>
+                 <item>
+                  <widget class="QWidget" name="verticalWidget" native="true">
+                   <property name="maximumSize">
+                    <size>
+                     <width>343</width>
+                     <height>458</height>
+                    </size>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,20,20,20">
+                    <item>
+                     <spacer name="lieselDivSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="lieselFloorDiv">
+                      <item>
+                       <widget class="QLabel" name="lieselFloorTitle">
+                        <property name="text">
+                         <string>FLOOR</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lieselFloorValue">
+                        <property name="text">
+                         <string>0</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="lieselLevelDiv">
+                      <item>
+                       <widget class="QLabel" name="lieselLevelLabel">
+                        <property name="text">
+                         <string>LEVEL</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lieselCurrentLevelValue">
+                        <property name="text">
+                         <string>0</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="lieselLevelSpacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lieselCurrentLevelExp">
+                        <property name="text">
+                         <string>0</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lieselLevelSlash">
+                        <property name="text">
+                         <string>/</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lieselLevelMax">
+                        <property name="text">
+                         <string>0</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="lieselSoulCoinsDiv">
+                      <item>
+                       <widget class="QLabel" name="lieselSoulCoinsLabel">
+                        <property name="text">
+                         <string>SOUL COINS</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="lieselSoulCoinsSpacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lieselSoulCoinsValue">
+                        <property name="text">
+                         <string>0</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="skillsInfo" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>361</width>
+                  <height>500</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>361</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#skillsInfo {
+            background-image: url(:/imgs/src/assets/ui-components/SkillsPanel.png);
+            background-repeat: none;
+            background-position: top left;
+            background-attachment: fixed;
+        }</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,20">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>9</number>
+                 </property>
+                 <item>
+                  <spacer name="spacerInsideGridSkills">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QGridLayout" name="skillsInfoGrid">
+                   <property name="horizontalSpacing">
+                    <number>6</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QWidget" name="skillsList" native="true">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>456</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
+                      <item>
+                       <widget class="QWidget" name="fireballSkillDiv" native="true">
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>200</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: #2E3440;
+border-radius: 4px;
+margin: 2px;</string>
+                        </property>
+                        <layout class="QGridLayout" name="fireballCard">
+                         <property name="leftMargin">
+                          <number>9</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>9</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>9</number>
+                         </property>
+                         <property name="horizontalSpacing">
+                          <number>4</number>
+                         </property>
+                         <property name="verticalSpacing">
+                          <number>0</number>
+                         </property>
+                         <item row="1" column="0" colspan="3">
+                          <widget class="QWidget" name="fireballNameButtonDiv" native="true">
+                           <layout class="QHBoxLayout" name="horizontalLayout_5">
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="fireballIcon">
+                              <property name="minimumSize">
+                               <size>
+                                <width>60</width>
+                                <height>50</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>ICON</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignCenter</set>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="fireballTitle">
+                              <property name="minimumSize">
+                               <size>
+                                <width>200</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>140</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true"/>
+                              </property>
+                              <property name="text">
+                               <string>&lt;h3&gt;Fireball Attack&lt;/h3&gt;</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="1" column="3" alignment="Qt::AlignRight">
+                          <widget class="QPushButton" name="fireballUseButton">
+                           <property name="minimumSize">
+                            <size>
+                             <width>50</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>50</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="layoutDirection">
+                            <enum>Qt::LeftToRight</enum>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">#fireballUseButton {
+            background-color: #BF616A;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+			font-size: 10px;
+        }
+
+        #fireballUseButton::hover {
+            background-color: #A9444E;
+            color: white;
+        }
+
+        #fireballUseButton::pressed {
+            background-color: #773037;
+            color: white;
+        }
+
+        #fireballUseButton::disabled {
+            background-color: gray;
+            color: white;
+        }</string>
+                           </property>
+                           <property name="text">
+                            <string>USE</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="0" colspan="4">
+                          <widget class="QWidget" name="fireballPriceDiv" native="true">
+                           <layout class="QHBoxLayout" name="horizontalLayout_7">
+                            <item>
+                             <widget class="QLabel" name="fireballCoinsNeededUpgrade">
+                              <property name="styleSheet">
+                               <string notr="true">font-size: 12px;</string>
+                              </property>
+                              <property name="text">
+                               <string>X SOUL COINS NEEDED FOR NEXT LEVEL</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="3" column="0" colspan="4">
+                          <widget class="QWidget" name="fireballDescriptionDiv" native="true">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>50</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_6">
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="fireballDescription">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>50</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">font-size: 14px;</string>
+                              </property>
+                              <property name="text">
+                               <string>Cast a fireball that deals more damage to your enemy.</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                              </property>
+                              <property name="wordWrap">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="8" column="0" colspan="4">
+                          <widget class="QPushButton" name="fireballUpgradeButton">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>30</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">#fireballUpgradeButton {
+            background-color: #A3BE8C;
+            color: #3f434c;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+
+        }
+
+        #fireballUpgradeButton::hover {
+            background-color: #89AC6B;
+            color: white;
+        }
+
+        #fireballUpgradeButton::pressed {
+            background-color: #709252;
+            color: white;
+        }</string>
+                           </property>
+                           <property name="text">
+                            <string>UPGRADE</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="0" colspan="4">
+                          <widget class="QLabel" name="fireballLevelValue">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">font-size: 12px;</string>
+                           </property>
+                           <property name="text">
+                            <string>LEVEL 1</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QWidget" name="destructionAuraSkillDiv" native="true">
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>200</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: #2E3440;
+border-radius: 4px;
+margin: 2px;</string>
+                        </property>
+                        <layout class="QGridLayout" name="destructionAuraCard">
+                         <property name="horizontalSpacing">
+                          <number>4</number>
+                         </property>
+                         <property name="verticalSpacing">
+                          <number>0</number>
+                         </property>
+                         <item row="1" column="0" colspan="4">
+                          <widget class="QWidget" name="destructionAuraNameUseButton" native="true">
+                           <layout class="QHBoxLayout" name="horizontalLayout_8">
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="destructionAuraIcon">
+                              <property name="minimumSize">
+                               <size>
+                                <width>60</width>
+                                <height>50</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>ICON</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignCenter</set>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="destructionAuraTitle">
+                              <property name="minimumSize">
+                               <size>
+                                <width>200</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>&lt;h3&gt;Destruction Aura&lt;/h3&gt;</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="2" column="0" colspan="5">
+                          <widget class="QLabel" name="destructionAuraDescription">
+                           <property name="styleSheet">
+                            <string notr="true">font-size: 14px;</string>
+                           </property>
+                           <property name="text">
+                            <string>Cast a massive energy aura that causes damage overtime.</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                           </property>
+                           <property name="wordWrap">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="0" colspan="5">
+                          <widget class="QPushButton" name="destructionAuraUpgradeButton">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>30</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">#destructionAuraUpgradeButton {
+            background-color: #A3BE8C;
+            color: #3f434c;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+
+        }
+
+        #destructionAuraUpgradeButton::hover {
+            background-color: #89AC6B;
+            color: white;
+        }
+
+        #destructionAuraUpgradeButton::pressed {
+            background-color: #709252;
+            color: white;
+        }</string>
+                           </property>
+                           <property name="text">
+                            <string>UPGRADE</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="0" colspan="5">
+                          <widget class="QWidget" name="destructionAuraPriceDiv" native="true">
+                           <layout class="QHBoxLayout" name="horizontalLayout_9">
+                            <item>
+                             <widget class="QLabel" name="destructionAuraCoinsNeededUpgrade">
+                              <property name="styleSheet">
+                               <string notr="true">font-size: 12px;</string>
+                              </property>
+                              <property name="text">
+                               <string>X SOUL COINS NEEDED FOR NEXT LEVEL</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="1" column="4" alignment="Qt::AlignRight">
+                          <widget class="QPushButton" name="destructionAuraUseButton">
+                           <property name="enabled">
+                            <bool>true</bool>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>50</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>50</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">#destructionAuraUseButton {
+            background-color: #BF616A;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+			font-size: 10px;
+        }
+
+        #destructionAuraUseButton::hover {
+            background-color: #A9444E;
+            color: white;
+        }
+
+        #destructionAuraUseButton::disabled {
+            background-color: gray;
+            color: white;
+        }
+
+	</string>
+                           </property>
+                           <property name="text">
+                            <string>USE</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="0" colspan="5">
+                          <widget class="QLabel" name="destructionAuraLevelValue">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">font-size: 12px;</string>
+                           </property>
+                           <property name="text">
+                            <string>LEVEL 1</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="saveGoMenuButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#saveGoMenuButton {
+	background-color: #4C566A;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
+	padding: 8px;
+}
+
+#saveGoMenuButton::hover {
+    background-color: #D8DEE9;
+    color: #2E3440;
+}
+
+#saveGoMenuButton::pressed {
+    background-color: #3B4252;
+    color: #2E3440;
+}</string>
+                </property>
+                <property name="text">
+                 <string>GO BACK TO MENU</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="floorPlusEnemyInfo" stretch="5,0">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>9</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWidget" name="floorManage" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>355</width>
+                  <height>153</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>355</width>
+                  <height>153</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#floorManage {
+            background-image: url(:/imgs/src/assets/ui-components/ConfigureFloor.png);
+            background-repeat: none;
+            background-position: top left;
+            background-attachment: fixed;
+        }</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <spacer name="verticalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="floorButtons">
+                   <property name="spacing">
+                    <number>6</number>
+                   </property>
+                   <item>
+                    <widget class="QPushButton" name="goUpButton">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">#goUpButton {
+            background-color: #BF616A;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+        }
+
+        #goUpButton::hover {
+            background-color: #A9444E;
+            color: white;
+        }
+
+        #goUpButton::pressed {
+            background-color: #773037;
+            color: white;
+        }</string>
+                     </property>
+                     <property name="text">
+                      <string>GO UP (CAUTION)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="goDownButton">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">#goDownButton {
+            background-color: #A3BE8C;
+            color: #3f434c;
+            outline: 0;
+            border: 0;
+            border-radius: 4px;
+
+        }
+
+        #goDownButton::hover {
+            background-color: #89AC6B;
+            color: white;
+        }
+
+        #goDownButton::pressed {
+            background-color: #709252;
+            color: white;
+        }</string>
+                     </property>
+                     <property name="text">
+                      <string>GO DOWN</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="usefulInformation" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>355</width>
+                  <height>1000</height>
+                 </size>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_2">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item row="1" column="0">
+                  <widget class="QListWidget" name="eventList">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">* {
+	background-color: rgba(0, 0, 0, 150);
+}
+
+QListWidget {
+	color: white;
+	background-color: rgba(0, 0, 0, 150);
+	border: 0;
+	border-radius: 4px;
+}
+
+QListWidget::item::hover{
+	color: yellow;
+}
+
+QScrollBarl { 
+	border: 2px solid grey; 
+	background: #32CC99; 
+	height: 15px; 
+	margin: 0px 20px 0 20px; 
+}</string>
+                   </property>
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="uniformItemSizes">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="enemyInstance">
+              <item>
+               <widget class="QWidget" name="enemyInfo" native="true">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <layout class="QVBoxLayout" name="enemyInfoButton" stretch="0,0,0,0">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>9</number>
+                 </property>
+                 <item>
+                  <layout class="QVBoxLayout" name="enemyNameHealth">
+                   <item>
+                    <widget class="QLabel" name="enemyName">
+                     <property name="text">
+                      <string>&lt;h1&gt;ENEMY_NAME&lt;/h1&gt;</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QProgressBar" name="healthBar">
+                     <property name="styleSheet">
+                      <string notr="true">QProgressBar {
+            background-color: rgb(255, 255, 255);
+            color: rgb(58, 58, 58);
+            border-style: outset;
+            text-align: center;
+        }
+
+        QProgressBar::chunk {
+            background-color: #A3BE8C;
+        }
+        </string>
+                     </property>
+                     <property name="minimum">
+                      <number>0</number>
+                     </property>
+                     <property name="value">
+                      <number>50</number>
+                     </property>
+                     <property name="textVisible">
+                      <bool>true</bool>
+                     </property>
+                     <property name="format">
+                      <string>%v</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <spacer name="enemyDivSpacerBarButton">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Expanding</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="enemyDiv">
+                   <item>
+                    <spacer name="leftSpacerEnemyButton">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Expanding</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="enemyButton">
+                     <property name="minimumSize">
+                      <size>
+                       <width>500</width>
+                       <height>500</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+	background-color: transparent;
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="rightSpacerEnemyButton">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Expanding</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <spacer name="spacerGroundEnemy">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

@@ -59,7 +59,7 @@ private:
 
 	void startCooldown(ThreadInstance *cooldownThread, const int timeAmount, const int MODE);
 	bool proccessMonsterDamage(const int dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp);
-	void damageDestructionAura(const int dealtDamage, int &gainedExp, int &gainedCoins, bool &isLevelUp);
+    void damageDestructionAura();
 
 public:
 	Liesel *playerInstance;
