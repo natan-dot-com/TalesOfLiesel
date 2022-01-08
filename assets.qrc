@@ -84,4 +84,11 @@
         <file>src/assets/enemies/enemies_full/wolf-4v2.png</file>
         <file>src/assets/background-menu.png</file>
     </qresource>
+    <qresource prefix="/music">
+        <file>music/0-tavern.mp3</file>
+        <file>music/1-highland.mp3</file>
+        <file>music/2-streets-of-plague.mp3</file>
+        <file>music/3-battle-of-the-creek.mp3</file>
+        <file>music/4-medieval.mp3</file>
+    </qresource>
 </RCC>

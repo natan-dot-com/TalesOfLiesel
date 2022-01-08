@@ -179,12 +179,6 @@ bool Context::updateFireball() {
 	return this->playerInstance->fireSkill.updateExp(currSoulCoins);
 }
 
-bool Context::updateChronomancy() {
-	const int currSoulCoins = this->playerInstance->getSoulCoins();
-	this->playerInstance->updateSpentCoins(currSoulCoins);
-	return this->playerInstance->chronoSkill.updateExp(currSoulCoins);
-}
-
 bool Context::updateDestructionAura() {
 	const int currSoulCoins = this->playerInstance->getSoulCoins();
 	this->playerInstance->updateSpentCoins(currSoulCoins);

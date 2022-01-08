@@ -221,12 +221,6 @@ bool Game::updateFireball() {
     return result;
 }
 
-bool Game::updateChronomancy() {
-    const int currSoulCoins = this->playerInstance->getSoulCoins();
-    this->playerInstance->updateSpentCoins(currSoulCoins);
-    return this->playerInstance->chronoSkill.updateExp(currSoulCoins);
-}
-
 bool Game::updateDestructionAura() {
     const int currSoulCoins = this->playerInstance->getSoulCoins();
     this->playerInstance->updateSpentCoins(currSoulCoins);

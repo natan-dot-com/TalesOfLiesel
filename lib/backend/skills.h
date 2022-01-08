@@ -25,11 +25,6 @@ public:
 	double skillEffect();
 };
 
-class Chronomancy : public Skill {
-public:
-	double skillEffect();
-};
-
 class DestructionAura : public Skill {
 private:
 	double skillEffect();
