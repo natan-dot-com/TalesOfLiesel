@@ -3,10 +3,15 @@
 #include <./lib/gamemacros.h>
 #include <QMovie>
 #include <QPair>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 // Variables only used in this file.
 // Mainly Qt components that doesnt need to be defined in the class.
 QMovie *movies[2];
+QMediaPlayer *title;
+QMediaPlayer *gameplay;
+QMediaPlaylist *gamePlaylist;
 
 // Auxiliary enum to identify each Qt StackedWidgets.
 enum Screen {
@@ -29,10 +34,7 @@ Widget::Widget(QWidget *parent)
     setupDestructionAuraInfo();
     setupGame();
     connectAll();
-
-    // This is a test induced call of these functions, DELETE those for release.
-//    game->playerInstance->fireSkill.updateExp(5000);
-//    game->playerInstance->destructionSkill.updateExp(5000);
+    setupMusic();
 
     initAllComponents();
     GENERATE_FIRST_ENEMY;
@@ -49,6 +51,25 @@ Widget::~Widget()
     delete movies[0];
     delete movies[1];
     delete ui;
+}
+
+void Widget::setupMusic() {
+    title = new QMediaPlayer();
+    gameplay = new QMediaPlayer();
+    gamePlaylist = new QMediaPlaylist();
+
+    title->setMedia(QUrl("qrc:/music/music/0-tavern.mp3"));
+    title->play();
+    title->setVolume(25);
+    gameplay->setVolume(25);
+
+    gamePlaylist->addMedia(QUrl("qrc:/music/music/1-highland.mp3"));
+    gamePlaylist->addMedia(QUrl("qrc:/music/music/2-streets-of-plague.mp3"));
+    gamePlaylist->addMedia(QUrl("qrc:/music/music/3-battle-of-the-creek.mp3"));
+    gamePlaylist->addMedia(QUrl("qrc:/music/music/4-medieval.mp3"));
+
+    gamePlaylist->setPlaybackMode(QMediaPlaylist::Loop);
+    gameplay->setPlaylist(gamePlaylist);
 }
 
 void Widget::startAnimationIcons()
@@ -164,10 +185,21 @@ void Widget::setupMainWindow() {
 void Widget::on_newGameButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(GAME);
+    title->stop();
+    gamePlaylist->shuffle();
+    gameplay->play();
 }
 
 void Widget::on_saveGoMenuButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(MENU);
+    gameplay->stop();
+    title->play();
+}
+
+
+void Widget::on_exitGameButton_clicked()
+{
+    this->close();
 }
 
